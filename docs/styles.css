@@ -1133,9 +1133,8 @@ html.js-reveal main > section.is-visible .pub-rings {
 }
 
 html.js-reveal .ring-arc { stroke-dashoffset: var(--circ, 999); }
-html.js-reveal .ring-arc--lime  { transition-delay: 0.50s; }
-html.js-reveal .ring-arc--teal  { transition-delay: 0.70s; }
-html.js-reveal .ring-arc--amber { transition-delay: 0.90s; }
+html.js-reveal .ring-arc--lime { transition-delay: 0.50s; }
+html.js-reveal .ring-arc--teal { transition-delay: 0.80s; }
 html.js-reveal main > section.is-visible .ring-arc {
   stroke-dashoffset: var(--target-offset);
 }
@@ -1148,9 +1147,8 @@ html.js-reveal .rings-legend li {
 }
 html.js-reveal main > section.is-visible .rings-total { opacity: 1; transition-delay: 0.65s; }
 html.js-reveal main > section.is-visible .rings-sub   { opacity: 1; transition-delay: 0.75s; }
-html.js-reveal main > section.is-visible .rings-legend li:nth-child(1) { opacity: 1; transition-delay: 0.85s; }
-html.js-reveal main > section.is-visible .rings-legend li:nth-child(2) { opacity: 1; transition-delay: 0.95s; }
-html.js-reveal main > section.is-visible .rings-legend li:nth-child(3) { opacity: 1; transition-delay: 1.05s; }
+html.js-reveal main > section.is-visible .rings-legend li:nth-child(1) { opacity: 1; transition-delay: 0.95s; }
+html.js-reveal main > section.is-visible .rings-legend li:nth-child(2) { opacity: 1; transition-delay: 1.10s; }
 
 /* Stagger items inside a section that just became visible */
 html.js-reveal main > section .project-list > li,

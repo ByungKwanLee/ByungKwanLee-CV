@@ -282,8 +282,8 @@
         <div class="rings-body">
           <svg id="pubRings" class="rings-svg" viewBox="-95 -95 190 190"
                role="img" aria-labelledby="ringsTitle" aria-describedby="ringsDesc">
-            <title id="ringsTitle">Author role distribution in publications</title>
-            <desc id="ringsDesc">First Author 10/21, NVIDIA Patent 4/21, Corresponding Author 1/21</desc>
+          <title id="ringsTitle">Author role distribution in publications</title>
+          <desc id="ringsDesc">First &amp; Corresponding Author 16/21, Co-Author 5/21</desc>
           </svg>
           <ul id="ringsLegend" class="rings-legend"></ul>
         </div>
@@ -614,9 +614,8 @@
       if (!mount || !legend) return;
 
       var data = [
-        { label: 'First Author',         value: 10, color: '#9CDF00', shadow: 'rgba(156, 223,   0, 0.55)', radius: 78, width: 13, key: 'lime' },
-        { label: 'NVIDIA Patent',        value:  4, color: '#4FB8A6', shadow: 'rgba( 79, 184, 166, 0.55)', radius: 58, width: 13, key: 'teal' },
-        { label: 'Corresponding Author', value:  1, color: '#FFB454', shadow: 'rgba(255, 180,  84, 0.55)', radius: 38, width: 13, key: 'amber' }
+        { label: 'First & Corresponding Author', value: 16, color: '#9CDF00', shadow: 'rgba(156, 223,   0, 0.55)', radius: 72, width: 15, key: 'lime' },
+        { label: 'Co-Author',                    value:  5, color: '#4FB8A6', shadow: 'rgba( 79, 184, 166, 0.55)', radius: 46, width: 15, key: 'teal' }
       ];
       var TOTAL = 21;
       var NS = 'http://www.w3.org/2000/svg';
