@@ -110,6 +110,12 @@
   left=4pt, right=4pt, top=1.5pt, bottom=1.5pt,
   fontupper=\bfseries\color{primaryColor}}
 
+% Tech-transfer / high-impact badge (stronger emphasis than statusbadge)
+\newtcbox{\techbadge}{on line, colback=accentColor!35, colframe=accentDark,
+  boxrule=0.8pt, arc=2pt, outer arc=2pt, boxsep=1pt, left=3pt, right=3pt,
+  top=1pt, bottom=1pt,
+  fontupper=\footnotesize\bfseries\color{accentDark}}
+
 % Header role pill (for "Research Scientist at NVIDIA")
 \newtcbox{\rolePill}{on line, colback=pillBg, colframe=accentColor,
   boxrule=0.6pt, arc=8pt, outer arc=8pt, boxsep=1.5pt,
@@ -260,7 +266,7 @@
         \\[0.4mm]\hspace*{-1mm}\venuebadge{CVPR 2026 Accept}~\statusbadge{U.S. Non-Provisional Patent Filed}~\statusbadge{ArXiv Release}~\statusbadge{Internal Release}
         \vspace{1.2mm}
       \item \textbf{GenRecal} \,{\footnotesize\color{accentDark}[\textsc{Continued}]}\, \textit{\color{mutedGray}\small Cross-architecture VLM distillation via a Recalibrator that aligns heterogeneous token representations regardless of vocabulary, token splits, or index ordering.}
-        \\[0.4mm]\hspace*{-1mm}\statusbadge{Paper Under Review}~\statusbadge{Patent Upgrade: Provisional $\rightarrow$ Non-Provisional}~\statusbadge{Internal Tech Transfer}
+        \\[0.4mm]\hspace*{-1mm}\statusbadge{Paper Under Review}~\statusbadge{Patent Upgrade: Provisional $\rightarrow$ Non-Provisional}~\techbadge{\faStar~Internal Tech Transfer}
         \vspace{1.2mm}
       \item \textbf{Unified RL \& Imitation Learning for VLMs} \,{\footnotesize\color{accentDark}[\textsc{Continued}]}\, \textit{\color{mutedGray}\small Combines RL with adversarial imitation, using an LLM-based discriminator and multi-teacher guidance to build lightweight yet powerful VLMs.}
         \\[0.4mm]\hspace*{-1mm}\venuebadge{NeurIPS 2025 Accept}~\statusbadge{Patent Upgrade: Provisional $\rightarrow$ Non-Provisional}~\statusbadge{ArXiv Release}~\statusbadge{Internal Release}
@@ -270,7 +276,7 @@
       {NVIDIA}{Research Intern}{Oct. 2024 - Oct. 2025}
       \resumeItemListStart
       \item \textbf{VLsI: Verbalized Layers-to-Interactions} \,---\, \textit{\color{mutedGray}\small Layer-wise distillation using intermediate verbalizers, enabling small VLMs (2B/7B) to align with large VLMs' reasoning progression and outperform GPT-4V.}
-        \\[0.4mm]\hspace*{-1mm}\venuebadge{CVPR 2025 Accept}~\statusbadge{U.S. Non-Provisional Patent Filed}~\statusbadge{ArXiv Release}~\statusbadge{Internal Tech Transfer}
+        \\[0.4mm]\hspace*{-1mm}\venuebadge{CVPR 2025 Accept}~\statusbadge{U.S. Non-Provisional Patent Filed}~\statusbadge{ArXiv Release}~\techbadge{\faStar~Internal Tech Transfer}
         \vspace{1.2mm}
       \item \textbf{GenRecal} \,---\, \textit{\color{mutedGray}\small Initial design of the Recalibrator framework for cross-tokenizer VLM distillation; first proof-of-concept and internal demo.}
         \\[0.4mm]\hspace*{-1mm}\statusbadge{U.S. Provisional Patent Filed}~\statusbadge{ArXiv Release}~\statusbadge{Internal Release}
