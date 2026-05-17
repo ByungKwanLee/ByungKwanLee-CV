@@ -52,7 +52,8 @@
 
 /* -------- Reset & Base -------- */
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+html { scroll-behavior: smooth; scroll-padding-top: 70px; overflow-x: clip; }
+body { overflow-x: clip; }
 body {
   margin: 0;
   font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
@@ -346,18 +347,27 @@ ul, ol { padding-left: 1.4em; }
 [data-theme="dark"] .hero::before {
   content: "";
   position: absolute;
-  inset: -10% 10% auto 10%;
-  height: 520px;
+  /* Stretch the glow to the full viewport width so it spans
+     the entire area above the Research Interest section */
+  top: -120px;
+  bottom: -60px;
+  left: calc(50% - 50vw);
+  right: calc(50% - 50vw);
   background:
-    radial-gradient(closest-side,
+    radial-gradient(ellipse 45% 55% at 30% 40%,
       rgba(156, 223, 0, 0.22),
-      rgba(79, 184, 166, 0.10) 40%,
-      transparent 72%);
-  filter: blur(60px);
+      transparent 70%),
+    radial-gradient(ellipse 45% 50% at 75% 55%,
+      rgba(79, 184, 166, 0.18),
+      transparent 72%),
+    radial-gradient(ellipse 70% 35% at 50% 90%,
+      rgba(79, 184, 166, 0.10),
+      transparent 75%);
+  filter: blur(80px);
   z-index: -1;
   pointer-events: none;
-  opacity: 0.85;
-  transform: translate3d(0, calc(var(--scrollY, 0px) * 0.25), 0);
+  opacity: 0.95;
+  transform: translate3d(0, calc(var(--scrollY, 0px) * 0.2), 0);
   will-change: transform;
 }
 
