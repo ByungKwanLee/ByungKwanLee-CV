@@ -34,15 +34,16 @@
 \usepackage[T1]{fontenc}
 \usepackage{fontawesome5}
 
-% Color definitions -- soft pastel palette (warm dusty rose + cream)
+% Color definitions -- soft pastel palette (sage/teal + cream)
 \definecolor{darkblue}{RGB}{0,0,139}
-\definecolor{primaryColor}{HTML}{3D3B40}   % deep warm charcoal for headings/name
-\definecolor{accentColor}{HTML}{D4A5A5}    % dusty rose pastel for accent lines/highlights
-\definecolor{accentDark}{HTML}{A66B6B}     % deeper dusty rose for hyperlinks/numbers (contrast)
-\definecolor{mutedGray}{HTML}{6B6B7B}      % soft slate gray for subtitles
-\definecolor{badgeBg}{HTML}{FBE9E9}        % very pale rose for venue badges
-\definecolor{boxBg}{HTML}{FBF6F4}          % warm cream for paper-description boxes
-\definecolor{highlightColor}{HTML}{F5DEDE} % pale rose blush for marker-style highlights
+\definecolor{primaryColor}{HTML}{2D3E40}   % deep teal-charcoal for headings/name
+\definecolor{accentColor}{HTML}{A8C5BF}    % soft sage-teal pastel for accent lines
+\definecolor{accentDark}{HTML}{4F8077}     % deeper sage-teal for hyperlinks/numbers
+\definecolor{mutedGray}{HTML}{5F6E70}      % soft slate gray for subtitles
+\definecolor{badgeBg}{HTML}{E5EFEC}        % pale sage for venue badges
+\definecolor{boxBg}{HTML}{F4F8F6}          % cream-sage for paper-description boxes
+\definecolor{highlightColor}{HTML}{DDE9E5} % very pale sage for marker-style highlights
+\definecolor{pillBg}{HTML}{EAF2EE}         % soft pill background for header role
 
 % Page layout
 \setlength{\multicolsep}{0pt} 
@@ -107,6 +108,12 @@
   boxrule=0pt, arc=2pt, outer arc=2pt, boxsep=0pt,
   left=4pt, right=4pt, top=1.5pt, bottom=1.5pt,
   fontupper=\bfseries\color{primaryColor}}
+
+% Header role pill (for "Research Scientist at NVIDIA")
+\newtcbox{\rolePill}{on line, colback=pillBg, colframe=accentColor,
+  boxrule=0.6pt, arc=8pt, outer arc=8pt, boxsep=1.5pt,
+  left=9pt, right=9pt, top=2pt, bottom=2pt,
+  fontupper=\small\color{primaryColor}}
 
 % Custom commands
 \newcommand{\resumeItem}[2]{
@@ -198,7 +205,8 @@
 \vspace{-4mm}
 
 \begin{center}
-    {\small Ph.D., School of Electrical Engineering at KAIST\\\small\color{mutedGray}\textbf{Research Scientist} at \textbf{NVIDIA}}
+    \rolePill{\textbf{Research Scientist}~~at~~\raisebox{-0.18em}{\includegraphics[height=1em]{nvidia.png}}~\textbf{\color{accentDark}NVIDIA}}\\[1.8mm]
+    {\small\color{mutedGray}\faGraduationCap~~Ph.D., School of Electrical Engineering at KAIST}
 \end{center}
 \vspace{-3mm}
 
