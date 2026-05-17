@@ -125,9 +125,9 @@ ul, ol { padding-left: 1.4em; }
 .nav-links a { color: var(--muted); padding: 4px 2px; border-bottom: 2px solid transparent; transition: all 0.15s; }
 .nav-links a:hover { color: var(--accent-dark); border-bottom-color: var(--accent); text-decoration: none; }
 
-/* Hero CV download button (prominent, with PDF logo) */
+/* Hero CV view button (compact, opens PDF in browser viewer) */
 .hero-actions {
-  margin-top: 16px;
+  margin-top: 14px;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -135,14 +135,14 @@ ul, ol { padding-left: 1.4em; }
 .cv-btn {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
-  padding: 10px 18px 10px 12px;
-  border-radius: 14px;
-  border: 1.5px solid var(--border);
+  gap: 10px;
+  padding: 7px 14px 7px 8px;
+  border-radius: 11px;
+  border: 1px solid var(--border);
   background: linear-gradient(135deg, var(--bg-soft), var(--box-bg));
   color: var(--primary);
   text-decoration: none;
-  box-shadow: 0 1px 2px rgba(15, 20, 25, 0.06), 0 6px 18px rgba(15, 20, 25, 0.04);
+  box-shadow: 0 1px 2px rgba(15, 20, 25, 0.05), 0 4px 12px rgba(15, 20, 25, 0.03);
   transition: transform 0.18s ease, border-color 0.18s ease,
               box-shadow 0.18s ease, background 0.18s ease;
   position: relative;
@@ -151,23 +151,23 @@ ul, ol { padding-left: 1.4em; }
 .cv-btn:hover {
   text-decoration: none;
   border-color: var(--accent);
-  transform: translateY(-2px);
-  box-shadow: 0 2px 4px rgba(15, 20, 25, 0.08), 0 10px 28px rgba(79, 184, 166, 0.18);
+  transform: translateY(-1.5px);
+  box-shadow: 0 1px 2px rgba(15, 20, 25, 0.06), 0 8px 20px rgba(79, 184, 166, 0.15);
 }
 
 .cv-btn-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
   background: linear-gradient(135deg, #E53E3E, #C53030);
   color: #fff;
-  font-size: 18px;
+  font-size: 14px;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.25),
-    0 2px 6px rgba(229, 62, 62, 0.35);
+    0 1.5px 4px rgba(229, 62, 62, 0.30);
   flex-shrink: 0;
 }
 .cv-btn-icon i { transform: translateY(0.5px); }
@@ -176,17 +176,17 @@ ul, ol { padding-left: 1.4em; }
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 .cv-btn-title {
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: -0.005em;
   color: var(--primary);
 }
 .cv-btn-meta {
-  margin-top: 3px;
-  font-size: 11.5px;
+  margin-top: 2px;
+  font-size: 10.5px;
   font-weight: 500;
   color: var(--muted);
   letter-spacing: 0.01em;
@@ -204,21 +204,17 @@ ul, ol { padding-left: 1.4em; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  border: 1px solid var(--border);
   color: var(--muted);
-  font-size: 11px;
-  margin-left: 4px;
-  transition: transform 0.25s ease, color 0.18s ease, border-color 0.18s ease,
-              background 0.18s ease;
+  font-size: 9.5px;
+  margin-left: 2px;
+  transition: transform 0.25s ease, color 0.18s ease;
 }
 .cv-btn:hover .cv-btn-arrow {
   color: var(--accent-dark);
-  border-color: var(--accent);
-  background: var(--badge-bg);
-  transform: translateY(2px);
+  transform: translate(2px, -2px);
 }
 
 [data-theme="dark"] .cv-btn {
@@ -997,10 +993,10 @@ section:first-of-type { border-top: none; }
   .awards-list li { flex-direction: column; gap: 2px; }
   .award-year { margin-left: 0; }
   .role-pill { font-size: 13px; padding: 6px 14px; }
-  .cv-btn { gap: 10px; padding: 8px 14px 8px 10px; }
-  .cv-btn-icon { width: 32px; height: 32px; font-size: 16px; }
-  .cv-btn-title { font-size: 13.5px; }
-  .cv-btn-meta { font-size: 10.5px; }
+  .cv-btn { gap: 8px; padding: 6px 12px 6px 7px; }
+  .cv-btn-icon { width: 24px; height: 24px; font-size: 12px; }
+  .cv-btn-title { font-size: 12px; }
+  .cv-btn-meta { font-size: 10px; }
   .cv-btn-arrow { display: none; }
 
   .pub-list > li {
