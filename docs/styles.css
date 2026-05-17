@@ -658,23 +658,29 @@ section:first-of-type { border-top: none; }
   display: grid;
   grid-template-columns: minmax(0, 1fr) 340px;
   gap: 24px;
-  align-items: start;
+  align-items: stretch;
   margin: 6px 0 22px;
 }
-.pub-summary .pub-overview { margin: 0; }
+.pub-summary .pub-overview {
+  margin: 0;
+  align-self: center;
+}
 @media (max-width: 820px) {
   .pub-summary { grid-template-columns: 1fr; }
+  .pub-summary .pub-overview { align-self: start; }
 }
 
 /* Activity-rings style publication profile (Apple Watch-inspired) */
 .pub-rings {
   margin: 0;
-  padding: 14px 14px 12px;
+  padding: 10px 14px 8px;
   border: 1px solid var(--border);
   border-radius: 14px;
   background: var(--bg-soft);
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 .pub-rings::before {
   content: "";
@@ -693,7 +699,7 @@ section:first-of-type { border-top: none; }
   color: var(--accent-dark);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   text-align: center;
   position: relative;
 }
@@ -701,13 +707,14 @@ section:first-of-type { border-top: none; }
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 12px;
   position: relative;
+  flex: 1 1 auto;
 }
 .rings-svg {
-  flex: 0 0 160px;
-  width: 160px;
-  height: 160px;
+  flex: 0 0 132px;
+  width: 132px;
+  height: 132px;
   display: block;
 }
 
@@ -758,7 +765,7 @@ section:first-of-type { border-top: none; }
 
 .rings-total {
   font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 800;
   fill: var(--primary);
   letter-spacing: -0.02em;
@@ -772,9 +779,9 @@ section:first-of-type { border-top: none; }
 }
 
 .rings-caption {
-  margin-top: 10px;
+  margin-top: 4px;
   text-align: center;
-  font-size: 11px;
+  font-size: 10.5px;
   color: var(--muted);
   letter-spacing: 0.01em;
   position: relative;
@@ -818,7 +825,7 @@ section:first-of-type { border-top: none; }
   width: 100%;
   max-width: 720px;
 }
-.pub-overview td { padding: 5px 8px; vertical-align: middle; }
+.pub-overview td { padding: 7px 8px; vertical-align: middle; }
 .pub-overview td.label { width: 30%; white-space: nowrap; }
 .pub-overview .hl {
   background: var(--highlight);
