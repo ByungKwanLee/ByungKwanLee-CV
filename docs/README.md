@@ -64,6 +64,20 @@ python -m http.server 8000
 # open http://localhost:8000
 ```
 
+## CV PDF auto-build
+
+The "CV" download button in the top-right corner of the site points to
+`docs/Byung-Kwan-Lee-CV.pdf`. This file is regenerated automatically by the
+GitHub Action defined in `.github/workflows/build-cv.yml` whenever
+`main.tex`, `latexmkrc`, or the header images at repo root are pushed.
+
+The action compiles `main.tex` with `pdflatex` inside a TeX Live container,
+copies the resulting PDF into `docs/`, and commits it back to the same branch
+with the message `ci: rebuild CV PDF [skip ci]`.
+
+To trigger a manual rebuild without changing anything, go to
+**Actions → Build CV PDF → Run workflow**.
+
 ## Customization
 
 All colors are defined as CSS variables at the top of `styles.css` (under `:root`). Change one HEX value to recolor the entire site.

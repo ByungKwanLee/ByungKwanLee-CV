@@ -122,6 +122,39 @@ ul, ol { padding-left: 1.4em; }
 .nav-links a { color: var(--muted); padding: 4px 2px; border-bottom: 2px solid transparent; transition: all 0.15s; }
 .nav-links a:hover { color: var(--accent-dark); border-bottom-color: var(--accent); text-decoration: none; }
 
+/* CV download button */
+.cv-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1.2px solid var(--accent);
+  background: var(--badge-bg);
+  color: var(--accent-dark);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  margin-right: 4px;
+}
+.cv-download:hover {
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  border-color: var(--accent-dark);
+  transform: translateY(-1px);
+}
+[data-theme="dark"] .cv-download {
+  color: var(--accent-dark);
+  box-shadow: 0 0 8px rgba(79, 184, 166, 0.22);
+}
+[data-theme="dark"] .cv-download:hover {
+  background: var(--accent);
+  color: var(--bg);
+  box-shadow: 0 0 14px rgba(79, 184, 166, 0.55);
+}
+
 /* Theme toggle button */
 .theme-toggle {
   background: transparent;
@@ -763,6 +796,8 @@ section:first-of-type { border-top: none; }
   .awards-list li { flex-direction: column; gap: 2px; }
   .award-year { margin-left: 0; }
   .role-pill { font-size: 13px; padding: 6px 14px; }
+  .cv-download { padding: 5px 9px; font-size: 12px; }
+  .cv-download-label { display: none; }
 
   .pub-list > li {
     grid-template-columns: 1fr;

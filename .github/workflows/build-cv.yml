@@ -1,0 +1,43 @@
+name: Build CV PDF
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'main.tex'
+      - 'latexmkrc'
+      - 'nvidia.png'
+      - 'ieee_collabratec_icon.png'
+      - '.github/workflows/build-cv.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compile main.tex with pdflatex
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          latexmk_shell_escape: true
+          extra_system_packages: "fontawesome5"
+
+      - name: Move PDF into docs/
+        run: |
+          mkdir -p docs
+          mv main.pdf docs/Byung-Kwan-Lee-CV.pdf
+          ls -lh docs/Byung-Kwan-Lee-CV.pdf
+
+      - name: Commit updated PDF
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "ci: rebuild CV PDF [skip ci]"
+          file_pattern: docs/Byung-Kwan-Lee-CV.pdf
+          commit_user_name: github-actions[bot]
+          commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
