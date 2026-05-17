@@ -39,34 +39,46 @@
       <path id="circuit-path-6" d="M1600 -120 V140 H1780 V340 H1540 V540 H1720 V760 H1500 V1040" />
     </defs>
     <g class="trace-layer">
-      <use href="#circuit-path-1" class="trace"></use>
-      <use href="#circuit-path-2" class="trace"></use>
-      <use href="#circuit-path-3" class="trace"></use>
-      <use href="#circuit-path-4" class="trace"></use>
-      <use href="#circuit-path-5" class="trace"></use>
-      <use href="#circuit-path-6" class="trace"></use>
+      <g transform="translate(170 0)">
+        <use href="#circuit-path-1" class="trace"></use>
+        <use href="#circuit-path-2" class="trace"></use>
+        <use href="#circuit-path-3" class="trace"></use>
+      </g>
+      <g transform="translate(-170 0)">
+        <use href="#circuit-path-4" class="trace"></use>
+        <use href="#circuit-path-5" class="trace"></use>
+        <use href="#circuit-path-6" class="trace"></use>
+      </g>
     </g>
     <g class="signal-layer">
-      <use href="#circuit-path-1" class="signal signal-lime signal-a"></use>
-      <use href="#circuit-path-2" class="signal signal-cyan signal-b"></use>
-      <use href="#circuit-path-3" class="signal signal-teal signal-c"></use>
-      <use href="#circuit-path-4" class="signal signal-pink signal-d"></use>
-      <use href="#circuit-path-5" class="signal signal-violet signal-e"></use>
-      <use href="#circuit-path-6" class="signal signal-amber signal-f"></use>
+      <g transform="translate(170 0)">
+        <use href="#circuit-path-1" class="signal signal-lime signal-a"></use>
+        <use href="#circuit-path-2" class="signal signal-cyan signal-b"></use>
+        <use href="#circuit-path-3" class="signal signal-teal signal-c"></use>
+      </g>
+      <g transform="translate(-170 0)">
+        <use href="#circuit-path-4" class="signal signal-pink signal-d"></use>
+        <use href="#circuit-path-5" class="signal signal-violet signal-e"></use>
+        <use href="#circuit-path-6" class="signal signal-amber signal-f"></use>
+      </g>
     </g>
     <g class="node-layer">
-      <circle class="node node-lime n1" cx="260" cy="170" r="3.1"></circle>
-      <circle class="node node-cyan n2" cx="120" cy="340" r="3"></circle>
-      <circle class="node node-teal n3" cx="300" cy="540" r="3.1"></circle>
-      <circle class="node node-violet n4" cx="340" cy="300" r="2.9"></circle>
-      <circle class="node node-amber n5" cx="180" cy="500" r="2.9"></circle>
-      <circle class="node node-lime n6" cx="260" cy="640" r="3"></circle>
-      <circle class="node node-pink n7" cx="1500" cy="180" r="3"></circle>
-      <circle class="node node-cyan n8" cx="1680" cy="360" r="3"></circle>
-      <circle class="node node-teal n9" cx="1460" cy="560" r="3"></circle>
-      <circle class="node node-violet n10" cx="1700" cy="430" r="2.9"></circle>
-      <circle class="node node-amber n11" cx="1740" cy="650" r="3"></circle>
-      <circle class="node node-lime n12" cx="1500" cy="540" r="3"></circle>
+      <g transform="translate(170 0)">
+        <circle class="node node-lime n1" cx="260" cy="170" r="3.1"></circle>
+        <circle class="node node-cyan n2" cx="120" cy="340" r="3"></circle>
+        <circle class="node node-teal n3" cx="300" cy="540" r="3.1"></circle>
+        <circle class="node node-violet n4" cx="340" cy="300" r="2.9"></circle>
+        <circle class="node node-amber n5" cx="180" cy="500" r="2.9"></circle>
+        <circle class="node node-lime n6" cx="260" cy="640" r="3"></circle>
+      </g>
+      <g transform="translate(-170 0)">
+        <circle class="node node-pink n7" cx="1500" cy="180" r="3"></circle>
+        <circle class="node node-cyan n8" cx="1680" cy="360" r="3"></circle>
+        <circle class="node node-teal n9" cx="1460" cy="560" r="3"></circle>
+        <circle class="node node-violet n10" cx="1700" cy="430" r="2.9"></circle>
+        <circle class="node node-amber n11" cx="1740" cy="650" r="3"></circle>
+        <circle class="node node-lime n12" cx="1500" cy="540" r="3"></circle>
+      </g>
     </g>
   </svg>
 </div>
