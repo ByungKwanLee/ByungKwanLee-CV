@@ -1376,12 +1376,12 @@ section:first-of-type { border-top: none; }
   font-size: 1.16em;
 }
 .pct-sector-label-lime {
-  left: 33%;
+  left: 67%;
   top: 63%;
   color: #6EA300;
 }
 .pct-sector-label-sky {
-  left: 67%;
+  left: 33%;
   top: 36%;
   color: #1F93C4;
 }
@@ -1492,8 +1492,8 @@ section:first-of-type { border-top: none; }
   .pct-ring { width: 132px; height: 132px; flex-basis: 132px; }
   .pct-legend { width: 100%; }
   .pct-sector-label { font-size: 12px; }
-  .pct-sector-label-lime { left: 33%; top: 63%; }
-  .pct-sector-label-sky { left: 67%; top: 36%; }
+  .pct-sector-label-lime { left: 67%; top: 63%; }
+  .pct-sector-label-sky { left: 33%; top: 36%; }
   .pct-note { font-size: 11px; }
 }
 
