@@ -1810,12 +1810,28 @@ section:first-of-type { border-top: none; }
   }
 }
 @media (max-width: 760px) {
-  .nav-inner { padding: 10px 14px; gap: 10px; }
+  .nav-inner { padding: 10px 12px; gap: 8px; }
+  .nav-brand { font-size: 15px; }
+  .nav-links {
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    gap: 0 14px;
+    padding: 2px 0 4px;
+    scrollbar-width: none;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a,
+  .nav-links .theme-toggle { flex: 0 0 auto; }
+  .nav-links a { padding: 4px 0; }
+  .theme-toggle { margin-left: 0; }
   .hero { padding: 30px 14px 22px; }
   .content { padding: 0 14px 40px; }
   .hero-grid { grid-template-columns: 1fr; gap: 18px; justify-items: center; }
   .hero-photo { width: 150px; height: 150px; }
-  .hero-text { text-align: center; margin-left: 0; }
+  .hero-text { text-align: center; margin-left: 0; width: 100%; max-width: 100%; }
   .application-grid { grid-template-columns: 1fr; }
   .application-card { padding: 10px; }
   .resume-open-btn { min-height: 44px; font-size: 13px; }
@@ -1830,18 +1846,32 @@ section:first-of-type { border-top: none; }
   .nvda-chart-widget,
   .nvda-chart-widget .tradingview-widget-container,
   .nvda-chart-widget .tradingview-widget-container__widget { min-height: 360px; height: 360px; }
-  .name { font-size: 36px; }
-  .nav-links { font-size: 12.5px; gap: 4px 10px; }
+  .name { font-size: 32px; line-height: 1.12; }
+  .subtitle { font-size: 14px; margin-bottom: 10px; }
+  .role-row { justify-content: center; gap: 8px; margin-bottom: 10px; }
+  .nav-links { font-size: 12.5px; }
   .role-header .period { margin-left: 0; width: 100%; }
   .edu-head .period { margin-left: 0; width: 100%; }
   .plain-list.two-col { columns: 1; }
   .awards-list li { flex-direction: column; gap: 2px; }
   .award-year { margin-left: 0; }
-  .role-pill { font-size: 13px; padding: 6px 14px; }
+  .role-pill { font-size: 12.5px; padding: 6px 12px; min-height: 36px; }
+  .role-pill .nvidia-logo { height: 14px; }
   .cv-btn { gap: 8px; padding: 6px 12px 6px 7px; }
   .cv-btn-icon { width: 24px; height: 24px; font-size: 12px; }
   .cv-btn-title { font-size: 12px; }
   .cv-btn-arrow { display: none; }
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 4px 10px;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+  .contact-row a { margin: 0; white-space: nowrap; }
+  .contact-row .dot { display: none; }
 
   .pub-list > li {
     grid-template-columns: 1fr;
@@ -1852,6 +1882,26 @@ section:first-of-type { border-top: none; }
     height: 160px;
   }
   .pub-list > li::before { top: 14px; left: -1.4em; }
+}
+
+@media (max-width: 560px) {
+  .role-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .role-pill,
+  .cv-btn {
+    width: min(100%, 286px);
+    justify-content: center;
+  }
+  .hero-text .contact-row:nth-of-type(2) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, max-content));
+    justify-content: center;
+    column-gap: 14px;
+    row-gap: 6px;
+  }
 }
 
 @media (max-width: 600px) {
