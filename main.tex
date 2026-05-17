@@ -34,16 +34,16 @@
 \usepackage[T1]{fontenc}
 \usepackage{fontawesome5}
 
-% Color definitions -- soft pastel palette (sage/teal + cream)
+% Color definitions -- richer sage/teal palette
 \definecolor{darkblue}{RGB}{0,0,139}
-\definecolor{primaryColor}{HTML}{2D3E40}   % deep teal-charcoal for headings/name
-\definecolor{accentColor}{HTML}{A8C5BF}    % soft sage-teal pastel for accent lines
-\definecolor{accentDark}{HTML}{4F8077}     % deeper sage-teal for hyperlinks/numbers
-\definecolor{mutedGray}{HTML}{5F6E70}      % soft slate gray for subtitles
-\definecolor{badgeBg}{HTML}{E5EFEC}        % pale sage for venue badges
-\definecolor{boxBg}{HTML}{F4F8F6}          % cream-sage for paper-description boxes
-\definecolor{highlightColor}{HTML}{DDE9E5} % very pale sage for marker-style highlights
-\definecolor{pillBg}{HTML}{EAF2EE}         % soft pill background for header role
+\definecolor{primaryColor}{HTML}{223A3E}   % deep teal-charcoal for headings/name
+\definecolor{accentColor}{HTML}{7FB8AD}    % richer sage-teal for accent lines
+\definecolor{accentDark}{HTML}{1F7C70}     % saturated sage-teal for links/numbers
+\definecolor{mutedGray}{HTML}{3F5960}      % blue-slate for subtitles/secondary text
+\definecolor{badgeBg}{HTML}{DDF1EC}        % soft mint for venue badges
+\definecolor{boxBg}{HTML}{EDF7F4}          % mint-cream for description/status boxes
+\definecolor{highlightColor}{HTML}{CFE7E1} % marker highlight
+\definecolor{pillBg}{HTML}{E2F3EE}         % pill background for header role
 \definecolor{nvidiaGreen}{HTML}{76B900}    % official NVIDIA brand green
 \definecolor{techBlueBg}{HTML}{E5EEFB}     % pale blue background for tech transfer badge
 \definecolor{techBlue}{HTML}{3B82F6}       % blue border for tech transfer badge
@@ -105,10 +105,10 @@
   boxrule=0.4pt, arc=2pt, outer arc=2pt, boxsep=1pt, left=3pt, right=3pt,
   top=1pt, bottom=1pt, fontupper=\footnotesize\bfseries\color{accentDark}}
 
-% Patent / status badge (neutral gray)
-\newtcbox{\statusbadge}{on line, colback=boxBg, colframe=mutedGray!50,
+% Patent / status badge (subtle teal)
+\newtcbox{\statusbadge}{on line, colback=boxBg, colframe=accentColor!85,
   boxrule=0.4pt, arc=2pt, outer arc=2pt, boxsep=1pt, left=3pt, right=3pt,
-  top=1pt, bottom=1pt, fontupper=\footnotesize\bfseries\color{mutedGray}}
+  top=1pt, bottom=1pt, fontupper=\footnotesize\bfseries\color{accentDark}}
 
 % Marker-style label highlight (like a highlighter pen)
 \newtcbox{\labelhl}{on line, colback=highlightColor, colframe=highlightColor,
@@ -136,7 +136,7 @@
 \newtcbox{\coauthorRole}{on line, colback=white, colframe=mutedGray,
   boxrule=0.6pt, arc=2.5pt, outer arc=2.5pt, boxsep=0pt,
   left=4pt, right=4pt, top=1pt, bottom=1pt,
-  fontupper=\scriptsize\bfseries\color{mutedGray}}
+  fontupper=\scriptsize\bfseries\color{accentDark}}
 
 % Header role pill (for "Research Scientist at NVIDIA")
 \newtcbox{\rolePill}{on line, colback=pillBg, colframe=accentColor,
@@ -411,7 +411,7 @@
 \item \textbf{``Meteor: Mamba-based Traversal of Rationale for Large Language and Vision Models''}
 \\\vspace{1mm}\underline{Byung-Kwan Lee}, Chae Won Kim, Beomchan Park, Yong Man Ro
 \\\vspace{2mm}Neural Information Processing Systems (NeurIPS), 2024 [\href{https://arxiv.org/abs/2405.15574}{Paper}][\href{https://github.com/ByungKwanLee/Meteor}{Code}][\href{https://huggingface.co/collections/BK-Lee/meteor-66561614b88e4539b263f8a0}{Huggingface Model}]
-\\\vspace{2mm}31th Samsung HumanTech Paper Awards in section of Computer Science \& Engineering
+\\\vspace{2mm}31st Samsung HumanTech Paper Awards in section of Computer Science \& Engineering
 
 \item \textbf{``MoAI: Mixture of All Intelligence for Large Language and Vision Models''}
 \\\vspace{1mm}\underline{Byung-Kwan Lee}, Beomchan Park, Chae Won Kim, Yong Man Ro
@@ -542,7 +542,7 @@
   {2025}
 
 \resumeProject
-  {31th Samsung HumanTech Paper Awards in section of Computer Science \& Engineering}
+  {31st Samsung HumanTech Paper Awards in section of Computer Science \& Engineering}
   {2025}
 
 \resumeProject
