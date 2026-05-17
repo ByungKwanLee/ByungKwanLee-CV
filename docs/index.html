@@ -161,7 +161,7 @@
 
   <section id="applications">
     <h2 class="section-title"><i class="fa-solid fa-file-arrow-up"></i> Collaboration Requests &amp; Job Applications</h2>
-    <p class="lead">Drop a resume file here (or click to upload), and Gmail compose will open with recipient, subject, and content pre-filled. Please attach the selected file and click send. I review applications based only on the resume; additional written content is never considered. (Just cold mail please. Mail Content can be just "I am [Your name]"". it is enough to me.))</p>
+    <p class="lead">Drop a resume file here (or click to upload), and Gmail compose will open with recipient, subject, and pre-written content. Don't write any content and just send. I review applications based only on the resume, so if you write something not to cold mail, I will never consider it. (Even, please don't write "Hi" and "your name", and "best regards"-like ending mark.)</p>
     <div class="application-grid">
       <article class="application-card" data-application-type="University Collaboration with NVIDIA">
         <h3 class="application-title">University Collaboration with NVIDIA</h3>
@@ -710,16 +710,7 @@
 
       function buildGmailComposeUrl(applicationType, file) {
         var subject = '[CV Website] ' + applicationType + ' Resume';
-        var body = [
-          'Hello Byung-Kwan Lee,',
-          '',
-          'I am applying for: ' + applicationType,
-          'Selected file: ' + file.name + ' (' + formatBytes(file.size) + ')',
-          '',
-          'Please find my resume attached.',
-          '',
-          'Best regards,'
-        ].join('\n');
+        var body = 'I am applying for ' + applicationType + '.';
         return 'https://mail.google.com/mail/?view=cm&fs=1'
           + '&to=' + encodeURIComponent(primaryRecipient)
           + '&cc=' + encodeURIComponent(secondaryRecipient)
