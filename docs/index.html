@@ -684,37 +684,6 @@
       });
     })();
 
-    (function setupCursorLinkGlow() {
-      var supportsFinePointer = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-      if (!supportsFinePointer) return;
-
-      var glow = document.createElement('span');
-      glow.className = 'cursor-glow';
-      glow.setAttribute('aria-hidden', 'true');
-      document.body.appendChild(glow);
-
-      function updateHoverState(target) {
-        var isLink = !!(target && target.closest && target.closest('a[href]'));
-        document.body.classList.toggle('cursor-link-hover', isLink);
-      }
-
-      window.addEventListener('mousemove', function(evt) {
-        glow.style.left = evt.clientX + 'px';
-        glow.style.top = evt.clientY + 'px';
-        updateHoverState(evt.target);
-      }, { passive: true });
-
-      window.addEventListener('mouseout', function(evt) {
-        if (!evt.relatedTarget) {
-          document.body.classList.remove('cursor-link-hover');
-        }
-      });
-
-      window.addEventListener('blur', function() {
-        document.body.classList.remove('cursor-link-hover');
-      });
-    })();
-
     (function setupResumeComposeButtons() {
       var cards = Array.from(document.querySelectorAll('.application-card[data-application-type]'));
       if (!cards.length) return;

@@ -233,46 +233,17 @@ body {
   html, body {
     cursor: url("assets/cursor-profile-emoji.png") 6 6, default;
   }
-  a, button, [role="button"], summary,
-  .role-pill, .cv-btn, .topnav-link, .theme-toggle,
-  .pub-thumb, .award-link, .contact-card a,
+  button, [role="button"], summary,
+  .theme-toggle, .pub-thumb,
   input[type="button"], input[type="submit"], label[for] {
     cursor: url("assets/cursor-profile-emoji.png") 6 6, pointer;
+  }
+  a[href], a[href] * {
+    cursor: pointer;
   }
   input[type="text"], input[type="email"], input[type="search"],
   textarea {
     cursor: url("assets/cursor-profile-emoji.png") 6 6, text;
-  }
-
-  .cursor-glow {
-    position: fixed;
-    left: -100px;
-    top: -100px;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 10000;
-    opacity: 0;
-    transform: translate(8px, 8px) scale(0.62);
-    background: radial-gradient(circle, rgba(156, 223, 0, 0.34) 0%, rgba(123, 212, 196, 0.20) 45%, rgba(123, 212, 196, 0.03) 72%, rgba(123, 212, 196, 0) 100%);
-    box-shadow:
-      0 0 0 1px rgba(123, 212, 196, 0.22),
-      0 0 10px rgba(123, 212, 196, 0.28),
-      0 0 20px rgba(156, 223, 0, 0.24);
-    transition: opacity 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
-    will-change: transform, opacity;
-  }
-  body.cursor-link-hover .cursor-glow {
-    opacity: 0.92;
-    transform: translate(8px, 8px) scale(1);
-  }
-  [data-theme="light"] .cursor-glow {
-    background: radial-gradient(circle, rgba(118, 185, 0, 0.26) 0%, rgba(79, 128, 119, 0.15) 46%, rgba(79, 128, 119, 0.02) 74%, rgba(79, 128, 119, 0) 100%);
-    box-shadow:
-      0 0 0 1px rgba(79, 128, 119, 0.18),
-      0 0 8px rgba(79, 128, 119, 0.18),
-      0 0 16px rgba(118, 185, 0, 0.16);
   }
 }
 body,
@@ -880,27 +851,35 @@ section { padding: 28px 0; border-top: 1px solid var(--border); }
 section:first-of-type { border-top: none; }
 
 .hero-quote-section {
-  padding: 18px 0 14px;
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 12px 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
 }
 .hero-quote-text {
+  width: 100%;
   margin: 0;
   padding: 12px 16px;
-  border-left: 3px solid var(--accent);
-  border-radius: 8px;
-  background: linear-gradient(135deg, rgba(168, 197, 191, 0.14), rgba(168, 197, 191, 0.04));
+  border-radius: 10px;
+  border: 1px solid rgba(127, 184, 173, 0.28);
+  background: linear-gradient(135deg, rgba(168, 197, 191, 0.14), rgba(168, 197, 191, 0.02));
   color: var(--primary);
-  font-size: 21px;
+  font-size: 20px;
   font-style: italic;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.38;
   text-align: center;
   letter-spacing: 0.01em;
 }
 .hero-quote-author {
-  margin: 9px 0 0;
-  color: var(--subtle);
+  width: 100%;
+  margin: 0;
+  color: var(--muted);
   font-size: 14px;
-  text-align: right;
+  text-align: center;
 }
 
 .section-title {
@@ -1874,9 +1853,9 @@ section:first-of-type { border-top: none; }
   .theme-toggle { margin-left: 0; }
   .hero { padding: 30px 14px 22px; }
   .content { padding: 0 14px 40px; }
-  .hero-quote-section { padding: 14px 0 12px; }
-  .hero-quote-text { font-size: 18px; padding: 10px 12px; }
-  .hero-quote-author { font-size: 13px; margin-top: 8px; }
+  .hero-quote-section { max-width: 560px; padding: 10px 0 14px; }
+  .hero-quote-text { font-size: 17px; padding: 10px 12px; }
+  .hero-quote-author { font-size: 12.5px; }
   .hero-grid { grid-template-columns: 1fr; gap: 18px; justify-items: center; }
   .hero-photo { width: 150px; height: 150px; justify-self: center; margin: 0 auto; }
   .hero-text { text-align: center; margin-left: 0; width: 100%; max-width: 100%; }
@@ -1950,7 +1929,8 @@ section:first-of-type { border-top: none; }
     column-gap: 14px;
     row-gap: 6px;
   }
-  .hero-quote-text { font-size: 16.5px; }
+  .hero-quote-section { max-width: 100%; }
+  .hero-quote-text { font-size: 16px; }
 }
 
 @media (max-width: 1280px) {
@@ -2255,9 +2235,6 @@ html.js-reveal .pub-list > li.is-visible .pub-thumb img {
   .circuit-bg .signal,
   .circuit-bg .node {
     animation: none;
-  }
-  .cursor-glow {
-    transition: none;
   }
   .hero .hero-photo,
   .hero .name,

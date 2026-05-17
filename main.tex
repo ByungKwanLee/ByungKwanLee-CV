@@ -82,6 +82,7 @@
     filecolor=accentDark,
     urlcolor=accentDark,
 }
+\usepackage{tikz}
 
 % Custom box settings
 \usepackage[most]{tcolorbox}
@@ -373,7 +374,9 @@
 % --- Publication Overview ---
 \small{
 \setlength{\extrarowheight}{3.0pt}
-\begin{tabular}{@{}l@{\hspace{1.8em}}l@{}}
+\begin{minipage}[t]{0.66\textwidth}
+\vspace{0pt}
+\begin{tabular}{@{}l@{\hspace{1.2em}}l@{}}
 \labelhl{Overall} & {\color{accentDark}\textbf{16}} Accepts~$\cdot$~{\color{accentDark}\textbf{3}} Pending~$\cdot$~{\color{accentDark}\textbf{2}} Tech Reports \\
 \labelhl{Computer Vision} & {\color{accentDark}\textbf{5}} CVPR~$\cdot$~{\color{accentDark}\textbf{2}} ICCV~$\cdot$~{\color{accentDark}\textbf{1}} ECCV~$\cdot$~{\color{accentDark}\textbf{1}} ICIP \\
 \labelhl{Machine Learning} & {\color{accentDark}\textbf{3}} NeurIPS~$\cdot$~{\color{accentDark}\textbf{1}} ICLR \\
@@ -384,6 +387,36 @@
 \end{tabular}
 \\[-0.2mm]
 {\footnotesize\color{mutedGray}Counting rule: The first \& corresponding category includes co-first papers.}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.30\textwidth}
+\vspace{0pt}
+\centering
+\begin{tikzpicture}
+  \def\outerR{1.35}
+  \def\innerR{0.83}
+  \pgfmathsetmacro{\majorSweep}{76*3.6}
+  \pgfmathsetmacro{\majorEnd}{90-\majorSweep}
+
+  \fill[accentDark!85] (0,0) -- (90:\outerR)
+    arc[start angle=90, end angle=\majorEnd, radius=\outerR]
+    -- (\majorEnd:\innerR)
+    arc[start angle=\majorEnd, end angle=90, radius=\innerR] -- cycle;
+
+  \fill[accentColor!80] (0,0) -- (\majorEnd:\outerR)
+    arc[start angle=\majorEnd, end angle=-270, radius=\outerR]
+    -- (-270:\innerR)
+    arc[start angle=-270, end angle=\majorEnd, radius=\innerR] -- cycle;
+
+  \fill[white] (0,0) circle (\innerR);
+  \node[font=\bfseries\small\color{accentDark}] at (0,0.10) {76\%};
+  \node[font=\scriptsize\color{mutedGray}] at (0,-0.26) {First \& Corr.};
+\end{tikzpicture}
+\\[-0.6mm]
+{\scriptsize
+\textcolor{accentDark}{\rule{0.72ex}{0.72ex}}\hspace{0.35em}76\%\hspace{0.9em}
+\textcolor{accentColor}{\rule{0.72ex}{0.72ex}}\hspace{0.35em}24\%
+}
+\end{minipage}
 }
 \vspace{2mm}
 
