@@ -656,7 +656,7 @@ section:first-of-type { border-top: none; }
 /* -------- Publications Overview -------- */
 .pub-summary {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 340px;
+  grid-template-columns: minmax(0, 1fr) 360px;
   gap: 24px;
   align-items: stretch;
   margin: 6px 0 22px;
@@ -749,6 +749,7 @@ section:first-of-type { border-top: none; }
   color: var(--primary);
   font-weight: 600;
   letter-spacing: -0.005em;
+  white-space: nowrap;
 }
 .ring-value {
   font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
