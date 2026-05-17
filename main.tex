@@ -193,12 +193,7 @@
 \begin{center}
     {\small\color{mutedGray}\textbf{Research Scientist} at \textbf{\color{accentDark}NVIDIA}~$\cdot$~Ph.D., KAIST Electrical Engineering}
 \end{center}
-\vspace{-2mm}
-
-\begin{center}
-    {\color{accentColor}\rule{0.35\textwidth}{0.6pt}}
-\end{center}
-\vspace{-2mm}
+\vspace{-3mm}
 
 \begin{center}
     \small{
@@ -218,7 +213,12 @@
 \section{\faLightbulb~~Research Interest}
 \vspace{1mm}
 \small{
-My research centers on building \textbf{high-performing, efficient-size Vision-Language Models (VLMs)} along three complementary axes: \textbf{(i) Merge} -- integrating vision and reasoning modules across heterogeneous architectures (e.g., recalibration of cross-tokenizer representations, mixture-of-intelligence); \textbf{(ii) Modify} -- redesigning transformer propagation rules for layer-wise interaction, latent traversal, and rationale-guided decoding; \textbf{(iii) Distill} -- transferring cross-model and self-model knowledge via reinforcement learning, adversarial imitation, and progressive teacher masking. Broader interests span \textbf{distillation, RL, pruning, compression}, and \textbf{data/training/inference efficiency} for large-scale multimodal foundation models.
+My recent research builds \textbf{efficient, high-performing Vision-Language Models (VLMs)} along four directions reflected in my latest works:
+\textbf{(i) Distilling VLMs from Large to Small} via reinforcement learning, adversarial imitation, mask-progressive teacher unmasking, and cross-tokenizer recalibration (\textit{GenRecal}, \textit{MTRS}, \textit{RIL}, \textit{VLsI}).
+\textbf{(ii) Visual-Anchored Reasoning} that mitigates visual forgetting in long chain-of-thought through reasoning-prefix masking and recursive confidence-driven think-answer cycles (\textit{Hide to See}, \textit{R-TAP}).
+\textbf{(iii) Decoding-stage Pruning} for MLLMs that adaptively re-aligns visual tokens with shifting reasoning requirements during generation (\textit{DSTP}).
+\textbf{(iv) Refinement \& Multi-Turn Evaluation} benchmarks that probe iterative reasoning and conversational competence of LLMs and VLMs (\textit{RefineBench}, \textit{MultiVerse}).
+Broader interests span \textbf{distillation, RL, pruning, compression}, and \textbf{data/training/inference efficiency} for large-scale multimodal foundation models.
 }
 \vspace{-2mm}
 
@@ -307,6 +307,7 @@ My research centers on building \textbf{high-performing, efficient-size Vision-L
 {School of Electrical Engineering, Ph.D}{Mar. 2020 - Aug. 2025}
 \resumeItemListStart
 \item GPA: 3.77/4.3
+\item Dissertation: \textit{Building High-performing, Efficient-size Vision Language Models: Merge, Modify, and Distill}~[\href{https://library.kaist.ac.kr/search/ctlgSearch/posesn/view.do?bibctrlno=1142905&se=t0&ty=B}{Link}]
 \resumeItemListEnd
 
 \resumeEduheading
@@ -314,6 +315,7 @@ My research centers on building \textbf{high-performing, efficient-size Vision-L
 {The Cho Chun Sik Graduate School of Green Transportation, M.S}{Mar. 2018 - Feb. 2020}
 \resumeItemListStart
 \item GPA: 3.72/4.3
+\item Thesis: \textit{Training Encoder-Attention through Fully-Connected CRFs for Efficient End-to-End Lane Detection Model}~[\href{https://library.kaist.ac.kr/search/detail/view.do?bibCtrlNo=910033&flag=dissertation}{Link}]
 \resumeItemListEnd
 
 \resumeEduheading
@@ -326,10 +328,24 @@ My research centers on building \textbf{high-performing, efficient-size Vision-L
 \resumeSubHeadingListEnd
 \vspace{-6mm}
 
-\section{\faBookOpen~~Publications \textnormal{\small\color{mutedGray}(16 Accepts $\cdot$ 3 Pending $\cdot$ 2 Tech Reports)}}
-\vspace{0.2mm}
+\section{\faBookOpen~~Publications}
+\vspace{1mm}
+
+% --- Publication Overview ---
 \small{
-\begin{enumerate}[leftmargin=*, labelsep=0.5em, align=left, itemindent=0em, label={\textbf{[\arabic*]}}]
+\textbf{\color{primaryColor}Overall:}~\venuebadge{16 Accepts}~\venuebadge{3 Pending}~\venuebadge{2 Tech Reports}
+\\[1.2mm]
+\begin{tabular}{@{}p{0.20\textwidth}@{}p{0.76\textwidth}@{}}
+\textbf{\color{primaryColor}Computer Vision} & \venuebadge{CVPR $\times$5}~\venuebadge{ICCV $\times$2}~\venuebadge{ECCV $\times$1}~\venuebadge{ICIP $\times$1} \\[1.0mm]
+\textbf{\color{primaryColor}Machine Learning} & \venuebadge{NeurIPS $\times$3}~\venuebadge{ICLR $\times$1} \\[1.0mm]
+\textbf{\color{primaryColor}NLP} & \venuebadge{ACL $\times$1}~\venuebadge{EMNLP $\times$1} \\[1.0mm]
+\textbf{\color{primaryColor}Journal} & \venuebadge{Pattern Recognition $\times$1} \\
+\end{tabular}
+}
+\vspace{2mm}
+
+\small{
+\begin{enumerate}[leftmargin=2.2em, labelsep=0.6em, align=left, itemindent=0em, label={\color{accentDark}\textbf{\arabic*.}}]
 
 \item \textbf{``Hide to See: Reasoning-prefix Masking for Visual-anchored Thinking in VLM Distillation''}
 \\\vspace{1mm}Seonghoon Yu, Dongjun Nam, \underline{Byung-Kwan Lee}, Jeany Son
@@ -337,7 +353,7 @@ My research centers on building \textbf{high-performing, efficient-size Vision-L
 
 \item \textbf{``Why and When Visual Token Pruning Fails? A Study on Relevant Visual Information Shift in MLLMs Decoding''}
 \\\vspace{1mm}Jiwan Kim, Kibum Kim, Wonjoong Kim, \underline{Byung-Kwan Lee}, Chanyoung Park
-\\\vspace{2mm}Under Review [\href{https://arxiv.org/abs/2604.12358}{Paper}]
+\\\vspace{2mm}Under Review [\href{https://arxiv.org/abs/2604.12358}{Paper}][\href{https://ptkjw1997.github.io/DSTP-page/}{Project}]
 
 \item \textbf{``GenRecal: Generation after Recalibration from Large to Small Vision Language Models''}
 \\\vspace{1mm}\underline{Byung-Kwan Lee}, Ryo Hachiuma, Yong Man Ro, Yu-Chiang Frank Wang, and Yueh-Hua Wu
@@ -491,7 +507,7 @@ My research centers on building \textbf{high-performing, efficient-size Vision-L
   {2026}
 
 \resumeProject
-  {Best Runner-Up Award, Workshop for Multi-Turn Interactions in Large Language Models, NeurIPS (Oral, Top 1\%)}
+  {Best Runner-Up Award (Oral, Top 1\%), Multi-Turn Interactions in LLMs Workshop @ NeurIPS}
   {2025}
 
 \resumeProject
@@ -535,6 +551,10 @@ My research centers on building \textbf{high-performing, efficient-size Vision-L
   {2023}
 
 \resumeProject
+  {GIRE Research Mentor, Seoul International School -- ``MUsE'', Journal of Student Research~[\href{https://www.jsr.org/hs/index.php/path/article/view/8071}{Publication}]}
+  {2023}
+
+\resumeProject
   {KAIST SW IT Academy, AI Project Director of 1st Award Topic}
   {2023}
 
@@ -563,7 +583,7 @@ My research centers on building \textbf{high-performing, efficient-size Vision-L
   {Mar. 2018 - Feb. 2020}
 
 \resumeProject
-  {1st President's Award for International Autonomous Vehicle Competition, Team Leader}
+  {1st President's Award for International Autonomous Vehicle Competition, Team Leader~[\href{https://www.youtube.com/watch?v=PrQSh7iqp3s}{YouTube}][\href{http://www.chi.or.kr/front/program/proVodView.do?contentIdx=204098}{Talk}]}
   {2018}
 
 \resumeSubHeadingListEnd
