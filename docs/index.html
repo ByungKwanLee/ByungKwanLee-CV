@@ -161,7 +161,7 @@
 
   <section id="applications">
     <h2 class="section-title"><i class="fa-solid fa-file-arrow-up"></i> Collaboration Requests &amp; Job Applications</h2>
-    <p class="lead">Click Open Gmail to open Gmail compose with recipient, subject, and content pre-filled. Attach your resume in Gmail and click send. I review applications based only on the resume; additional written content is never considered.</p>
+    <p class="lead">Click Open Gmail to open Gmail compose with recipient, subject, and content pre-filled. Attach your resume in Gmail and click send. I review applications based only on the resume; additional written content is never considered. Please don't say "Hi", "Best regards", and "thank you", but just send it. Only I will look through resume.</p>
     <div class="application-grid">
       <article class="application-card" data-application-type="University Collaboration with NVIDIA">
         <h3 class="application-title">University Collaboration with NVIDIA</h3>
@@ -898,7 +898,7 @@
       });
     })();
 
-    /* ===== Count-up animation when ring section enters viewport ===== */
+    /* ===== Publication profile count-up + donut-fill animation ===== */
     (function setupCountUp() {
       if (!('IntersectionObserver' in window)) return;
       var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -907,8 +907,34 @@
                     document.querySelector('section .pub-rings').closest('section');
       if (!section) return;
 
+      var rings = Array.from(section.querySelectorAll('.pct-ring'));
       var targets = Array.from(section.querySelectorAll('.ring-value-num, .ring-value-pct'));
-      if (!targets.length) return;
+      if (!targets.length && !rings.length) return;
+
+      function getRingTarget(ring) {
+        var inlineValue = parseFloat(ring.style.getPropertyValue('--major'));
+        if (!isNaN(inlineValue)) return inlineValue;
+        var computedValue = parseFloat(getComputedStyle(ring).getPropertyValue('--major'));
+        return isNaN(computedValue) ? 76 : computedValue;
+      }
+
+      function animateRingFill(ring, target, duration) {
+        if (prefersReduced) {
+          ring.style.setProperty('--major', String(target));
+          return;
+        }
+        ring.style.setProperty('--major', '0');
+        var start = performance.now();
+        function step(now) {
+          var t = Math.min(1, (now - start) / duration);
+          var eased = 1 - Math.pow(1 - t, 3);
+          var value = target * eased;
+          ring.style.setProperty('--major', value.toFixed(2));
+          if (t < 1) requestAnimationFrame(step);
+          else ring.style.setProperty('--major', String(target));
+        }
+        requestAnimationFrame(step);
+      }
 
       function countUp(el, target, duration) {
         if (prefersReduced) { el.textContent = target; return; }
@@ -928,10 +954,15 @@
         entries.forEach(function(entry) {
           if (!entry.isIntersecting) return;
           io.unobserve(entry.target);
+          setTimeout(function() {
+            rings.forEach(function(ring) {
+              animateRingFill(ring, getRingTarget(ring), 2200);
+            });
+          }, 900);
           targets.forEach(function(el, i) {
             var target = parseInt(el.getAttribute('data-target') || el.textContent, 10);
             if (isNaN(target)) return;
-            setTimeout(function() { countUp(el, target, 1100); }, 350 + i * 90);
+            setTimeout(function() { countUp(el, target, 1700); }, 1050 + i * 120);
           });
         });
       }, { threshold: 0.25 });

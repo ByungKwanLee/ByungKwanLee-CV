@@ -1089,7 +1089,7 @@ section:first-of-type { border-top: none; }
 .role-tag.coauthor { background: white; color: var(--muted); border: 1px solid var(--muted); }
 .phase {
   font-variant: small-caps;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--accent-dark);
   font-weight: 700;
   margin-left: 4px;
@@ -1788,6 +1788,9 @@ section:first-of-type { border-top: none; }
   }
 }
 @media (max-width: 760px) {
+  .nav-inner { padding: 10px 14px; gap: 10px; }
+  .hero { padding: 30px 14px 22px; }
+  .content { padding: 0 14px 40px; }
   .hero-grid { grid-template-columns: 1fr; gap: 18px; justify-items: center; }
   .hero-photo { width: 150px; height: 150px; }
   .hero-text { text-align: center; margin-left: 0; }
@@ -1806,7 +1809,7 @@ section:first-of-type { border-top: none; }
   .nvda-chart-widget .tradingview-widget-container,
   .nvda-chart-widget .tradingview-widget-container__widget { min-height: 360px; height: 360px; }
   .name { font-size: 36px; }
-  .nav-links { font-size: 13px; gap: 4px 12px; }
+  .nav-links { font-size: 12.5px; gap: 4px 10px; }
   .role-header .period { margin-left: 0; width: 100%; }
   .edu-head .period { margin-left: 0; width: 100%; }
   .plain-list.two-col { columns: 1; }
@@ -1827,6 +1830,31 @@ section:first-of-type { border-top: none; }
     height: 160px;
   }
   .pub-list > li::before { top: 14px; left: -1.4em; }
+}
+
+@media (max-width: 600px) {
+  .pub-overview,
+  .pub-overview tbody,
+  .pub-overview tr,
+  .pub-overview td {
+    display: block;
+    width: 100%;
+  }
+  .pub-overview tr {
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .pub-overview tr:last-child {
+    border-bottom: none;
+  }
+  .pub-overview td {
+    padding: 2px 0;
+  }
+  .pub-overview td.label {
+    width: auto;
+    white-space: normal;
+    padding-bottom: 4px;
+  }
 }
 
 /* =========================================================
