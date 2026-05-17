@@ -28,6 +28,49 @@
 </head>
 <body>
 
+<div class="circuit-bg" aria-hidden="true">
+  <svg viewBox="0 0 1800 1100" preserveAspectRatio="none">
+    <defs>
+      <path id="circuit-path-1" d="M80 -120 V170 H260 V340 H120 V540 H300 V760 H180 V1120" />
+      <path id="circuit-path-2" d="M320 -90 V120 H140 V300 H340 V500 H180 V740 H360 V1060" />
+      <path id="circuit-path-3" d="M220 1180 V860 H60 V640 H260 V430 H100 V220 H280 V20" />
+      <path id="circuit-path-4" d="M1720 -100 V180 H1500 V360 H1680 V560 H1460 V760 H1640 V1120" />
+      <path id="circuit-path-5" d="M1520 1180 V860 H1740 V650 H1500 V430 H1700 V240 H1480 V20" />
+      <path id="circuit-path-6" d="M1600 -120 V140 H1780 V340 H1540 V540 H1720 V760 H1500 V1040" />
+    </defs>
+    <g class="trace-layer">
+      <use href="#circuit-path-1" class="trace"></use>
+      <use href="#circuit-path-2" class="trace"></use>
+      <use href="#circuit-path-3" class="trace"></use>
+      <use href="#circuit-path-4" class="trace"></use>
+      <use href="#circuit-path-5" class="trace"></use>
+      <use href="#circuit-path-6" class="trace"></use>
+    </g>
+    <g class="signal-layer">
+      <use href="#circuit-path-1" class="signal signal-lime signal-a"></use>
+      <use href="#circuit-path-2" class="signal signal-cyan signal-b"></use>
+      <use href="#circuit-path-3" class="signal signal-teal signal-c"></use>
+      <use href="#circuit-path-4" class="signal signal-pink signal-d"></use>
+      <use href="#circuit-path-5" class="signal signal-violet signal-e"></use>
+      <use href="#circuit-path-6" class="signal signal-amber signal-f"></use>
+    </g>
+    <g class="node-layer">
+      <circle class="node node-lime n1" cx="260" cy="170" r="3.1"></circle>
+      <circle class="node node-cyan n2" cx="120" cy="340" r="3"></circle>
+      <circle class="node node-teal n3" cx="300" cy="540" r="3.1"></circle>
+      <circle class="node node-violet n4" cx="340" cy="300" r="2.9"></circle>
+      <circle class="node node-amber n5" cx="180" cy="500" r="2.9"></circle>
+      <circle class="node node-lime n6" cx="260" cy="640" r="3"></circle>
+      <circle class="node node-pink n7" cx="1500" cy="180" r="3"></circle>
+      <circle class="node node-cyan n8" cx="1680" cy="360" r="3"></circle>
+      <circle class="node node-teal n9" cx="1460" cy="560" r="3"></circle>
+      <circle class="node node-violet n10" cx="1700" cy="430" r="2.9"></circle>
+      <circle class="node node-amber n11" cx="1740" cy="650" r="3"></circle>
+      <circle class="node node-lime n12" cx="1500" cy="540" r="3"></circle>
+    </g>
+  </svg>
+</div>
+
 <!-- &mdash;&mdash; Sticky Navigation &mdash;&mdash; -->
 <nav class="topnav">
   <div class="nav-inner">
@@ -38,6 +81,7 @@
       <a href="#education">Education</a>
       <a href="#publications">Publications</a>
       <a href="#reviewer">Reviewer</a>
+      <a href="#activity">Activity</a>
       <a href="#awards">Talks &amp; Awards</a>
       <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
         <i class="fa-solid fa-moon icon-moon"></i>
@@ -138,7 +182,7 @@
             <span class="badge venue">CVPR 2026 Accept</span>
             <span class="badge patent"><i class="fa-solid fa-shield-halved"></i>U.S. Non-Provisional Patent Filed</span>
             <span class="badge arxiv">ArXiv Release</span>
-            <span class="badge status">Internal Release</span>
+            <span class="badge status internal">Internal Release</span>
           </div>
         </li>
 
@@ -149,7 +193,7 @@
           <span class="dash">&mdash;</span>
           <em class="desc">Cross-architecture VLM distillation via a Recalibrator that aligns heterogeneous token representations regardless of vocabulary, token splits, or index ordering.</em>
           <div class="badges">
-            <span class="badge status">Under Review</span>
+            <span class="badge venue">Under Review</span>
             <span class="badge patent"><i class="fa-solid fa-shield-halved"></i>U.S. Patent Upgraded to Non-Provisional</span>
             <span class="badge tech">Internal Tech Transfer</span>
           </div>
@@ -165,7 +209,7 @@
             <span class="badge venue">NeurIPS 2025 Accept</span>
             <span class="badge patent"><i class="fa-solid fa-shield-halved"></i>U.S. Patent Upgraded to Non-Provisional</span>
             <span class="badge arxiv">ArXiv Release</span>
-            <span class="badge status">Internal Release</span>
+            <span class="badge status internal">Internal Release</span>
           </div>
         </li>
       </ul>
@@ -192,7 +236,7 @@
             <span class="badge venue">CVPR 2025 Accept</span>
             <span class="badge patent"><i class="fa-solid fa-shield-halved"></i>U.S. Non-Provisional Patent Filed</span>
             <span class="badge arxiv">ArXiv Release</span>
-            <span class="badge status">Internal Release</span>
+            <span class="badge status internal">Internal Release</span>
             <span class="badge tech">Internal Tech Transfer</span>
           </div>
         </li>
@@ -204,9 +248,9 @@
           <span class="dash">&mdash;</span>
           <em class="desc">Initial design of the Recalibrator framework for cross-tokenizer VLM distillation; first proof-of-concept and internal demo.</em>
           <div class="badges">
-            <span class="badge status">U.S. Provisional Patent Filed</span>
+            <span class="badge status provisional">U.S. Provisional Patent Filed</span>
             <span class="badge arxiv">ArXiv Release</span>
-            <span class="badge status">Internal Release</span>
+            <span class="badge status internal">Internal Release</span>
           </div>
         </li>
 
@@ -217,7 +261,7 @@
           <span class="dash">&mdash;</span>
           <em class="desc">First formulation of the RL + adversarial imitation training pipeline; initial experiments and team setup.</em>
           <div class="badges">
-            <span class="badge status">U.S. Provisional Patent Filed</span>
+            <span class="badge status provisional">U.S. Provisional Patent Filed</span>
           </div>
         </li>
       </ul>
@@ -278,13 +322,27 @@
 
       <figure class="pub-rings">
         <div class="rings-head">Publication Profile</div>
-        <div class="rings-body">
-          <svg id="pubRings" class="rings-svg" viewBox="-95 -95 190 190"
-               role="img" aria-labelledby="ringsTitle" aria-describedby="ringsDesc">
-            <title id="ringsTitle">Author role distribution in publications</title>
-            <desc id="ringsDesc">First &amp; Corresponding Author 16/21, Co-Author 5/21</desc>
-          </svg>
-          <ul id="ringsLegend" class="rings-legend"></ul>
+        <div class="pct-single" role="img" aria-label="Author role percentage distribution: First and corresponding author 76 percent in lime, co-author 24 percent in sky blue.">
+          <div class="pct-ring" style="--major:76;">
+            <span class="pct-sector-label pct-sector-label-lime">
+              <span class="ring-value-pct" data-target="76">76</span>%
+            </span>
+            <span class="pct-sector-label pct-sector-label-sky">
+              <span class="ring-value-pct" data-target="24">24</span>%
+            </span>
+          </div>
+          <ul class="pct-legend">
+            <li class="pct-legend-item pct-legend-item-lime">
+              <span class="pct-dot pct-dot-lime"></span>
+              <span class="pct-label">First &amp; Corresponding Author</span>
+              <span class="pct-sub"><span class="ring-value-num" data-target="16">16</span> / 21 = <span class="ring-value-pct" data-target="76">76</span>%</span>
+            </li>
+            <li class="pct-legend-item pct-legend-item-sky">
+              <span class="pct-dot pct-dot-sky"></span>
+              <span class="pct-label">Co-Author</span>
+              <span class="pct-sub"><span class="ring-value-num" data-target="5">5</span> / 21 = <span class="ring-value-pct" data-target="24">24</span>%</span>
+            </li>
+          </ul>
         </div>
       </figure>
     </div>
@@ -496,21 +554,21 @@
     <h3 class="subhead">Journal</h3>
     <ul class="plain-list">
       <li>IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)</li>
-      <li>Elsevier on Computer Vision and Image Understanding (CVIU)</li>
       <li>IEEE Transactions on Neural Networks and Learning Systems (TNNLS)</li>
       <li>IEEE Transactions on Circuits and Systems for Video Technology (TCSVT)</li>
     </ul>
 
     <h3 class="subhead">Conference</h3>
     <ul class="plain-list two-col">
-      <li>CVPR <span class="years">2021 / 2022 / 2023 / 2024 / 2026</span></li>
-      <li>ICCV <span class="years">2021 / 2023 / 2025</span></li>
-      <li>ECCV <span class="years">2022 / 2024 / 2026</span></li>
-      <li>ICLR <span class="years">2023 / 2024 / 2025</span></li>
-      <li>NeurIPS <span class="years">2023 / 2024 / 2025 / 2026</span></li>
-      <li>ICML <span class="years">2024 / 2025 / 2026</span></li>
-      <li>AAAI <span class="years">2025</span></li>
-      <li>ACCV <span class="years">2024</span></li>
+      <li>IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</li>
+      <li>International Conference on Computer Vision (ICCV)</li>
+      <li>European Conference on Computer Vision (ECCV)</li>
+      <li>International Conference on Learning Representations (ICLR)</li>
+      <li>Neural Information Processing Systems (NeurIPS)</li>
+      <li>International Conference on Machine Learning (ICML)</li>
+      <li>AAAI Conference on Artificial Intelligence (AAAI)</li>
+      <li>Annual Meeting of the Association for Computational Linguistics (ACL)</li>
+      <li>Conference on Empirical Methods in Natural Language Processing (EMNLP)</li>
     </ul>
   </section>
 
@@ -542,6 +600,119 @@
     </ul>
   </section>
 
+  <section id="activity">
+    <h2 class="section-title"><i class="fa-solid fa-bullhorn"></i> Latest Activity</h2>
+    <p class="lead">Swipe through selected LinkedIn posts. If you want to explore more, open the full activity feed.</p>
+    <div class="activity-top">
+      <a class="activity-all" href="https://www.linkedin.com/in/byung-kwan-lee-82333716a/recent-activity/all/" target="_blank" rel="noopener">
+        <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+        View all activity on LinkedIn
+        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+      </a>
+      <span class="activity-note">Selected public posts are embedded below. For full history, open LinkedIn.</span>
+    </div>
+    <div class="activity-carousel" id="activityCarousel">
+      <button type="button" class="activity-nav activity-prev" id="activityPrev" aria-label="Show previous activity">
+        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+      </button>
+      <div class="activity-viewport" id="activityViewport" tabindex="0" aria-label="Latest activity slider">
+        <div class="activity-track">
+          <article class="activity-card activity-embed-card">
+            <iframe
+              class="activity-embed"
+              src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7430875896724545536"
+              title="LinkedIn post: Masking Teacher and Reinforcing Student"
+              loading="lazy"
+              allowfullscreen
+            ></iframe>
+            <a class="activity-open" href="https://www.linkedin.com/posts/byung-kwan-lee-82333716a_one-paper-is-accepted-in-cvpr-2026-lets-activity-7430875896724545536-5ukp" target="_blank" rel="noopener">
+              <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+              Open this post on LinkedIn
+              <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+            </a>
+          </article>
+          <article class="activity-card activity-embed-card">
+            <iframe
+              class="activity-embed"
+              src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7434466146604601344"
+              title="LinkedIn post: Recursive Think-Answer Process"
+              loading="lazy"
+              allowfullscreen
+            ></iframe>
+            <a class="activity-open" href="https://www.linkedin.com/posts/byung-kwan-lee-82333716a_recursivelearning-rl-llm-activity-7434466146604601344--o2f" target="_blank" rel="noopener">
+              <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+              Open this post on LinkedIn
+              <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+            </a>
+          </article>
+          <article class="activity-card activity-embed-card">
+            <iframe
+              class="activity-embed"
+              src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7435043009689235459"
+              title="LinkedIn post: Distill-R1 release"
+              loading="lazy"
+              allowfullscreen
+            ></iframe>
+            <a class="activity-open" href="https://www.linkedin.com/posts/byung-kwan-lee-82333716a_github-byungkwanleedistill-r1-open-source-activity-7435043009689235459-2Lfu" target="_blank" rel="noopener">
+              <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+              Open this post on LinkedIn
+              <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+            </a>
+          </article>
+          <article class="activity-card activity-embed-card">
+            <iframe
+              class="activity-embed"
+              src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7437551584387043328"
+              title="LinkedIn post: NVIDIA Nemotron 3 Super"
+              loading="lazy"
+              allowfullscreen
+            ></iframe>
+            <a class="activity-open" href="https://www.linkedin.com/posts/byung-kwan-lee-82333716a_nvidia-nemotron-3-super-the-new-leader-in-activity-7437551584387043328-8bSp" target="_blank" rel="noopener">
+              <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+              Open this post on LinkedIn
+              <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+            </a>
+          </article>
+          <article class="activity-card activity-embed-card">
+            <iframe
+              class="activity-embed"
+              src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7438668388727574529"
+              title="LinkedIn post: Safe autonomy feature"
+              loading="lazy"
+              allowfullscreen
+            ></iframe>
+            <a class="activity-open" href="https://www.linkedin.com/posts/byung-kwan-lee-82333716a_what-does-comfortable-confident-safe-autonomy-activity-7438668388727574529-ZWGf" target="_blank" rel="noopener">
+              <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+              Open this post on LinkedIn
+              <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+            </a>
+          </article>
+        </div>
+      </div>
+      <button type="button" class="activity-nav activity-next" id="activityNext" aria-label="Show next activity">
+        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="activity-dots" id="activityDots" aria-label="Activity slide navigation"></div>
+    <aside class="hero-stock" aria-label="NVIDIA stock price and daily change">
+      <div class="stock-card" id="nvdaStockCard">
+        <div class="stock-head">
+          <span class="stock-title"><i class="fa-solid fa-chart-line"></i> NVIDIA Stock</span>
+          <a class="stock-live stock-live-link"
+             href="https://www.tradingview.com/chart/XF3GWKRR/?symbol=NASDAQ%3ANVDA"
+             target="_blank" rel="noopener"
+             aria-label="Open NVIDIA chart on TradingView">
+            <span class="stock-live-dot"></span> TradingView
+          </a>
+        </div>
+        <div id="nvdaStockInfo" class="stock-info">
+          <span class="stock-info-fallback">Loading NVDA price...</span>
+        </div>
+        <button type="button" class="stock-resize-handle" aria-label="Resize stock panel"></button>
+      </div>
+    </aside>
+  </section>
+
 </main>
 
 <footer class="site-footer">
@@ -557,6 +728,191 @@
         var next = current === 'dark' ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
+      });
+    })();
+
+    (function setupNvdaStockWidget() {
+      var infoHost = document.getElementById('nvdaStockInfo');
+      var card = document.getElementById('nvdaStockCard');
+      var dragHandle = card && card.querySelector('.stock-head');
+      var resizeHandle = card && card.querySelector('.stock-resize-handle');
+      if (!infoHost || !card) return;
+      var storageKey = 'nvda-stock-panel-v1';
+      var tradingViewUrl = 'https://www.tradingview.com/chart/XF3GWKRR/?symbol=NASDAQ%3ANVDA';
+
+      function clamp(v, min, max) {
+        return Math.max(min, Math.min(max, v));
+      }
+
+      function chartTheme() {
+        return (document.documentElement.getAttribute('data-theme') === 'dark') ? 'dark' : 'light';
+      }
+
+      function savePanelState() {
+        if (window.matchMedia && window.matchMedia('(max-width: 760px)').matches) return;
+        var state = {
+          x: parseFloat(card.dataset.offsetX || '0'),
+          y: parseFloat(card.dataset.offsetY || '0'),
+          w: Math.round(card.getBoundingClientRect().width),
+          h: Math.round(card.getBoundingClientRect().height)
+        };
+        try {
+          localStorage.setItem(storageKey, JSON.stringify(state));
+        } catch (e) {}
+      }
+
+      function applyPanelState(state) {
+        if (!state) return;
+        var x = (typeof state.x === 'number') ? clamp(state.x, -340, 340) : 0;
+        var y = (typeof state.y === 'number') ? clamp(state.y, -180, 220) : 0;
+        var w = (typeof state.w === 'number') ? clamp(state.w, 280, 700) : null;
+        var h = (typeof state.h === 'number') ? clamp(state.h, 184, 440) : null;
+
+        card.dataset.offsetX = String(x);
+        card.dataset.offsetY = String(y);
+        card.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+        if (w !== null) card.style.width = w + 'px';
+        if (h !== null) card.style.height = h + 'px';
+      }
+
+      function readPanelState() {
+        try {
+          var raw = localStorage.getItem(storageKey);
+          if (!raw) return null;
+          return JSON.parse(raw);
+        } catch (e) {
+          return null;
+        }
+      }
+
+      function resetPanelForMobile() {
+        if (!(window.matchMedia && window.matchMedia('(max-width: 760px)').matches)) return;
+        card.style.transform = '';
+        card.style.width = '';
+        card.style.height = '';
+        card.dataset.offsetX = '0';
+        card.dataset.offsetY = '0';
+      }
+
+      function renderInfoWidget() {
+        infoHost.innerHTML = '';
+
+        var container = document.createElement('div');
+        container.className = 'tradingview-widget-container';
+        var widgetRoot = document.createElement('div');
+        widgetRoot.className = 'tradingview-widget-container__widget';
+        container.appendChild(widgetRoot);
+
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js';
+        script.async = true;
+        script.text = JSON.stringify({
+          symbol: 'NASDAQ:NVDA',
+          width: '100%',
+          locale: 'en',
+          colorTheme: chartTheme(),
+          isTransparent: true
+        });
+        script.onerror = function() {
+          infoHost.innerHTML = '<a class="stock-fallback-link" href="' + tradingViewUrl + '" target="_blank" rel="noopener">Open NVDA quote</a>';
+        };
+        container.appendChild(script);
+        infoHost.appendChild(container);
+      }
+
+      applyPanelState(readPanelState());
+      resetPanelForMobile();
+
+      function setupDrag() {
+        if (!dragHandle) return;
+        dragHandle.addEventListener('pointerdown', function(e) {
+          if (window.matchMedia && window.matchMedia('(max-width: 760px)').matches) return;
+          if (e.button !== 0) return;
+          if (e.target && e.target.closest && e.target.closest('a, button')) return;
+          e.preventDefault();
+          var startX = e.clientX;
+          var startY = e.clientY;
+          var baseX = parseFloat(card.dataset.offsetX || '0');
+          var baseY = parseFloat(card.dataset.offsetY || '0');
+          card.classList.add('is-dragging');
+          if (dragHandle.setPointerCapture) dragHandle.setPointerCapture(e.pointerId);
+
+          function onMove(ev) {
+            var x = clamp(baseX + (ev.clientX - startX), -340, 340);
+            var y = clamp(baseY + (ev.clientY - startY), -180, 220);
+            card.dataset.offsetX = String(x);
+            card.dataset.offsetY = String(y);
+            card.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+          }
+
+          function onUp(ev) {
+            card.classList.remove('is-dragging');
+            if (dragHandle.releasePointerCapture) {
+              try { dragHandle.releasePointerCapture(ev.pointerId); } catch (err) {}
+            }
+            window.removeEventListener('pointermove', onMove);
+            window.removeEventListener('pointerup', onUp);
+            savePanelState();
+          }
+
+          window.addEventListener('pointermove', onMove);
+          window.addEventListener('pointerup', onUp);
+        });
+      }
+
+      function setupResize() {
+        if (!resizeHandle) return;
+        resizeHandle.addEventListener('pointerdown', function(e) {
+          if (window.matchMedia && window.matchMedia('(max-width: 760px)').matches) return;
+          if (e.button !== 0) return;
+          e.preventDefault();
+          var rect = card.getBoundingClientRect();
+          var startX = e.clientX;
+          var startY = e.clientY;
+          var baseW = rect.width;
+          var baseH = rect.height;
+          card.classList.add('is-resizing');
+          if (resizeHandle.setPointerCapture) resizeHandle.setPointerCapture(e.pointerId);
+
+          function onMove(ev) {
+            var w = clamp(baseW + (ev.clientX - startX), 280, 700);
+            var h = clamp(baseH + (ev.clientY - startY), 184, 440);
+            card.style.width = w + 'px';
+            card.style.height = h + 'px';
+          }
+
+          function onUp(ev) {
+            card.classList.remove('is-resizing');
+            if (resizeHandle.releasePointerCapture) {
+              try { resizeHandle.releasePointerCapture(ev.pointerId); } catch (err) {}
+            }
+            window.removeEventListener('pointermove', onMove);
+            window.removeEventListener('pointerup', onUp);
+            savePanelState();
+            window.dispatchEvent(new Event('resize'));
+          }
+
+          window.addEventListener('pointermove', onMove);
+          window.addEventListener('pointerup', onUp);
+        });
+      }
+
+      setupDrag();
+      setupResize();
+      renderInfoWidget();
+
+      var toggle = document.getElementById('themeToggle');
+      if (toggle) {
+        toggle.addEventListener('click', function() {
+          setTimeout(function() {
+            renderInfoWidget();
+          }, 60);
+        });
+      }
+
+      window.addEventListener('resize', function() {
+        resetPanelForMobile();
       });
     })();
 
@@ -606,84 +962,6 @@
       update();
     })();
 
-    (function renderPubRings() {
-      var mount = document.getElementById('pubRings');
-      var legend = document.getElementById('ringsLegend');
-      if (!mount || !legend) return;
-
-      var data = [
-        { label: 'First & Corresponding Author', value: 16, color: '#9CDF00', shadow: 'rgba(156, 223,   0, 0.55)', radius: 72, width: 15, key: 'lime' },
-        { label: 'Co-Author',                    value:  5, color: '#4FB8A6', shadow: 'rgba( 79, 184, 166, 0.55)', radius: 46, width: 15, key: 'teal' }
-      ];
-      var TOTAL = 21;
-      var NS = 'http://www.w3.org/2000/svg';
-
-      data.forEach(function(d) {
-        var circ = 2 * Math.PI * d.radius;
-        var dashLen = circ * (d.value / TOTAL);
-        var targetOffset = circ - dashLen;
-
-        var track = document.createElementNS(NS, 'circle');
-        track.setAttribute('cx', 0);
-        track.setAttribute('cy', 0);
-        track.setAttribute('r', d.radius);
-        track.setAttribute('fill', 'none');
-        track.setAttribute('stroke', d.color);
-        track.setAttribute('stroke-width', d.width);
-        track.setAttribute('class', 'ring-track');
-        track.style.opacity = '0.14';
-        mount.appendChild(track);
-
-        var arc = document.createElementNS(NS, 'circle');
-        arc.setAttribute('cx', 0);
-        arc.setAttribute('cy', 0);
-        arc.setAttribute('r', d.radius);
-        arc.setAttribute('fill', 'none');
-        arc.setAttribute('stroke', d.color);
-        arc.setAttribute('stroke-width', d.width);
-        arc.setAttribute('stroke-linecap', 'round');
-        arc.setAttribute('stroke-dasharray', circ.toFixed(2));
-        arc.setAttribute('stroke-dashoffset', circ.toFixed(2));
-        arc.setAttribute('transform', 'rotate(-90)');
-        arc.setAttribute('class', 'ring-arc ring-arc--' + d.key);
-        arc.style.setProperty('--circ', circ.toFixed(2));
-        arc.style.setProperty('--target-offset', targetOffset.toFixed(2));
-        arc.style.setProperty('--ring-shadow', d.shadow);
-        mount.appendChild(arc);
-      });
-
-      var total = document.createElementNS(NS, 'text');
-      total.setAttribute('x', 0);
-      total.setAttribute('y', -1);
-      total.setAttribute('text-anchor', 'middle');
-      total.setAttribute('class', 'rings-total');
-      total.textContent = TOTAL;
-      mount.appendChild(total);
-
-      var sub = document.createElementNS(NS, 'text');
-      sub.setAttribute('x', 0);
-      sub.setAttribute('y', 14);
-      sub.setAttribute('text-anchor', 'middle');
-      sub.setAttribute('class', 'rings-sub');
-      sub.textContent = 'PAPERS';
-      mount.appendChild(sub);
-
-      data.forEach(function(d) {
-        var pct = Math.round((d.value / TOTAL) * 100);
-        var li = document.createElement('li');
-        li.innerHTML =
-          '<span class="ring-swatch" style="background:' + d.color + ';box-shadow:0 0 6px ' + d.shadow + '"></span>' +
-          '<span class="ring-label">' + d.label + '</span>' +
-          '<span class="ring-value">' +
-            '<span class="ring-value-num" data-target="' + d.value + '">' + d.value + '</span>' +
-            '<small> / ' + TOTAL + ' &middot; ' +
-              '<span class="ring-value-pct" data-target="' + pct + '">' + pct + '</span>%' +
-            '</small>' +
-          '</span>';
-        legend.appendChild(li);
-      });
-    })();
-
     /* ===== Letter-by-letter cascade for section titles ===== */
     (function splitSectionTitles() {
       if (!document.documentElement.classList.contains('js-reveal')) return;
@@ -693,23 +971,156 @@
         nodes.forEach(function(node) {
           if (node.nodeType !== Node.TEXT_NODE) return;
           var text = node.textContent;
-          var frag = document.createDocumentFragment();
+          if (!text || !text.trim()) return;
+          var wrap = document.createElement('span');
+          wrap.className = 'section-title-text';
           for (var i = 0; i < text.length; i++) {
             var ch = text[i];
             var sp = document.createElement('span');
             if (ch === ' ' || ch === '\u00A0') {
-              sp.className = 'char space';
+              sp.className = 'section-title-char section-title-space';
               sp.innerHTML = '&nbsp;';
             } else {
-              sp.className = 'char';
+              sp.className = 'section-title-char';
               sp.textContent = ch;
             }
             sp.style.setProperty('--char-i', idx++);
-            frag.appendChild(sp);
+            wrap.appendChild(sp);
           }
-          title.replaceChild(frag, node);
+          title.replaceChild(wrap, node);
         });
       });
+    })();
+
+    (function setupActivitySlider() {
+      var section = document.getElementById('activity');
+      if (!section) return;
+
+      var viewport = section.querySelector('#activityViewport');
+      var track = section.querySelector('.activity-track');
+      var cards = Array.from(section.querySelectorAll('.activity-card'));
+      var prevBtn = section.querySelector('#activityPrev');
+      var nextBtn = section.querySelector('#activityNext');
+      var dotsRoot = section.querySelector('#activityDots');
+      if (!viewport || !track || !cards.length || !prevBtn || !nextBtn || !dotsRoot) return;
+
+      var activeIndex = 0;
+      var rafId = 0;
+      var resizeTimer = null;
+      var touchStartX = 0;
+      var touchStartY = 0;
+
+      cards.forEach(function(_, idx) {
+        var dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'activity-dot';
+        dot.setAttribute('aria-label', 'Show activity card ' + (idx + 1));
+        dot.setAttribute('aria-pressed', 'false');
+        dot.addEventListener('click', function() {
+          goTo(idx, true);
+        });
+        dotsRoot.appendChild(dot);
+      });
+
+      var dots = Array.from(dotsRoot.querySelectorAll('.activity-dot'));
+
+      function getMaxIndex() {
+        return Math.max(0, cards.length - 1);
+      }
+
+      function clampIndex(idx) {
+        return Math.max(0, Math.min(getMaxIndex(), idx));
+      }
+
+      function getSlideStep() {
+        var cardWidth = cards[0].getBoundingClientRect().width || viewport.clientWidth;
+        var trackStyles = window.getComputedStyle(track);
+        var gap = parseFloat(trackStyles.columnGap || trackStyles.gap || '0') || 0;
+        return Math.max(1, Math.round(cardWidth + gap));
+      }
+
+      function setScrollLeft(left, smooth) {
+        if (smooth && typeof viewport.scrollTo === 'function') {
+          try {
+            viewport.scrollTo({ left: left, behavior: 'smooth' });
+            return;
+          } catch (err) {}
+        }
+        viewport.scrollLeft = left;
+      }
+
+      function syncUi() {
+        dots.forEach(function(dot, idx) {
+          var isActive = idx === activeIndex;
+          dot.classList.toggle('is-active', isActive);
+          dot.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+        prevBtn.disabled = activeIndex <= 0;
+        nextBtn.disabled = activeIndex >= getMaxIndex();
+      }
+
+      function goTo(idx, smooth) {
+        activeIndex = clampIndex(idx);
+        setScrollLeft(activeIndex * getSlideStep(), smooth);
+        syncUi();
+      }
+
+      function updateIndexFromScroll() {
+        rafId = 0;
+        var step = getSlideStep();
+        if (!step) return;
+        var idx = clampIndex(Math.round(viewport.scrollLeft / step));
+        if (idx !== activeIndex) {
+          activeIndex = idx;
+          syncUi();
+        }
+      }
+
+      function onScroll() {
+        if (rafId) return;
+        rafId = window.requestAnimationFrame(updateIndexFromScroll);
+      }
+
+      prevBtn.addEventListener('click', function() {
+        goTo(activeIndex - 1, true);
+      });
+      nextBtn.addEventListener('click', function() {
+        goTo(activeIndex + 1, true);
+      });
+
+      viewport.addEventListener('scroll', onScroll, { passive: true });
+      viewport.addEventListener('touchstart', function(e) {
+        var touch = e.changedTouches && e.changedTouches[0];
+        if (!touch) return;
+        touchStartX = touch.clientX;
+        touchStartY = touch.clientY;
+      }, { passive: true });
+      viewport.addEventListener('touchend', function(e) {
+        var touch = e.changedTouches && e.changedTouches[0];
+        if (!touch) return;
+        var dx = touch.clientX - touchStartX;
+        var dy = touch.clientY - touchStartY;
+        if (Math.abs(dx) < 42 || Math.abs(dx) <= Math.abs(dy)) return;
+        goTo(activeIndex + (dx < 0 ? 1 : -1), true);
+      }, { passive: true });
+      viewport.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          goTo(activeIndex + 1, true);
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          goTo(activeIndex - 1, true);
+        }
+      });
+
+      window.addEventListener('resize', function() {
+        if (resizeTimer) window.clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(function() {
+          goTo(activeIndex, false);
+        }, 90);
+      });
+
+      goTo(0, false);
     })();
 
     /* ===== Count-up animation when ring section enters viewport ===== */
@@ -721,10 +1132,7 @@
                     document.querySelector('section .pub-rings').closest('section');
       if (!section) return;
 
-      var targets = [].concat(
-        Array.from(section.querySelectorAll('.ring-value-num, .ring-value-pct')),
-        Array.from(section.querySelectorAll('text.rings-total'))
-      );
+      var targets = Array.from(section.querySelectorAll('.ring-value-num, .ring-value-pct'));
       if (!targets.length) return;
 
       function countUp(el, target, duration) {
