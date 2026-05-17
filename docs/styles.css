@@ -63,6 +63,23 @@ body {
   background: var(--bg);
   transition: background-color 0.4s ease, color 0.4s ease;
 }
+
+/* -------- Easter egg: Jensen-style jacket cursor (desktop only) -------- */
+@media (hover: hover) and (pointer: fine) {
+  html, body {
+    cursor: url("assets/cursor-jacket.png") 6 4, default;
+  }
+  a, button, [role="button"], summary,
+  .role-pill, .cv-btn, .topnav-link, .theme-toggle,
+  .pub-thumb, .award-link, .contact-card a,
+  input[type="button"], input[type="submit"], label[for] {
+    cursor: url("assets/cursor-jacket.png") 6 4, pointer;
+  }
+  input[type="text"], input[type="email"], input[type="search"],
+  textarea {
+    cursor: url("assets/cursor-jacket.png") 6 4, text;
+  }
+}
 body,
 .topnav,
 .hero,
