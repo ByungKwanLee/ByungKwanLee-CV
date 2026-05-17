@@ -91,9 +91,11 @@ ul, ol { padding-left: 1.4em; }
   border-bottom: 1px solid var(--border);
 }
 [data-theme="dark"] .topnav {
-  background: rgba(11, 15, 17, 0.78);
-  border-bottom-color: rgba(79, 184, 166, 0.18);
-  box-shadow: 0 1px 0 rgba(79, 184, 166, 0.1);
+  background: rgba(11, 15, 17, 0.65);
+  backdrop-filter: saturate(160%) blur(14px);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+  border-bottom-color: rgba(79, 184, 166, 0.14);
+  box-shadow: 0 1px 0 rgba(79, 184, 166, 0.06);
 }
 .nav-inner {
   max-width: 980px;
@@ -147,12 +149,14 @@ ul, ol { padding-left: 1.4em; }
 }
 [data-theme="dark"] .cv-download {
   color: var(--accent-dark);
-  box-shadow: 0 0 8px rgba(79, 184, 166, 0.22);
+  background: rgba(79, 184, 166, 0.05);
+  box-shadow: none;
 }
 [data-theme="dark"] .cv-download:hover {
   background: var(--accent);
   color: var(--bg);
-  box-shadow: 0 0 14px rgba(79, 184, 166, 0.55);
+  border-color: var(--accent);
+  box-shadow: 0 0 10px rgba(79, 184, 166, 0.35);
 }
 
 /* Theme toggle button */
@@ -254,7 +258,7 @@ ul, ol { padding-left: 1.4em; }
   filter: drop-shadow(0 0 6px rgba(156, 223, 0, 0.6));
 }
 
-/* -------- Hero neon-sign effect (dark mode only) -------- */
+/* -------- Hero ambient glow (dark mode only) -------- */
 [data-theme="dark"] .hero {
   position: relative;
   isolation: isolate;
@@ -262,75 +266,40 @@ ul, ol { padding-left: 1.4em; }
 [data-theme="dark"] .hero::before {
   content: "";
   position: absolute;
-  inset: 8px 0 8px 0;
-  border-radius: 28px;
+  inset: -10% 10% auto 10%;
+  height: 520px;
   background:
-    radial-gradient(ellipse at 22% 50%, rgba(79, 184, 166, 0.18), transparent 60%),
-    radial-gradient(ellipse at 78% 50%, rgba(156, 223, 0, 0.10), transparent 65%);
-  filter: blur(28px);
+    radial-gradient(closest-side,
+      rgba(156, 223, 0, 0.22),
+      rgba(79, 184, 166, 0.10) 40%,
+      transparent 72%);
+  filter: blur(60px);
   z-index: -1;
   pointer-events: none;
-  animation: hero-ambient 7s ease-in-out infinite;
-}
-@keyframes hero-ambient {
-  0%, 100% { opacity: 0.65; transform: scale(1); }
-  50%      { opacity: 1;    transform: scale(1.03); }
+  opacity: 0.85;
 }
 
 [data-theme="dark"] .name {
   color: #F2FFFD;
   text-shadow:
-    0 0 4px  #BFEFE5,
-    0 0 12px rgba(123, 212, 196, 0.75),
-    0 0 28px rgba(79, 184, 166, 0.55),
-    0 0 60px rgba(79, 184, 166, 0.3);
-  animation: name-flicker 5s ease-in-out infinite;
-}
-@keyframes name-flicker {
-  0%, 100%      { opacity: 1; }
-  3%, 6%        { opacity: 0.86; }
-  4%            { opacity: 1; }
-  47%, 49%      { opacity: 0.94; }
-  48%           { opacity: 1; }
+    0 0 4px rgba(191, 239, 229, 0.55),
+    0 0 18px rgba(79, 184, 166, 0.35);
 }
 
 [data-theme="dark"] .hero-photo img {
   border-color: #5FE0CB;
-  animation: photo-pulse 3.8s ease-in-out infinite;
-}
-@keyframes photo-pulse {
-  0%, 100% {
-    box-shadow:
-      0 0 0 1px rgba(95, 224, 203, 0.20),
-      0 0 22px rgba(79, 184, 166, 0.55),
-      0 0 48px rgba(79, 184, 166, 0.30),
-      inset 0 0 18px rgba(79, 184, 166, 0.12);
-  }
-  50% {
-    box-shadow:
-      0 0 0 1px rgba(95, 224, 203, 0.35),
-      0 0 32px rgba(79, 184, 166, 0.75),
-      0 0 72px rgba(79, 184, 166, 0.45),
-      inset 0 0 22px rgba(79, 184, 166, 0.20);
-  }
+  box-shadow:
+    0 0 0 1px rgba(95, 224, 203, 0.18),
+    0 0 22px rgba(79, 184, 166, 0.40),
+    0 8px 30px rgba(0, 0, 0, 0.55);
 }
 
 [data-theme="dark"] .role-pill {
-  border-color: rgba(156, 223, 0, 0.65);
+  border-color: rgba(156, 223, 0, 0.55);
   background: linear-gradient(135deg, rgba(21, 35, 31, 0.95), rgba(26, 46, 42, 0.95));
-  animation: pill-pulse 5s ease-in-out infinite;
-}
-@keyframes pill-pulse {
-  0%, 100% {
-    box-shadow:
-      0 0 6px  rgba(156, 223, 0, 0.20),
-      0 0 14px rgba(156, 223, 0, 0.10);
-  }
-  50% {
-    box-shadow:
-      0 0 9px  rgba(156, 223, 0, 0.30),
-      0 0 20px rgba(156, 223, 0, 0.16);
-  }
+  box-shadow:
+    0 0 6px  rgba(156, 223, 0, 0.18),
+    0 0 14px rgba(156, 223, 0, 0.08);
 }
 [data-theme="dark"] .role-pill .nvidia-text {
   text-shadow:
@@ -341,21 +310,14 @@ ul, ol { padding-left: 1.4em; }
   filter: drop-shadow(0 0 3px rgba(156, 223, 0, 0.45));
 }
 
-[data-theme="dark"] .subtitle {
-  text-shadow: 0 0 10px rgba(123, 212, 196, 0.18);
-}
 [data-theme="dark"] .subtitle .grad-icon {
-  text-shadow: 0 0 8px rgba(123, 212, 196, 0.6);
-}
-
-[data-theme="dark"] .contact-row a {
-  text-shadow: 0 0 6px rgba(123, 212, 196, 0.28);
+  text-shadow: 0 0 6px rgba(123, 212, 196, 0.4);
 }
 [data-theme="dark"] .contact-row .dot {
-  text-shadow: 0 0 8px rgba(79, 184, 166, 0.7);
+  text-shadow: 0 0 6px rgba(79, 184, 166, 0.45);
 }
 [data-theme="dark"] .contact-row i {
-  text-shadow: 0 0 6px rgba(123, 212, 196, 0.45);
+  text-shadow: 0 0 4px rgba(123, 212, 196, 0.3);
 }
 .role-pill .nvidia-text {
   color: var(--nvidia);
@@ -379,7 +341,7 @@ ul, ol { padding-left: 1.4em; }
 }
 [data-theme="dark"] .contact-row a:hover {
   color: var(--accent-dark);
-  text-shadow: 0 0 10px var(--accent);
+  text-shadow: 0 0 6px rgba(123, 212, 196, 0.45);
 }
 .contact-row i { margin-right: 4px; }
 .contact-row .dot { color: var(--accent); margin: 0 6px; }
@@ -423,8 +385,8 @@ section:first-of-type { border-top: none; }
   opacity: 0.6;
 }
 [data-theme="dark"] .section-title::after {
-  opacity: 1;
-  filter: drop-shadow(0 0 6px var(--accent));
+  opacity: 0.85;
+  filter: drop-shadow(0 0 4px var(--accent));
 }
 @keyframes title-shimmer {
   0%   { background-position: -110% 0; }
