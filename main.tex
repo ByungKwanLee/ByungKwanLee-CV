@@ -1,0 +1,532 @@
+%
+%Academic CV LaTeX Template
+% Author: Dubasi Pavan Kumar
+% LinkedIn: https://www.linkedin.com/in/im-pavankumar/
+% License: MIT
+%
+% For errors, suggestions, or improvements, please contact:
+% Email: pavankumard.pg19.ma@nitp.ac.in
+%
+
+
+
+\documentclass[a4paper,11pt]{article}
+
+% Package imports
+\usepackage{graphicx}
+\usepackage{latexsym}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage[empty]{fullpage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{marvosym}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{cfr-lm}
+\usepackage[T1]{fontenc}
+\usepackage{fontawesome5}
+
+% Color definitions
+\definecolor{darkblue}{RGB}{0,0,139}
+
+% Page layout
+\setlength{\multicolsep}{0pt} 
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\geometry{left=1.4cm, top=1.8cm, right=1.2cm, bottom=1.8cm}
+\setlength{\footskip}{5pt} % Addressing fancyhdr warning
+
+% Hyperlink setup (moved after fancyhdr to address warning)
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkblue,
+    filecolor=darkblue,
+    urlcolor=darkblue,
+}
+
+% Custom box settings
+\usepackage[most]{tcolorbox}
+\tcbset{
+    frame code={},
+    center title,
+    left=0pt,
+    right=0pt,
+    top=0pt,
+    bottom=0pt,
+    colback=gray!20,
+    colframe=white,
+    width=\dimexpr\textwidth\relax,
+    enlarge left by=-2mm,
+    boxsep=4pt,
+    arc=0pt,outer arc=0pt,
+}
+
+% URL style
+\urlstyle{same}
+
+% Text alignment
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item{
+    \textbf{#1}{\hspace{0.5mm}#2 \vspace{-0.5mm}}
+  }
+}
+
+\newcommand{\resumePOR}[3]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1}\hspace{0.3mm}#2 & \textit{\small{#3}} 
+    \end{tabular*}
+    \vspace{-2mm}
+}
+
+\newcommand{\resumeEduheading}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#4}} \\
+        \textit{\small{#3}} &  \footnotesize{#2}\\
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeSubheading}[3]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{\large{#1}}, \color{black}{\textbf{\textit{#2}}} & \textit{\footnotesize{#3}} 
+    \end{tabular*}
+    \vspace{-1.4mm}
+}
+
+\newcommand{\resumeProject}[2]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \text{#1} & \textit{\footnotesize{#2}}
+    \end{tabular*}
+    \vspace{-1mm}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand{\labelitemii}{$\vcenter{\hbox{\tiny$\circ$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,label={}]}
+\newcommand{\resumeHeadingSkillStart}{\begin{itemize}[leftmargin=*,itemsep=1.7mm, rightmargin=2ex]}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,itemsep=1mm]}
+
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{2mm}}
+\newcommand{\resumeHeadingSkillEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\cvsection}[1]{%
+\vspace{2mm}
+\begin{tcolorbox}
+    \textbf{\large #1}
+\end{tcolorbox}
+    \vspace{-4mm}
+}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
+\newcolumntype{C}{>{\centering\arraybackslash}X}%
+
+% Commands for icon sizing and positioning
+\newcommand{\socialicon}[1]{\raisebox{-0.05em}{\resizebox{!}{1em}{#1}}}
+\newcommand{\ieeeicon}[1]{\raisebox{-0.3em}{\resizebox{!}{1.3em}{#1}}}
+
+% Font options
+\newcommand{\headerfonti}{\fontfamily{phv}\selectfont} % Helvetica-like (similar to Arial/Calibri)
+\newcommand{\headerfontii}{\fontfamily{ptm}\selectfont} % Times-like (similar to Times New Roman)
+\newcommand{\headerfontiii}{\fontfamily{ppl}\selectfont} % Palatino (elegant serif)
+\newcommand{\headerfontiv}{\fontfamily{pbk}\selectfont} % Bookman (readable serif)
+\newcommand{\headerfontv}{\fontfamily{pag}\selectfont} % Avant Garde-like (similar to Trebuchet MS)
+\newcommand{\headerfontvi}{\fontfamily{cmss}\selectfont} % Computer Modern Sans Serif
+\newcommand{\headerfontvii}{\fontfamily{qhv}\selectfont} % Quasi-Helvetica (another Arial/Calibri alternative)
+\newcommand{\headerfontviii}{\fontfamily{qpl}\selectfont} % Quasi-Palatino (another elegant serif option)
+\newcommand{\headerfontix}{\fontfamily{qtm}\selectfont} % Quasi-Times (another Times New Roman alternative)
+\newcommand{\headerfontx}{\fontfamily{bch}\selectfont} % Charter (clean serif font)
+
+\begin{document}
+\headerfontiii
+
+% Header
+\begin{center}
+    {\Huge\textbf{Byung-Kwan Lee}}
+\end{center}
+\vspace{-6mm}
+
+\begin{center}
+    \small{
+    \href{mailto:bklee.nano@gmail.com}{bklee.nano@gmail.com} | \href{mailto:byungkwanl@nvidia.com}{byungkwanl@nvidia.com} | 
+    \href{https://sites.google.com/view/byungkwanlee}{Homepage}
+    }
+\end{center}
+\vspace{-6mm}
+
+\begin{center}
+    \small{
+    \socialicon{\faLinkedin} \href{https://www.linkedin.com/in/byung-kwan-lee-82333716a/}{LinkedIn} | 
+    \socialicon{\faGithub} \href{https://github.com/ByungKwanLee}{Github} | 
+    \ieeeicon{\includegraphics[height=1.3em]{ieee_collabratec_icon.png}} \href{https://scholar.google.com/citations?user=ueXCYIcAAAAJ&hl=ko}{Google Scholar}
+    }
+\end{center}
+
+\vspace{-4mm}
+
+\section{\textbf{Research Interest}}
+\vspace{1mm}
+\small{
+Aiming to build high-performing, efficient-size vision language models by merging vision or reasoning modules, modifying transformer architectures to propagation rule, and distilling cross-model or self-model knowledge! Main research interests are distillation, pruning, compression as well as data/training/inference efficiency.
+}
+\vspace{-2mm}
+
+
+
+\section{\textbf{Work Experience}}
+\vspace{-0.4mm}
+  \resumeSubHeadingListStart
+  \resumeSubheading
+      {NVIDIA}{Research Scientist}{Oct. 2025 - Current}
+      \resumeItemListStart
+      \item GenRecal: Generation after Recalibration from Large to Small Vision-Language Models
+        \begin{tcolorbox}[colback=gray!10, colframe=gray!40, boxrule=0.3pt, left=4pt, right=4pt, top=2pt, bottom=2pt, arc=1.5pt, outer arc=1.5pt]
+          \small\textit{A general-purpose VLM distillation framework using a Recalibrator to align heterogeneous token representations, enabling cross-architecture knowledge transfer regardless of vocabulary size, token splits, or index ordering.}
+        \end{tcolorbox}
+        \vspace{0.5mm}
+        \begin{itemize}[leftmargin=*, labelsep=1mm, itemsep=0mm, label={--}]
+          \item Under Review
+          \item U.S. Non-Provisional Tech Patent Filed
+          \item Internal Collaboration, Internal Tech Transfer
+        \end{itemize}
+      \item Unified Reinforcement and Imitation Learning for Vision-Language Models
+        \begin{tcolorbox}[colback=gray!10, colframe=gray!40, boxrule=0.3pt, left=4pt, right=4pt, top=2pt, bottom=2pt, arc=1.5pt, outer arc=1.5pt]
+          \small\textit{A training algorithm combining reinforcement learning with adversarial imitation learning, using an LLM-based discriminator and multi-teacher guidance to build lightweight yet powerful VLMs.}
+        \end{tcolorbox}
+        \vspace{0.5mm}
+        \begin{itemize}[leftmargin=*, labelsep=1mm, itemsep=0mm, label={--}]
+          \item ArXiv Release
+          \item Internal Release, Internal Collaboration
+        \end{itemize}
+      \item Masking Teacher and Reinforcing Student for Distilling Vision-Language Models
+        \begin{tcolorbox}[colback=gray!10, colframe=gray!40, boxrule=0.3pt, left=4pt, right=4pt, top=2pt, bottom=2pt, arc=1.5pt, outer arc=1.5pt]
+          \small\textit{A mask-progressive RL distillation framework that gradually unmasks teacher weights to stabilize knowledge transfer, combined with offline RL using accuracy and distillation rewards.}
+        \end{tcolorbox}
+        \vspace{0.5mm}
+        \begin{itemize}[leftmargin=*, labelsep=1mm, itemsep=0mm, label={--}]
+          \item CVPR 2026 Accept
+          \item U.S. Provisional Tech Patent Filed
+          \item ArXiv Release
+          \item Internal Release, Internal Collaboration
+        \end{itemize}
+      \resumeItemListEnd
+    \resumeSubheading 
+      {NVIDIA}{Research Intern}{Oct. 2024 - Oct. 2025}
+      \resumeItemListStart
+      \item VLsI: Verbalized Layers-to-Interactions from Large to Small Vision Language Models
+        \begin{tcolorbox}[colback=gray!10, colframe=gray!40, boxrule=0.3pt, left=4pt, right=4pt, top=2pt, bottom=2pt, arc=1.5pt, outer arc=1.5pt]
+          \small\textit{A layer-wise distillation method using intermediate verbalizers to map features into natural language space, enabling small VLMs (2B/7B) to align with large VLMs' reasoning progression and outperform GPT-4V.}
+        \end{tcolorbox}
+        \vspace{0.5mm}
+        \begin{itemize}[leftmargin=*, labelsep=1mm, itemsep=0mm, label={--}]
+          \item CVPR 2025 Accept
+          \item U.S. Non-Provisional Tech Patent Filed
+          \item ArXiv Release
+          \item Internal Release, Internal Collaboration, Internal Tech Transfer
+        \end{itemize}
+      \item GenRecal: Generation after Recalibration from Large to Small Vision-Language Models
+        \begin{tcolorbox}[colback=gray!10, colframe=gray!40, boxrule=0.3pt, left=4pt, right=4pt, top=2pt, bottom=2pt, arc=1.5pt, outer arc=1.5pt]
+          \small\textit{A general-purpose VLM distillation framework using a Recalibrator to align heterogeneous token representations, enabling cross-architecture knowledge transfer regardless of vocabulary size, token splits, or index ordering.}
+        \end{tcolorbox}
+        \vspace{0.5mm}
+        \begin{itemize}[leftmargin=*, labelsep=1mm, itemsep=0mm, label={--}]
+          \item U.S. Provisional Tech Patent Filed
+          \item ArXiv Release
+          \item Internal Release
+        \end{itemize}
+      \item Unified Reinforcement and Imitation Learning for Vision-Language Models
+        \begin{tcolorbox}[colback=gray!10, colframe=gray!40, boxrule=0.3pt, left=4pt, right=4pt, top=2pt, bottom=2pt, arc=1.5pt, outer arc=1.5pt]
+          \small\textit{A training algorithm combining reinforcement learning with adversarial imitation learning, using an LLM-based discriminator and multi-teacher guidance to build lightweight yet powerful VLMs.}
+        \end{tcolorbox}
+        \vspace{0.5mm}
+        \begin{itemize}[leftmargin=*, labelsep=1mm, itemsep=0mm, label={--}]
+          \item NeurIPS 2025 Accept
+          \item U.S. Provisional Tech Patent Filed
+        \end{itemize}
+      \resumeItemListEnd 
+  \resumeSubHeadingListEnd
+\vspace{-6mm}
+
+\section{\textbf{Education}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeEduheading
+{KAIST}{}
+{School of Electrical Engineering, Ph.D}{Mar. 2020 - Aug. 2025}
+\resumeItemListStart
+\item GPA: 3.77/4.3
+\resumeItemListEnd
+
+\resumeEduheading
+{KAIST}{}
+{The Cho Chun Sik Graduate School of Green Transportation, M.S}{Mar. 2018 - Feb. 2020}
+\resumeItemListStart
+\item GPA: 3.72/4.3
+\resumeItemListEnd
+
+\resumeEduheading
+{Hanynag University}{}
+{Mathematics and Electronic Engineering, B.S}{Mar. 2014 - Feb. 2018}
+\resumeItemListStart
+\item GPA: 3.86/4.5
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+\vspace{-6mm}
+
+\section{\textbf{Paper (16 Accepts \& 1 Pending \& 2 Tech Reports)}}
+\vspace{0.2mm}
+\small{
+\begin{enumerate}[leftmargin=*, labelsep=0.5em, align=left, itemindent=0em, label={\textbf{[\arabic*]}}]
+
+\item \textbf{``GenRecal: Generation after Recalibration from Large to Small Vision Language Models''}
+\\\vspace{1mm}\underline{Byung-Kwan Lee}, Ryo Hachiuma, Yong Man Ro, Yu-Chiang Frank Wang, and Yueh-Hua Wu
+\\\vspace{2mm}Under Review, [\href{https://arxiv.org/abs/2506.15681}{Paper}][\href{https://byungkwanlee.github.io/GenRecal-page/}{Project}]
+\\\vspace{2mm}U.S. Patent Application Filed (Non-Provisional), NVIDIA Research, 2025
+
+\item \textbf{``Masking Teacher and Reinforcing Student for Distilling Vision-Language Models''}
+\\\vspace{1mm}\underline{Byung-Kwan Lee}, Yu-Chiang Frank Wang, Ryo Hachiuma
+\\\vspace{2mm}IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2026 [\href{https://www.arxiv.org/abs/2512.22238}{Paper}]
+\\\vspace{2mm}U.S. Patent Application Filed (Provisional), NVIDIA Research, 2026
+
+\item \textbf{``Recursive Think-Answer Process for LLMs and VLMs''}
+\\\vspace{1mm}\underline{Byung-Kwan Lee}*, Youngchae Chee*, Yong Man Ro
+\\\vspace{2mm}IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Findings, 2026
+
+\item \textbf{``RefineBench: Evaluating Refinement Capability in Language Models''}
+\\\vspace{1mm}Young-Jun Lee*, Seungone Kim*, \underline{Byung-Kwan Lee}, Minkyeong Moon, Yechan Hwang, Jong Myoung Kim, Graham Neubig, Sean Welleck, Ho-Jin Choi
+\\\vspace{2mm}International Conference on Learning Representations (ICLR), 2026 [\href{https://arxiv.org/abs/2511.22173}{Paper}][\href{https://passing2961.github.io/refinebench-page/}{Project}]
+\\\vspace{2mm}Best Runner-Up Award, Workshop for Multi-Turn Interactions in Large Language Models, NeurIPS 2025 (Oral, Top 1\%) [\href{https://neurips.cc/virtual/2025/loc/san-diego/130841}{Link}]
+
+\item \textbf{``Unified Reinforcement and Imitation Learning for Vision-Language Models''}
+\\\vspace{1mm}\underline{Byung-Kwan Lee}, Ryo Hachiuma, Yong Man Ro, Yu-Chiang Frank Wang, Yueh-Hua Wu
+\\\vspace{2mm}Neural Information Processing Systems (NeurIPS), 2025 [\href{https://arxiv.org/abs/2510.19307}{Paper}][\href{https://byungkwanlee.github.io/RIL-page/}{Project}]
+\\\vspace{2mm}U.S. Patent Application Filed (Provisional), NVIDIA Research, 2025
+
+\item \textbf{``MultiVerse: A Multi-Turn Conversation Benchmark for Evaluating Large Vision and Language Models''}
+\\\vspace{1mm}Young-Jun Lee, \underline{Byung-Kwan Lee}, Jianshu Zhang, Yechan Hwang, Byungsoo Ko, Han-Gyu Kim, Dongyu Yao, Xuankun Rong, Eojin Joo, Seung-Ho Han, Bowon Ko, Ho-Jin Choi
+\\\vspace{2mm}IEEE/CVF International Conference on Computer Vision (ICCV), 2025 [\href{https://www.arxiv.org/abs/2510.16641}{Paper}][\href{https://passing2961.github.io/multiverse-project-page/}{Project}]
+\\\vspace{2mm}Workshop for Knowledge-Intensive Multimodal Reasoning, ICCV 2025 [\href{https://knowledgemr-workshop.github.io/}{Link}]
+
+\item \textbf{``VLsI: Verbalized Layers-to-Interactions from Large to Small Vision Language Models''}
+\\\vspace{1mm}\underline{Byung-Kwan Lee}, Ryo Hachiuma, Yu-Chiang Frank Wang, Yong Man Ro, Yueh-Hua Wu
+\\\vspace{2mm}IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2025 [\href{https://arxiv.org/abs/2412.01822}{Paper}][\href{https://byungkwanlee.github.io/VLsI-page/}{Project}]
+\\\vspace{2mm}U.S. Patent Application Filed (Non-provisional), NVIDIA Research, 2025
+
+\item \textbf{``Phantom of Latent for Vision Language Models''}
+\\\vspace{1mm}\underline{Byung-Kwan Lee}, Sangyun Chung, Chae Won Kim, Beomchan Park, Yong Man Ro
+\\\vspace{2mm}Technical Report [\href{https://arxiv.org/abs/2409.14713}{Paper}][\href{https://github.com/ByungKwanLee/Phantom}{Code}][\href{https://huggingface.co/collections/BK-Lee/phantom-66f1368c1f47e626066263c0}{Huggingface Model}]
+
+\item \textbf{``TroL: Traversal of Layers for Large Language and Vision Models''}
+\\\vspace{1mm}\underline{Byung-Kwan Lee}, Sangyun Chung, Chae Won Kim, Beomchan Park, Yong Man Ro
+\\\vspace{2mm}Empirical Methods in Natural Language Processing (EMNLP), 2024 [\href{https://arxiv.org/abs/2406.12246}{Paper}][\href{https://github.com/ByungKwanLee/TroL}{Code}][\href{https://huggingface.co/collections/BK-Lee/trol-6671374e78e410e0f8cb5ef8}{Huggingface Model}]
+
+\item \textbf{``Meteor: Mamba-based Traversal of Rationale for Large Language and Vision Models''}
+\\\vspace{1mm}\underline{Byung-Kwan Lee}, Chae Won Kim, Beomchan Park, Yong Man Ro
+\\\vspace{2mm}Neural Information Processing Systems (NeurIPS), 2024 [\href{https://arxiv.org/abs/2405.15574}{Paper}][\href{https://github.com/ByungKwanLee/Meteor}{Code}][\href{https://huggingface.co/collections/BK-Lee/meteor-66561614b88e4539b263f8a0}{Huggingface Model}]
+\\\vspace{2mm}31th Samsung HumanTech Paper Awards in section of Computer Science \& Engineering
+
+\item \textbf{``MoAI: Mixture of All Intelligence for Large Language and Vision Models''}
+\\\vspace{1mm}\underline{Byung-Kwan Lee}, Beomchan Park, Chae Won Kim, Yong Man Ro
+\\\vspace{2mm}European Conference on Computer Vision (ECCV), 2024, [\href{https://arxiv.org/abs/2403.07508}{Paper}][\href{https://github.com/ByungKwanLee/MoAI}{Code}][\href{https://huggingface.co/collections/BK-Lee/collavo-and-moai-66561821e16f34509f5c2040}{Huggingface Model}]
+
+\item \textbf{``CoLLaVO: Crayon Large Language and Vision mOdel''}
+\\\vspace{1mm}\underline{Byung-Kwan Lee}, Beomchan Park, Chae Won Kim, Yong Man Ro
+\\\vspace{2mm}Findings of the Association for Computational Linguistics (ACL), 2024, [\href{https://arxiv.org/abs/2402.11248}{Paper}][\href{https://github.com/ByungKwanLee/CoLLaVO}{Code}][\href{https://huggingface.co/collections/BK-Lee/collavo-and-moai-66561821e16f34509f5c2040}{Huggingface Model}]
+\\\vspace{2mm}2024 KCC XAI Workshop, Best Paper Awards
+
+\item \textbf{``Causal Unsupervised Semantic Segmentation''}
+\\\vspace{1mm}{Junho Kim*, \underline{Byung-Kwan Lee}*}, and Yong Man Ro
+\\\vspace{2mm}Journal of Pattern Recognition [\href{https://arxiv.org/abs/2310.07379}{Paper}][\href{https://github.com/ByungKwanLee/Causal-Unsupervised-Segmentation}{Code}]
+
+\item \textbf{``Mitigating Adversarial Vulnerability through Causal Parameter Estimation by Adversarial Double Machine Learning''}
+\\\vspace{1mm}\underline{Byung-Kwan Lee}*, Junho Kim*, and Yong Man Ro
+\\\vspace{2mm}IEEE/CVF International Conference on Computer Vision (ICCV), 2023 [\href{https://arxiv.org/abs/2307.07250}{Paper}][\href{https://github.com/ByungKwanLee/Double-Debiased-Adversary}{Code}]
+
+\item \textbf{``Mitigating Dataset Bias in Image Captioning through CLIP Confounder-free Captioning Network''}
+\\\vspace{1mm}YeonJu Kim, Junho Kim, \underline{Byung-Kwan Lee}, Sebin Shin, and Yong Man Ro
+\\\vspace{2mm}IEEE International Conference on Image Processing (ICIP), 2023 [\href{https://ieeexplore.ieee.org/document/10222502/;jsessionid=AFDA9971DD875106A52CBB8076F3DA31}{Paper}][\href{https://github.com/yeonju7kim/C2Cap}{Code}]
+
+\item \textbf{``Demystifying Causal Features on Adversarial Examples and Causal Inoculation for Robust Network by Adversarial Instrumental Variable Regression''}
+\\\vspace{1mm}Junho Kim*, \underline{Byung-Kwan Lee}*, and Yong Man Ro
+\\\vspace{2mm}IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2023 [\href{https://arxiv.org/abs/2303.01052}{Paper}][\href{https://github.com/ByungKwanLee/Causal-Adversarial-Instruments}{Code}]
+
+\item \textbf{``Masking Adversarial Damage: Finding Adversarial Saliency for Robust and Sparse Network''}
+\\\vspace{1mm}\underline{Byung-Kwan Lee}*, Junho Kim*, and Yong Man Ro
+\\\vspace{2mm}IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2022 [\href{https://arxiv.org/abs/2204.02738}{Paper}][\href{https://github.com/ByungKwanLee/Masking-Adversarial-Damage}{Code}]
+
+\item \textbf{``Distilling Robust and Non-Robust Features in Adversarial Examples by Information Bottleneck''}
+\\\vspace{1mm}Junho Kim*, \underline{Byung-Kwan Lee}*, and Yong Man Ro
+\\\vspace{2mm}Neural Information Processing Systems (NeurIPS), 2021 [\href{https://arxiv.org/abs/2204.02735}{Paper}][\href{https://github.com/ByungKwanLee/Adversarial-Information-Bottleneck}{Code}]
+
+
+\item \textbf{``Towards Adversarial Robustness of Bayesian Neural Network through Hierarchical Variational Inference''}
+\\\vspace{1mm}\underline{Byung-Kwan Lee}*, Youngjun Yu, and Yong Man Ro
+\\\vspace{2mm}Technical Report [\href{https://openreview.net/pdf?id=Cue2ZEBf12}{Paper}][\href{https://github.com/ByungKwanLee/Hierarchical-Bayesian-Defense}{Code}]
+
+% \item \textbf{``''}
+% \\\vspace{1mm}
+% \\\vspace{2mm}
+
+\end{enumerate}
+}
+
+\section{\textbf{Reviewer Experience}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeProject
+  {IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)}
+  {Journal}
+  
+\resumeProject
+  {Elsevier on Computer Vision and Image Understanding (CVIU)}
+  {Journal}
+
+\resumeProject
+  {IEEE Transactions on Neural Networks and Learning Systems (TNNLS)}
+  {Journal}
+
+\resumeProject
+  {Computer Vision and Pattern Recognition (CVPR)}
+  {2021/2022/2023/2024/2026, Conference}
+
+\resumeProject
+  {International Conference on Computer Vision (ICCV)}
+  {2021/2023/2025, Conference}
+
+\resumeProject
+  {European Conference on Computer Vision (ECCV)}
+  {2022/2024/2026, Conference}
+
+\resumeProject
+  {International Conference on Learning Representations (ICLR)}
+  {2023/2024/2025, Conference}
+
+\resumeProject
+  {Neural Information Processing Systems (NeurIPS)}
+  {2023/2024/2025/2026, Conference}
+
+\resumeProject
+  {International Conference on Machine Learning (ICML)}
+  {2024/2025/2026, Conference}
+
+\resumeProject
+  {Association for the Advancement of Artificial Intelligence (AAAI)}
+  {2025, Conference}
+
+\resumeProject
+  {Asian Conference on Computer Vision (ACCV)}
+  {2024, Conference}
+
+\resumeSubHeadingListEnd
+
+
+\section{\textbf{Invited Talks and Awards}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeProject
+  {Invited Talk in Kongju University}
+  {2025}
+
+\resumeProject
+  {Invited Talk in Hanyang University ERICA}
+  {2025}
+
+\resumeProject
+  {Invited Talk in Kookmin University}
+  {2025}
+
+\resumeProject
+  {Invited Talk in Dongseo University}
+  {2025}
+
+\resumeProject
+  {31th Samsung HumanTech Paper Awards in section of Computer Science \& Engineering}
+  {2025}
+
+\resumeProject
+  {KCC XAI Workshop, Best Paper Awards}
+  {2024}
+
+\resumeProject
+  {Invited Talk in Korea Institute of Science and Technology Information (KISTI)}
+  {2024}
+
+\resumeProject
+  {Invited Talk in NAVER HyperCLOVA X}
+  {2024}
+
+\resumeProject
+  {Invited Talk in Kakao Brain}
+  {2024}
+
+\resumeProject
+  {1st Award for Research Presentation in Center for Applied Research in Artificial Intelligence (CARAI)}
+  {2023}
+
+\resumeProject
+  {KAIST SW IT Academy, AI Project Director of 1st Award Topic}
+  {2023}
+
+\resumeProject
+  {Invitation to Presenter in Korean Conference on Computer Vision (KCCV)}
+  {2023}
+
+\resumeProject
+  {KAIST SW IT Academy, Lecturer of Data Structure \& Algorithm, Deep Learning, Computer Vision}
+  {2023}
+
+\resumeProject
+  {Invitation to Presenter in Korean Conference on Computer Vision (KCCV)}
+  {2022}
+
+\resumeProject
+  {2nd Award for Research Presentation in Center for Applied Research in Artificial Intelligence (CARAI)}
+  {2022}
+  
+\resumeProject
+  {KAIST Fellowship}
+  {Mar. 2020 - Feb. 2024}
+  
+\resumeProject
+  {National Government Fellowship}
+  {Mar. 2018 - Feb. 2020}
+
+\resumeProject
+  {1st President's Award for International Autonomous Vehicle Competition, Team Leader}
+  {2018}
+
+\resumeSubHeadingListEnd
+
+\end{document}
