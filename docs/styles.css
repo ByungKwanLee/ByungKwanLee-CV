@@ -307,6 +307,28 @@ ul, ol { padding-left: 1.4em; }
   box-shadow: var(--glow-nvidia);
   min-height: 40px;
   box-sizing: border-box;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+              border-color 0.25s ease, background-color 0.4s ease;
+}
+a.role-pill { color: var(--primary); }
+a.role-pill:hover {
+  text-decoration: none;
+  color: var(--primary);
+  transform: translateY(-1px);
+  border-color: var(--nvidia);
+}
+.role-pill-arrow {
+  font-size: 10px;
+  color: var(--muted);
+  margin-left: 4px;
+  opacity: 0.7;
+  transition: transform 0.25s ease, color 0.25s ease, opacity 0.25s ease;
+}
+a.role-pill:hover .role-pill-arrow {
+  color: var(--nvidia);
+  opacity: 1;
+  transform: translate(2px, -2px);
 }
 .role-pill .nvidia-logo {
   height: 16px;
@@ -372,6 +394,13 @@ ul, ol { padding-left: 1.4em; }
   box-shadow:
     0 0 6px  rgba(156, 223, 0, 0.18),
     0 0 14px rgba(156, 223, 0, 0.08);
+}
+[data-theme="dark"] a.role-pill { color: var(--primary); }
+[data-theme="dark"] a.role-pill:hover {
+  border-color: rgba(156, 223, 0, 0.85);
+  box-shadow:
+    0 0 10px rgba(156, 223, 0, 0.35),
+    0 0 22px rgba(156, 223, 0, 0.15);
 }
 [data-theme="dark"] .role-pill .nvidia-text {
   text-shadow:
