@@ -1049,17 +1049,81 @@ section:first-of-type { border-top: none; }
 html.js-reveal main > section,
 html.js-reveal main > section .section-title {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(60px);
   transition:
-    opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
-    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
 }
 html.js-reveal main > section.is-visible,
 html.js-reveal main > section.is-visible .section-title {
   opacity: 1;
   transform: none;
 }
-html.js-reveal main > section .section-title { transition-delay: 0.05s; }
+html.js-reveal main > section .section-title { transition-delay: 0.10s; }
+
+/* Section title underline draws in from left to right */
+html.js-reveal main > section .section-title {
+  position: relative;
+  border-bottom-color: transparent !important;
+}
+html.js-reveal main > section .section-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 100%;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
+}
+html.js-reveal main > section.is-visible .section-title::before {
+  transform: scaleX(1);
+}
+[data-theme="dark"] html.js-reveal main > section .section-title::before {
+  box-shadow: 0 0 6px rgba(79, 184, 166, 0.5);
+}
+
+/* Radar chart scale-in + polygon stroke draw */
+html.js-reveal .pub-radar .radar-svg {
+  opacity: 0;
+  transform: scale(0.78);
+  transform-origin: center;
+  transition:
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.30s,
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.30s;
+}
+html.js-reveal main > section.is-visible .pub-radar .radar-svg {
+  opacity: 1;
+  transform: scale(1);
+}
+html.js-reveal .pub-radar .radar-area {
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  fill-opacity: 0;
+  transition:
+    stroke-dashoffset 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.55s,
+    fill-opacity 0.7s ease 1.10s;
+}
+html.js-reveal main > section.is-visible .pub-radar .radar-area {
+  stroke-dashoffset: 0;
+  fill-opacity: 1;
+}
+html.js-reveal .pub-radar .radar-dot,
+html.js-reveal .pub-radar .radar-label,
+html.js-reveal .pub-radar .radar-pct {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+html.js-reveal main > section.is-visible .pub-radar .radar-dot { transition-delay: 1.2s; }
+html.js-reveal main > section.is-visible .pub-radar .radar-label { transition-delay: 1.3s; }
+html.js-reveal main > section.is-visible .pub-radar .radar-pct { transition-delay: 1.4s; }
+html.js-reveal main > section.is-visible .pub-radar .radar-dot,
+html.js-reveal main > section.is-visible .pub-radar .radar-label,
+html.js-reveal main > section.is-visible .pub-radar .radar-pct {
+  opacity: 1;
+}
 
 /* Stagger items inside a section that just became visible */
 html.js-reveal main > section .project-list > li,
@@ -1100,17 +1164,38 @@ html.js-reveal main > section.is-visible .research-list > li:nth-child(n+5),
 html.js-reveal main > section.is-visible .awards-list > li:nth-child(n+5),
 html.js-reveal main > section.is-visible .plain-list > li:nth-child(n+5) { transition-delay: 0.40s; }
 
-/* Publications get an individual scroll-reveal per <li> (long list) */
+/* Publications get an individual scroll-reveal per <li>
+   with alternating slide direction for a cinematic feel */
 html.js-reveal .pub-list > li {
   opacity: 0;
-  transform: translateY(20px);
   transition:
-    opacity 0.6s cubic-bezier(0.2, 0.7, 0.2, 1),
-    transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+html.js-reveal .pub-list > li:nth-child(odd) {
+  transform: translate(-32px, 28px);
+}
+html.js-reveal .pub-list > li:nth-child(even) {
+  transform: translate(32px, 28px);
 }
 html.js-reveal .pub-list > li.is-visible {
   opacity: 1;
-  transform: none;
+  transform: translate(0, 0);
+}
+
+html.js-reveal .pub-list > li .pub-thumb img {
+  transform: scale(0.92);
+  filter: blur(4px);
+  opacity: 0.7;
+  transition:
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+    filter   0.7s ease 0.1s,
+    opacity  0.7s ease 0.1s;
+}
+html.js-reveal .pub-list > li.is-visible .pub-thumb img {
+  transform: scale(1);
+  filter: blur(0);
+  opacity: 1;
 }
 
 /* Top scroll-progress bar */
@@ -1145,8 +1230,21 @@ html.js-reveal .pub-list > li.is-visible {
   html.js-reveal main > section .research-list > li,
   html.js-reveal main > section .awards-list > li,
   html.js-reveal main > section .plain-list > li,
-  html.js-reveal .pub-list > li {
-    opacity: 1; transform: none; transition: none;
+  html.js-reveal .pub-list > li,
+  html.js-reveal .pub-list > li:nth-child(odd),
+  html.js-reveal .pub-list > li:nth-child(even),
+  html.js-reveal .pub-list > li .pub-thumb img,
+  html.js-reveal .pub-radar .radar-svg,
+  html.js-reveal .pub-radar .radar-area,
+  html.js-reveal .pub-radar .radar-dot,
+  html.js-reveal .pub-radar .radar-label,
+  html.js-reveal .pub-radar .radar-pct {
+    opacity: 1; transform: none; filter: none;
+    stroke-dashoffset: 0; fill-opacity: 1;
+    transition: none;
+  }
+  html.js-reveal main > section .section-title::before {
+    transform: scaleX(1); transition: none;
   }
 
   [data-theme="dark"] .hero::before { transform: none; }
