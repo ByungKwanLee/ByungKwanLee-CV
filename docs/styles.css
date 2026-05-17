@@ -636,8 +636,31 @@ section:first-of-type { border-top: none; }
 .badge.venue,
 .badge.tech  { background: var(--badge-bg); border-color: var(--accent); color: var(--accent-dark); }
 .badge.status { background: var(--box-bg); border-color: var(--border); color: var(--muted); }
+.badge.patent {
+  background: linear-gradient(135deg,
+    rgba(118, 185,   0, 0.12),
+    rgba(118, 185,   0, 0.04));
+  border-color: rgba(118, 185, 0, 0.70);
+  color: #5C8F00;
+  font-weight: 700;
+}
+.badge.patent i {
+  margin-right: 4px;
+  font-size: 10px;
+  opacity: 0.95;
+}
 [data-theme="dark"] .badge.venue,
 [data-theme="dark"] .badge.tech  { box-shadow: 0 0 8px rgba(79, 184, 166, 0.25); }
+[data-theme="dark"] .badge.patent {
+  background: linear-gradient(135deg,
+    rgba(156, 223, 0, 0.18),
+    rgba(156, 223, 0, 0.06));
+  border-color: rgba(156, 223, 0, 0.70);
+  color: #C9F050;
+  box-shadow:
+    0 0 8px  rgba(156, 223, 0, 0.32),
+    0 0 16px rgba(156, 223, 0, 0.12);
+}
 [data-theme="dark"] .role-tag.lead { box-shadow: 0 0 10px rgba(123, 212, 196, 0.4); }
 
 /* Slightly dim figure thumbs in dark mode so they don't strain the eyes */
