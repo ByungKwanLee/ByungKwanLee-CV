@@ -116,6 +116,16 @@
   top=1pt, bottom=1pt,
   fontupper=\footnotesize\bfseries\color{accentDark}}
 
+% Role badges: Lead (filled, strong) vs Co-Author (outlined, subtle)
+\newtcbox{\leadRole}{on line, colback=accentDark, colframe=accentDark,
+  boxrule=0pt, arc=2.5pt, outer arc=2.5pt, boxsep=0pt,
+  left=4pt, right=4pt, top=1pt, bottom=1pt,
+  fontupper=\scriptsize\bfseries\color{white}}
+\newtcbox{\coauthorRole}{on line, colback=white, colframe=mutedGray,
+  boxrule=0.6pt, arc=2.5pt, outer arc=2.5pt, boxsep=0pt,
+  left=4pt, right=4pt, top=1pt, bottom=1pt,
+  fontupper=\scriptsize\bfseries\color{mutedGray}}
+
 % Header role pill (for "Research Scientist at NVIDIA")
 \newtcbox{\rolePill}{on line, colback=pillBg, colframe=accentColor,
   boxrule=0.6pt, arc=8pt, outer arc=8pt, boxsep=1.5pt,
@@ -257,33 +267,31 @@
 
 
 \section{\faBriefcase~~Work Experience}
-\vspace{0.4mm}
-{\footnotesize\color{mutedGray}\faUserShield~~\textit{Led as the primary investigator and first author on all projects listed below.}}
-\vspace{-1mm}
+\vspace{-0.4mm}
   \resumeSubHeadingListStart
   \resumeSubheading
       {NVIDIA}{Research Scientist}{Oct. 2025 - Current}
       \resumeItemListStart
-      \item \textbf{Masking Teacher and Reinforcing Student} \,---\, \textit{\color{mutedGray}\small Mask-progressive RL distillation that gradually unmasks teacher weights and uses offline RL with accuracy \& distillation rewards.}
+      \item \leadRole{LEAD}~\textbf{Masking Teacher and Reinforcing Student} \,---\, \textit{\color{mutedGray}\small Mask-progressive RL distillation that gradually unmasks teacher weights and uses offline RL with accuracy \& distillation rewards.}
         \\[0.4mm]\hspace*{-1mm}\venuebadge{CVPR 2026 Accept}~\statusbadge{U.S. Non-Provisional Patent Filed}~\statusbadge{ArXiv Release}~\statusbadge{Internal Release}
         \vspace{1.2mm}
-      \item \textbf{GenRecal} \,{\footnotesize\color{accentDark}[\textsc{Completed}]}\, \textit{\color{mutedGray}\small Cross-architecture VLM distillation via a Recalibrator that aligns heterogeneous token representations regardless of vocabulary, token splits, or index ordering.}
+      \item \leadRole{LEAD}~\textbf{GenRecal} \,{\footnotesize\color{accentDark}[\textsc{Completed}]}\, \textit{\color{mutedGray}\small Cross-architecture VLM distillation via a Recalibrator that aligns heterogeneous token representations regardless of vocabulary, token splits, or index ordering.}
         \\[0.4mm]\hspace*{-1mm}\statusbadge{Paper Under Review}~\statusbadge{Patent Upgraded to Non-Provisional}~\techbadge{Internal Tech Transfer}
         \vspace{1.2mm}
-      \item \textbf{Unified RL \& Imitation Learning for VLMs} \,{\footnotesize\color{accentDark}[\textsc{Completed}]}\, \textit{\color{mutedGray}\small Combines RL with adversarial imitation, using an LLM-based discriminator and multi-teacher guidance to build lightweight yet powerful VLMs.}
+      \item \leadRole{LEAD}~\textbf{Unified RL \& Imitation Learning for VLMs} \,{\footnotesize\color{accentDark}[\textsc{Completed}]}\, \textit{\color{mutedGray}\small Combines RL with adversarial imitation, using an LLM-based discriminator and multi-teacher guidance to build lightweight yet powerful VLMs.}
         \\[0.4mm]\hspace*{-1mm}\venuebadge{NeurIPS 2025 Accept}~\statusbadge{Patent Upgraded to Non-Provisional}~\statusbadge{ArXiv Release}~\statusbadge{Internal Release}
       \resumeItemListEnd
     \dashedDivider
     \resumeSubheading 
       {NVIDIA}{Research Intern}{Oct. 2024 - Oct. 2025}
       \resumeItemListStart
-      \item \textbf{VLsI: Verbalized Layers-to-Interactions} \,---\, \textit{\color{mutedGray}\small Layer-wise distillation using intermediate verbalizers, enabling small VLMs (2B/7B) to align with large VLMs' reasoning progression and outperform GPT-4V.}
+      \item \leadRole{LEAD}~\textbf{VLsI: Verbalized Layers-to-Interactions} \,---\, \textit{\color{mutedGray}\small Layer-wise distillation using intermediate verbalizers, enabling small VLMs (2B/7B) to align with large VLMs' reasoning progression and outperform GPT-4V.}
         \\[0.4mm]\hspace*{-1mm}\venuebadge{CVPR 2025 Accept}~\statusbadge{U.S. Non-Provisional Patent Filed}~\statusbadge{ArXiv Release}~\techbadge{Internal Tech Transfer}
         \vspace{1.2mm}
-      \item \textbf{GenRecal} \,---\, \textit{\color{mutedGray}\small Initial design of the Recalibrator framework for cross-tokenizer VLM distillation; first proof-of-concept and internal demo.}
+      \item \leadRole{LEAD}~\textbf{GenRecal} \,{\footnotesize\color{accentDark}[\textsc{Initiated}]}\, \textit{\color{mutedGray}\small Initial design of the Recalibrator framework for cross-tokenizer VLM distillation; first proof-of-concept and internal demo.}
         \\[0.4mm]\hspace*{-1mm}\statusbadge{U.S. Provisional Patent Filed}~\statusbadge{ArXiv Release}~\statusbadge{Internal Release}
         \vspace{1.2mm}
-      \item \textbf{Unified RL \& Imitation Learning for VLMs} \,---\, \textit{\color{mutedGray}\small First formulation of the RL + adversarial imitation training pipeline; initial experiments and team setup.}
+      \item \leadRole{LEAD}~\textbf{Unified RL \& Imitation Learning for VLMs} \,{\footnotesize\color{accentDark}[\textsc{Initiated}]}\, \textit{\color{mutedGray}\small First formulation of the RL + adversarial imitation training pipeline; initial experiments and team setup.}
         \\[0.4mm]\hspace*{-1mm}\statusbadge{U.S. Provisional Patent Filed}~\statusbadge{Internal Collaboration}
       \resumeItemListEnd 
   \resumeSubHeadingListEnd
