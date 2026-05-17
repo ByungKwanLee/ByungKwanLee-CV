@@ -356,6 +356,10 @@ a.role-pill:hover .role-pill-arrow {
   left: calc(50% - 50vw);
   right: calc(50% - 50vw);
   background:
+    /* Cursor-tracked accent glow - follows mouse for an alive feel */
+    radial-gradient(circle 480px at var(--mouseX, 30%) var(--mouseY, 25%),
+      rgba(156, 223, 0, 0.28),
+      transparent 65%),
     radial-gradient(ellipse 45% 55% at 30% 40%,
       rgba(156, 223, 0, 0.22),
       transparent 70%),
@@ -371,6 +375,7 @@ a.role-pill:hover .role-pill-arrow {
   opacity: 0.95;
   transform: translate3d(0, calc(var(--scrollY, 0px) * 0.2), 0);
   will-change: transform;
+  transition: background-position 0.4s ease;
 }
 
 [data-theme="dark"] .name {
@@ -1126,6 +1131,31 @@ html.js-reveal main > section.is-visible .section-title::before {
   box-shadow: 0 0 6px rgba(79, 184, 166, 0.5);
 }
 
+/* Letter-by-letter cascade for section titles */
+html.js-reveal main > section .section-title .char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(18px) scale(0.85);
+  filter: blur(6px);
+  transition:
+    opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.45s ease;
+  transition-delay: 0s;
+  will-change: transform, opacity, filter;
+}
+html.js-reveal main > section.is-visible .section-title .char {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+  transition-delay: calc(0.20s + var(--char-i, 0) * 0.022s);
+}
+html.js-reveal main > section .section-title .char.space {
+  transform: none;
+  filter: none;
+  opacity: 1;
+}
+
 /* Activity rings scroll-reveal: card scales in, rings fill in sequence */
 html.js-reveal .pub-rings {
   opacity: 0;
@@ -1198,22 +1228,27 @@ html.js-reveal main > section.is-visible .awards-list > li:nth-child(n+5),
 html.js-reveal main > section.is-visible .plain-list > li:nth-child(n+5) { transition-delay: 0.40s; }
 
 /* Publications get an individual scroll-reveal per <li>
-   with alternating slide direction for a cinematic feel */
+   with alternating slide direction + 3D tilt for a cinematic feel */
+html.js-reveal .pub-list {
+  perspective: 1200px;
+  perspective-origin: 50% 30%;
+}
 html.js-reveal .pub-list > li {
   opacity: 0;
+  transform-style: preserve-3d;
   transition:
     opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
 }
 html.js-reveal .pub-list > li:nth-child(odd) {
-  transform: translate(-32px, 28px);
+  transform: translate3d(-32px, 32px, 0) rotateX(-8deg) rotateY(4deg);
 }
 html.js-reveal .pub-list > li:nth-child(even) {
-  transform: translate(32px, 28px);
+  transform: translate3d(32px, 32px, 0) rotateX(-8deg) rotateY(-4deg);
 }
 html.js-reveal .pub-list > li.is-visible {
   opacity: 1;
-  transform: translate(0, 0);
+  transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
 }
 
 html.js-reveal .pub-list > li .pub-thumb img {
@@ -1300,6 +1335,7 @@ html.js-reveal .pub-list > li.is-visible .pub-thumb img {
 
   html.js-reveal main > section,
   html.js-reveal main > section .section-title,
+  html.js-reveal main > section .section-title .char,
   html.js-reveal main > section .project-list > li,
   html.js-reveal main > section .research-list > li,
   html.js-reveal main > section .awards-list > li,

@@ -673,9 +673,112 @@
         li.innerHTML =
           '<span class="ring-swatch" style="background:' + d.color + ';box-shadow:0 0 6px ' + d.shadow + '"></span>' +
           '<span class="ring-label">' + d.label + '</span>' +
-          '<span class="ring-value">' + d.value + '<small> / ' + TOTAL + ' &middot; ' + pct + '%</small></span>';
+          '<span class="ring-value">' +
+            '<span class="ring-value-num" data-target="' + d.value + '">' + d.value + '</span>' +
+            '<small> / ' + TOTAL + ' &middot; ' +
+              '<span class="ring-value-pct" data-target="' + pct + '">' + pct + '</span>%' +
+            '</small>' +
+          '</span>';
         legend.appendChild(li);
       });
+    })();
+
+    /* ===== Letter-by-letter cascade for section titles ===== */
+    (function splitSectionTitles() {
+      if (!document.documentElement.classList.contains('js-reveal')) return;
+      document.querySelectorAll('main > section .section-title').forEach(function(title) {
+        var nodes = Array.from(title.childNodes);
+        var idx = 0;
+        nodes.forEach(function(node) {
+          if (node.nodeType !== Node.TEXT_NODE) return;
+          var text = node.textContent;
+          var frag = document.createDocumentFragment();
+          for (var i = 0; i < text.length; i++) {
+            var ch = text[i];
+            var sp = document.createElement('span');
+            if (ch === ' ' || ch === '\u00A0') {
+              sp.className = 'char space';
+              sp.innerHTML = '&nbsp;';
+            } else {
+              sp.className = 'char';
+              sp.textContent = ch;
+            }
+            sp.style.setProperty('--char-i', idx++);
+            frag.appendChild(sp);
+          }
+          title.replaceChild(frag, node);
+        });
+      });
+    })();
+
+    /* ===== Count-up animation when ring section enters viewport ===== */
+    (function setupCountUp() {
+      if (!('IntersectionObserver' in window)) return;
+      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var section = document.getElementById('publications') ||
+                    document.querySelector('section .pub-rings') &&
+                    document.querySelector('section .pub-rings').closest('section');
+      if (!section) return;
+
+      var targets = [].concat(
+        Array.from(section.querySelectorAll('.ring-value-num, .ring-value-pct')),
+        Array.from(section.querySelectorAll('text.rings-total'))
+      );
+      if (!targets.length) return;
+
+      function countUp(el, target, duration) {
+        if (prefersReduced) { el.textContent = target; return; }
+        var start = performance.now();
+        function step(now) {
+          var t = Math.min(1, (now - start) / duration);
+          var eased = 1 - Math.pow(1 - t, 3);
+          el.textContent = Math.round(target * eased);
+          if (t < 1) requestAnimationFrame(step);
+          else el.textContent = target;
+        }
+        el.textContent = '0';
+        requestAnimationFrame(step);
+      }
+
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (!entry.isIntersecting) return;
+          io.unobserve(entry.target);
+          targets.forEach(function(el, i) {
+            var target = parseInt(el.getAttribute('data-target') || el.textContent, 10);
+            if (isNaN(target)) return;
+            setTimeout(function() { countUp(el, target, 1100); }, 350 + i * 90);
+          });
+        });
+      }, { threshold: 0.25 });
+      io.observe(section);
+    })();
+
+    /* ===== Cursor-following ambient glow on hero (dark mode) ===== */
+    (function setupHeroCursorGlow() {
+      var hero = document.querySelector('.hero');
+      if (!hero) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (window.matchMedia('(hover: none)').matches) return; /* skip on touch devices */
+
+      hero.style.setProperty('--mouseX', '30%');
+      hero.style.setProperty('--mouseY', '25%');
+
+      var ticking = false;
+      var lastX = 30, lastY = 25;
+      function update() {
+        ticking = false;
+        hero.style.setProperty('--mouseX', lastX.toFixed(1) + '%');
+        hero.style.setProperty('--mouseY', lastY.toFixed(1) + '%');
+      }
+      document.addEventListener('mousemove', function(e) {
+        lastX = (e.clientX / window.innerWidth) * 100;
+        lastY = (e.clientY / window.innerHeight) * 100;
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(update);
+        }
+      }, { passive: true });
     })();
   </script>
 
