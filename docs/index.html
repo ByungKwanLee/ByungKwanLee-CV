@@ -161,35 +161,32 @@
 
   <section id="applications">
     <h2 class="section-title"><i class="fa-solid fa-file-arrow-up"></i> Collaboration Requests &amp; Job Applications</h2>
-    <p class="lead">Drop a resume file here (or click to upload), and Gmail compose will open with recipient, subject, and pre-written content. Don't write any content and just send. I review applications based only on the resume, so if you write something not to cold mail, I will never consider it. (Even, please don't write "Hi" and "your name", and "best regards"-like ending mark.)</p>
+    <p class="lead">Click Open Gmail to open Gmail compose with recipient, subject, and content pre-filled. Attach your resume in Gmail and click send. I review applications based only on the resume; additional written content is never considered.</p>
     <div class="application-grid">
       <article class="application-card" data-application-type="University Collaboration with NVIDIA">
         <h3 class="application-title">University Collaboration with NVIDIA</h3>
-        <div class="resume-dropzone" data-upload-role="dropzone" tabindex="0" role="button" aria-label="Upload resume for University Collaboration with NVIDIA">
-          <input class="resume-file-input" data-upload-role="input" type="file" accept=".pdf,.doc,.docx,.txt,.rtf" />
-          <span class="resume-drop-main">Drop resume here</span>
-          <span class="resume-drop-sub">or click to choose file</span>
-        </div>
+        <button class="resume-open-btn" data-upload-role="open-btn" type="button" aria-label="Open Gmail compose for University Collaboration with NVIDIA">
+          <i class="fa-brands fa-google" aria-hidden="true"></i>
+          Open Gmail
+        </button>
         <p class="resume-upload-status" data-upload-role="status" aria-live="polite"></p>
       </article>
 
       <article class="application-card" data-application-type="NVIDIA Research Intern Appllication">
         <h3 class="application-title">NVIDIA Research Intern Appllication</h3>
-        <div class="resume-dropzone" data-upload-role="dropzone" tabindex="0" role="button" aria-label="Upload resume for NVIDIA Research Intern Appllication">
-          <input class="resume-file-input" data-upload-role="input" type="file" accept=".pdf,.doc,.docx,.txt,.rtf" />
-          <span class="resume-drop-main">Drop resume here</span>
-          <span class="resume-drop-sub">or click to choose file</span>
-        </div>
+        <button class="resume-open-btn" data-upload-role="open-btn" type="button" aria-label="Open Gmail compose for NVIDIA Research Intern Appllication">
+          <i class="fa-brands fa-google" aria-hidden="true"></i>
+          Open Gmail
+        </button>
         <p class="resume-upload-status" data-upload-role="status" aria-live="polite"></p>
       </article>
 
       <article class="application-card" data-application-type="NVIDIA Research Full-time Application">
         <h3 class="application-title">NVIDIA Research Full-time Application</h3>
-        <div class="resume-dropzone" data-upload-role="dropzone" tabindex="0" role="button" aria-label="Upload resume for NVIDIA Research Full-time Application">
-          <input class="resume-file-input" data-upload-role="input" type="file" accept=".pdf,.doc,.docx,.txt,.rtf" />
-          <span class="resume-drop-main">Drop resume here</span>
-          <span class="resume-drop-sub">or click to choose file</span>
-        </div>
+        <button class="resume-open-btn" data-upload-role="open-btn" type="button" aria-label="Open Gmail compose for NVIDIA Research Full-time Application">
+          <i class="fa-brands fa-google" aria-hidden="true"></i>
+          Open Gmail
+        </button>
         <p class="resume-upload-status" data-upload-role="status" aria-live="polite"></p>
       </article>
     </div>
@@ -680,21 +677,12 @@
       });
     })();
 
-    (function setupResumeDropSubmission() {
+    (function setupResumeComposeButtons() {
       var cards = Array.from(document.querySelectorAll('.application-card[data-application-type]'));
       if (!cards.length) return;
 
       var primaryRecipient = 'bklee.nano@gmail.com';
       var secondaryRecipient = 'byungkwanl@nvidia.com';
-      var maxFileSize = 15 * 1024 * 1024;
-      var dropConfirmMessage = 'Do you really want to drop this file?\n\nNotice: Gmail compose will open with a pre-filled subject and content. Please attach this file manually and click Send.';
-
-      function formatBytes(bytes) {
-        if (bytes < 1024) return bytes + ' B';
-        var kb = bytes / 1024;
-        if (kb < 1024) return kb.toFixed(1) + ' KB';
-        return (kb / 1024).toFixed(1) + ' MB';
-      }
 
       function setStatus(node, message, tone) {
         node.textContent = message;
@@ -702,13 +690,12 @@
         if (tone) node.classList.add(tone);
       }
 
-      function setBusy(dropzone, input, isBusy) {
-        dropzone.classList.toggle('is-sending', isBusy);
-        dropzone.setAttribute('aria-busy', isBusy ? 'true' : 'false');
-        if (input) input.disabled = isBusy;
+      function setBusy(button, isBusy) {
+        button.classList.toggle('is-sending', isBusy);
+        button.disabled = !!isBusy;
       }
 
-      function buildGmailComposeUrl(applicationType, file) {
+      function buildGmailComposeUrl(applicationType) {
         var subject = '[CV Website] ' + applicationType + ' Resume';
         var body = 'I am applying for ' + applicationType + '.';
         return 'https://mail.google.com/mail/?view=cm&fs=1'
@@ -718,75 +705,29 @@
           + '&body=' + encodeURIComponent(body);
       }
 
-      function submitFile(applicationType, file, statusNode, dropzone, input, source) {
-        if (!file) return;
-        if (file.size > maxFileSize) {
-          setStatus(statusNode, 'File is too large (' + formatBytes(file.size) + '). Max 15 MB.', 'is-error');
-          return;
-        }
-        if (source === 'drop' && !window.confirm(dropConfirmMessage)) {
-          setStatus(statusNode, 'Upload canceled.', 'is-muted');
-          if (input) input.value = '';
-          return;
-        }
-
-        setBusy(dropzone, input, true);
-        setStatus(statusNode, 'Opening Gmail compose for "' + file.name + '" ...', 'is-muted');
-
-        var composeUrl = buildGmailComposeUrl(applicationType, file);
+      function openCompose(applicationType, statusNode, button) {
+        setBusy(button, true);
+        setStatus(statusNode, 'Opening Gmail compose ...', 'is-muted');
+        var composeUrl = buildGmailComposeUrl(applicationType);
         var popup = window.open(composeUrl, '_blank', 'noopener');
         if (!popup) {
+          setBusy(button, false);
           window.location.href = composeUrl;
+          return;
         }
-        setStatus(statusNode, 'Gmail compose opened. Attach "' + file.name + '" and click Send.', 'is-success');
-        setBusy(dropzone, input, false);
-        if (input) input.value = '';
+        setStatus(statusNode, 'Gmail compose opened. Attach your resume and click Send.', 'is-success');
+        setBusy(button, false);
       }
 
       cards.forEach(function(card) {
         var applicationType = card.getAttribute('data-application-type') || 'Application';
-        var dropzone = card.querySelector('[data-upload-role="dropzone"]');
-        var input = card.querySelector('[data-upload-role="input"]');
+        var openBtn = card.querySelector('[data-upload-role="open-btn"]');
         var statusNode = card.querySelector('[data-upload-role="status"]');
-        if (!dropzone || !input || !statusNode) return;
+        if (!openBtn || !statusNode) return;
 
-        function startPicker() {
-          if (input.disabled) return;
-          input.click();
-        }
-
-        dropzone.addEventListener('click', function() {
-          startPicker();
-        });
-        dropzone.addEventListener('keydown', function(e) {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            startPicker();
-          }
-        });
-
-        input.addEventListener('change', function() {
-          submitFile(applicationType, input.files && input.files[0], statusNode, dropzone, input, 'picker');
-        });
-
-        dropzone.addEventListener('dragenter', function(e) {
-          e.preventDefault();
-          dropzone.classList.add('is-dragging');
-        });
-        dropzone.addEventListener('dragover', function(e) {
-          e.preventDefault();
-          dropzone.classList.add('is-dragging');
-        });
-        dropzone.addEventListener('dragleave', function(e) {
-          if (!dropzone.contains(e.relatedTarget)) {
-            dropzone.classList.remove('is-dragging');
-          }
-        });
-        dropzone.addEventListener('drop', function(e) {
-          e.preventDefault();
-          dropzone.classList.remove('is-dragging');
-          var file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
-          submitFile(applicationType, file, statusNode, dropzone, input, 'drop');
+        openBtn.addEventListener('click', function() {
+          if (openBtn.disabled) return;
+          openCompose(applicationType, statusNode, openBtn);
         });
       });
     })();
