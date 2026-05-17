@@ -45,6 +45,12 @@
 \definecolor{highlightColor}{HTML}{DDE9E5} % very pale sage for marker-style highlights
 \definecolor{pillBg}{HTML}{EAF2EE}         % soft pill background for header role
 \definecolor{nvidiaGreen}{HTML}{76B900}    % official NVIDIA brand green
+\definecolor{techBlueBg}{HTML}{E5EEFB}     % pale blue background for tech transfer badge
+\definecolor{techBlue}{HTML}{3B82F6}       % blue border for tech transfer badge
+\definecolor{techBlueDark}{HTML}{1D4ED8}   % deep blue text for tech transfer badge
+\definecolor{arxivPinkBg}{HTML}{FCE7F0}    % pale pink background for arxiv badge
+\definecolor{arxivPink}{HTML}{EC4899}      % pink border for arxiv badge
+\definecolor{arxivPinkDark}{HTML}{BE185D}  % deep magenta text for arxiv badge
 
 % Page layout
 \setlength{\multicolsep}{0pt} 
@@ -110,11 +116,17 @@
   left=4pt, right=4pt, top=1.5pt, bottom=1.5pt,
   fontupper=\bfseries\color{primaryColor}}
 
-% Tech-transfer / high-impact badge (stronger emphasis than statusbadge)
-\newtcbox{\techbadge}{on line, colback=accentColor!35, colframe=accentDark,
-  boxrule=0.8pt, arc=2pt, outer arc=2pt, boxsep=1pt, left=3pt, right=3pt,
+% Tech-transfer badge (blue, distinctive)
+\newtcbox{\techbadge}{on line, colback=techBlueBg, colframe=techBlue,
+  boxrule=0.5pt, arc=2pt, outer arc=2pt, boxsep=1pt, left=3pt, right=3pt,
   top=1pt, bottom=1pt,
-  fontupper=\footnotesize\bfseries\color{accentDark}}
+  fontupper=\footnotesize\bfseries\color{techBlueDark}}
+
+% ArXiv release badge (pink, preprint indicator)
+\newtcbox{\arxivbadge}{on line, colback=arxivPinkBg, colframe=arxivPink,
+  boxrule=0.4pt, arc=2pt, outer arc=2pt, boxsep=1pt, left=3pt, right=3pt,
+  top=1pt, bottom=1pt,
+  fontupper=\footnotesize\bfseries\color{arxivPinkDark}}
 
 % Role badges: Lead (filled, strong) vs Co-Author (outlined, subtle)
 \newtcbox{\leadRole}{on line, colback=accentDark, colframe=accentDark,
@@ -273,23 +285,23 @@
       {NVIDIA}{Research Scientist}{Oct. 2025 - Current}
       \resumeItemListStart
       \item \leadRole{LEAD}~\textbf{Masking Teacher and Reinforcing Student} \,{\footnotesize\color{accentDark}[\textsc{Completed}]}\, \textit{\color{mutedGray}\small Mask-progressive RL distillation that gradually unmasks teacher weights and uses offline RL with accuracy \& distillation rewards.}
-        \\[0.4mm]\hspace*{-1mm}\venuebadge{CVPR 2026 Accept}~\statusbadge{U.S. Non-Provisional Patent Filed}~\statusbadge{ArXiv Release}~\statusbadge{Internal Release}
+        \\[0.4mm]\hspace*{-1mm}\venuebadge{CVPR 2026 Accept}~\statusbadge{U.S. Non-Provisional Patent Filed}~\arxivbadge{ArXiv Release}~\statusbadge{Internal Release}
         \vspace{1.2mm}
       \item \leadRole{LEAD}~\textbf{GenRecal} \,{\footnotesize\color{accentDark}[\textsc{Completed}]}\, \textit{\color{mutedGray}\small Cross-architecture VLM distillation via a Recalibrator that aligns heterogeneous token representations regardless of vocabulary, token splits, or index ordering.}
-        \\[0.4mm]\hspace*{-1mm}\statusbadge{Under Review}~\statusbadge{U.S. Patent Upgraded to Non-Provisional}~\venuebadge{Internal Tech Transfer}
+        \\[0.4mm]\hspace*{-1mm}\statusbadge{Under Review}~\statusbadge{U.S. Patent Upgraded to Non-Provisional}~\techbadge{Internal Tech Transfer}
         \vspace{1.2mm}
       \item \leadRole{LEAD}~\textbf{Unified RL \& Imitation Learning for VLMs} \,{\footnotesize\color{accentDark}[\textsc{Completed}]}\, \textit{\color{mutedGray}\small Combines RL with adversarial imitation, using an LLM-based discriminator and multi-teacher guidance to build lightweight yet powerful VLMs.}
-        \\[0.4mm]\hspace*{-1mm}\venuebadge{NeurIPS 2025 Accept}~\statusbadge{U.S. Patent Upgraded to Non-Provisional}~\statusbadge{ArXiv Release}~\statusbadge{Internal Release}
+        \\[0.4mm]\hspace*{-1mm}\venuebadge{NeurIPS 2025 Accept}~\statusbadge{U.S. Patent Upgraded to Non-Provisional}~\arxivbadge{ArXiv Release}~\statusbadge{Internal Release}
       \resumeItemListEnd
     \dashedDivider
     \resumeSubheading 
       {NVIDIA}{Research Intern}{Oct. 2024 - Oct. 2025}
       \resumeItemListStart
       \item \leadRole{LEAD}~\textbf{VLsI: Verbalized Layers-to-Interactions} \,{\footnotesize\color{accentDark}[\textsc{Completed}]}\, \textit{\color{mutedGray}\small Layer-wise distillation using intermediate verbalizers, enabling small VLMs (2B/7B) to align with large VLMs' reasoning progression and outperform GPT-4V.}
-        \\[0.4mm]\hspace*{-1mm}\venuebadge{CVPR 2025 Accept}~\statusbadge{U.S. Non-Provisional Patent Filed}~\statusbadge{ArXiv Release}~\statusbadge{Internal Release}~\venuebadge{Internal Tech Transfer}
+        \\[0.4mm]\hspace*{-1mm}\venuebadge{CVPR 2025 Accept}~\statusbadge{U.S. Non-Provisional Patent Filed}~\arxivbadge{ArXiv Release}~\statusbadge{Internal Release}~\techbadge{Internal Tech Transfer}
         \vspace{1.2mm}
       \item \leadRole{LEAD}~\textbf{GenRecal} \,{\footnotesize\color{accentDark}[\textsc{Initiated}]}\, \textit{\color{mutedGray}\small Initial design of the Recalibrator framework for cross-tokenizer VLM distillation; first proof-of-concept and internal demo.}
-        \\[0.4mm]\hspace*{-1mm}\statusbadge{U.S. Provisional Patent Filed}~\statusbadge{ArXiv Release}~\statusbadge{Internal Release}
+        \\[0.4mm]\hspace*{-1mm}\statusbadge{U.S. Provisional Patent Filed}~\arxivbadge{ArXiv Release}~\statusbadge{Internal Release}
         \vspace{1.2mm}
       \item \leadRole{LEAD}~\textbf{Unified RL \& Imitation Learning for VLMs} \,{\footnotesize\color{accentDark}[\textsc{Initiated}]}\, \textit{\color{mutedGray}\small First formulation of the RL + adversarial imitation training pipeline; initial experiments and team setup.}
         \\[0.4mm]\hspace*{-1mm}\statusbadge{U.S. Provisional Patent Filed}

@@ -628,9 +628,8 @@ section:first-of-type { border-top: none; }
   border-radius: 3px;
   border: 0.5px solid;
 }
-.badge.venue,
-.badge.tech  { background: var(--badge-bg); border-color: var(--accent); color: var(--accent-dark); }
-.badge.status { background: var(--box-bg); border-color: var(--border); color: var(--muted); }
+.badge.venue   { background: var(--badge-bg); border-color: var(--accent); color: var(--accent-dark); }
+.badge.status  { background: var(--box-bg); border-color: var(--border); color: var(--muted); }
 .badge.patent {
   background: linear-gradient(135deg,
     rgba(118, 185,   0, 0.12),
@@ -644,8 +643,26 @@ section:first-of-type { border-top: none; }
   font-size: 10px;
   opacity: 0.95;
 }
-[data-theme="dark"] .badge.venue,
-[data-theme="dark"] .badge.tech  { box-shadow: 0 0 8px rgba(79, 184, 166, 0.25); }
+/* Internal Tech Transfer (blue) */
+.badge.tech {
+  background: linear-gradient(135deg,
+    rgba(59, 130, 246, 0.10),
+    rgba(59, 130, 246, 0.03));
+  border-color: rgba(59, 130, 246, 0.60);
+  color: #1D4ED8;
+  font-weight: 700;
+}
+/* ArXiv Release (pink) */
+.badge.arxiv {
+  background: linear-gradient(135deg,
+    rgba(236,  72, 153, 0.10),
+    rgba(236,  72, 153, 0.03));
+  border-color: rgba(236, 72, 153, 0.55);
+  color: #BE185D;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .badge.venue  { box-shadow: 0 0 8px rgba(79, 184, 166, 0.25); }
 [data-theme="dark"] .badge.patent {
   background: linear-gradient(135deg,
     rgba(156, 223, 0, 0.18),
@@ -655,6 +672,26 @@ section:first-of-type { border-top: none; }
   box-shadow:
     0 0 8px  rgba(156, 223, 0, 0.32),
     0 0 16px rgba(156, 223, 0, 0.12);
+}
+[data-theme="dark"] .badge.tech {
+  background: linear-gradient(135deg,
+    rgba(96, 165, 250, 0.18),
+    rgba(96, 165, 250, 0.06));
+  border-color: rgba(96, 165, 250, 0.65);
+  color: #93C5FD;
+  box-shadow:
+    0 0 8px  rgba( 96, 165, 250, 0.32),
+    0 0 16px rgba( 96, 165, 250, 0.12);
+}
+[data-theme="dark"] .badge.arxiv {
+  background: linear-gradient(135deg,
+    rgba(244, 114, 182, 0.18),
+    rgba(244, 114, 182, 0.06));
+  border-color: rgba(244, 114, 182, 0.60);
+  color: #F9A8D4;
+  box-shadow:
+    0 0 7px  rgba(244, 114, 182, 0.28),
+    0 0 14px rgba(244, 114, 182, 0.10);
 }
 [data-theme="dark"] .role-tag.lead { box-shadow: 0 0 10px rgba(123, 212, 196, 0.4); }
 
