@@ -909,11 +909,12 @@ section:first-of-type { border-top: none; }
   display: block;
   margin-top: 5px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: inherit;
   font-style: normal;
   font-weight: 500;
   line-height: 1.3;
   text-align: center;
+  opacity: 0.86;
 }
 
 .section-title {
@@ -1889,7 +1890,7 @@ section:first-of-type { border-top: none; }
   .content { padding: 0 14px 40px; }
   .hero-quote-section { max-width: 500px; padding: 8px 0 12px; }
   .hero-quote-text { font-size: 15.5px; padding: 9px 11px; }
-  .hero-quote-author { font-size: 11.5px; margin-top: 4px; }
+  .hero-quote-author { font-size: inherit; margin-top: 4px; }
   .hero-grid { grid-template-columns: 1fr; gap: 18px; justify-items: center; }
   .hero-photo { width: 150px; height: 150px; justify-self: center; margin: 0 auto; }
   .hero-text { text-align: center; margin-left: 0; width: 100%; max-width: 100%; }
@@ -1970,7 +1971,7 @@ section:first-of-type { border-top: none; }
   }
   .hero-quote-section { max-width: 100%; }
   .hero-quote-text { font-size: 14.5px; }
-  .hero-quote-author { font-size: 11px; }
+  .hero-quote-author { font-size: inherit; }
 }
 
 @media (max-width: 1280px) {
