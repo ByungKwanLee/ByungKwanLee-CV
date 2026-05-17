@@ -1830,7 +1830,7 @@ section:first-of-type { border-top: none; }
   .hero { padding: 30px 14px 22px; }
   .content { padding: 0 14px 40px; }
   .hero-grid { grid-template-columns: 1fr; gap: 18px; justify-items: center; }
-  .hero-photo { width: 150px; height: 150px; }
+  .hero-photo { width: 150px; height: 150px; justify-self: center; margin: 0 auto; }
   .hero-text { text-align: center; margin-left: 0; width: 100%; max-width: 100%; }
   .application-grid { grid-template-columns: 1fr; }
   .application-card { padding: 10px; }
