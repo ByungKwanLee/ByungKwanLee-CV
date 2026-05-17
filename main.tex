@@ -116,6 +116,19 @@
   left=9pt, right=9pt, top=2pt, bottom=2pt,
   fontupper=\small\color{primaryColor}}
 
+% Dashed separator (e.g., between roles at the same company)
+\newcommand{\dashedDivider}[1][0.18]{%
+  \par\vspace{1.5mm}%
+  \noindent\hspace*{\fill}%
+  \tikz \draw[dashed, color=accentDark!55, line width=0.5pt,
+              dash pattern=on 3pt off 2.5pt] (0,0) -- (#1\linewidth,0);%
+  \hspace*{2mm}{\footnotesize\color{mutedGray}\faAngleDoubleUp~~\textit{Promoted within NVIDIA}}\hspace*{2mm}%
+  \tikz \draw[dashed, color=accentDark!55, line width=0.5pt,
+              dash pattern=on 3pt off 2.5pt] (0,0) -- (#1\linewidth,0);%
+  \hspace*{\fill}\par
+  \vspace{1mm}%
+}
+
 % Custom commands
 \newcommand{\resumeItem}[2]{
   \item{
@@ -247,25 +260,26 @@
       {NVIDIA}{Research Scientist}{Oct. 2025 - Current}
       \resumeItemListStart
       \item \textbf{Masking Teacher and Reinforcing Student} \,{\footnotesize\color{accentDark}[\textsc{New}]}\, \textit{\color{mutedGray}\small Mask-progressive RL distillation that gradually unmasks teacher weights and uses offline RL with accuracy \& distillation rewards.}
-        \\[0.4mm]\hspace*{-1mm}\venuebadge{CVPR 2026 Accept}~\statusbadge{U.S. Patent (Prov.) Filed}~\statusbadge{arXiv Release}~\statusbadge{Internal Release}
+        \\[0.4mm]\hspace*{-1mm}\venuebadge{CVPR 2026 Accept}~\statusbadge{U.S. Non-Provisional Patent Filed}~\statusbadge{ArXiv Release}~\statusbadge{Internal Release}
         \vspace{1.2mm}
       \item \textbf{GenRecal} \,{\footnotesize\color{accentDark}[\textsc{Continued}]}\, \textit{\color{mutedGray}\small Cross-architecture VLM distillation via a Recalibrator that aligns heterogeneous token representations regardless of vocabulary, token splits, or index ordering.}
-        \\[0.4mm]\hspace*{-1mm}\statusbadge{Paper Under Review}~\statusbadge{Patent Upgrade: Prov. $\rightarrow$ Non-Prov.}~\statusbadge{Internal Tech Transfer}
+        \\[0.4mm]\hspace*{-1mm}\statusbadge{Paper Under Review}~\statusbadge{Patent Upgrade: Provisional $\rightarrow$ Non-Provisional}~\statusbadge{Internal Tech Transfer}
         \vspace{1.2mm}
       \item \textbf{Unified RL \& Imitation Learning for VLMs} \,{\footnotesize\color{accentDark}[\textsc{Continued}]}\, \textit{\color{mutedGray}\small Combines RL with adversarial imitation, using an LLM-based discriminator and multi-teacher guidance to build lightweight yet powerful VLMs.}
-        \\[0.4mm]\hspace*{-1mm}\venuebadge{NeurIPS 2025 Accept}~\statusbadge{arXiv Release}~\statusbadge{Internal Public Release}
+        \\[0.4mm]\hspace*{-1mm}\venuebadge{NeurIPS 2025 Accept}~\statusbadge{Patent Upgrade: Provisional $\rightarrow$ Non-Provisional}~\statusbadge{ArXiv Release}~\statusbadge{Internal Public Release}
       \resumeItemListEnd
+    \dashedDivider
     \resumeSubheading 
       {NVIDIA}{Research Intern}{Oct. 2024 - Oct. 2025}
       \resumeItemListStart
       \item \textbf{VLsI: Verbalized Layers-to-Interactions} \,{\footnotesize\color{accentDark}[\textsc{Lead}]}\, \textit{\color{mutedGray}\small Layer-wise distillation using intermediate verbalizers, enabling small VLMs (2B/7B) to align with large VLMs' reasoning progression and outperform GPT-4V.}
-        \\[0.4mm]\hspace*{-1mm}\venuebadge{CVPR 2025 Accept}~\statusbadge{U.S. Patent (Non-Prov.) Filed}~\statusbadge{arXiv Release}~\statusbadge{Internal Tech Transfer}
+        \\[0.4mm]\hspace*{-1mm}\venuebadge{CVPR 2025 Accept}~\statusbadge{U.S. Non-Provisional Patent Filed}~\statusbadge{ArXiv Release}~\statusbadge{Internal Tech Transfer}
         \vspace{1.2mm}
       \item \textbf{GenRecal} \,{\footnotesize\color{accentDark}[\textsc{Initiated}]}\, \textit{\color{mutedGray}\small Initial design of the Recalibrator framework for cross-tokenizer VLM distillation; first proof-of-concept and internal demo.}
-        \\[0.4mm]\hspace*{-1mm}\statusbadge{U.S. Patent (Prov.) Filed}~\statusbadge{arXiv Release}~\statusbadge{Internal Release}
+        \\[0.4mm]\hspace*{-1mm}\statusbadge{U.S. Provisional Patent Filed}~\statusbadge{ArXiv Release}~\statusbadge{Internal Release}
         \vspace{1.2mm}
       \item \textbf{Unified RL \& Imitation Learning for VLMs} \,{\footnotesize\color{accentDark}[\textsc{Initiated}]}\, \textit{\color{mutedGray}\small First formulation of the RL + adversarial imitation training pipeline; initial experiments and team setup.}
-        \\[0.4mm]\hspace*{-1mm}\statusbadge{U.S. Patent (Prov.) Filed}~\statusbadge{Internal Collaboration}
+        \\[0.4mm]\hspace*{-1mm}\statusbadge{U.S. Provisional Patent Filed}~\statusbadge{Internal Collaboration}
       \resumeItemListEnd 
   \resumeSubHeadingListEnd
 \vspace{-6mm}
@@ -335,7 +349,7 @@
 \item \textbf{``Masking Teacher and Reinforcing Student for Distilling Vision-Language Models''}
 \\\vspace{1mm}\underline{Byung-Kwan Lee}, Yu-Chiang Frank Wang, Ryo Hachiuma
 \\\vspace{2mm}IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2026 [\href{https://www.arxiv.org/abs/2512.22238}{Paper}]
-\\\vspace{2mm}U.S. Patent Application Filed (Provisional), NVIDIA Research, 2026
+\\\vspace{2mm}U.S. Patent Application Filed (Non-Provisional), NVIDIA Research, 2026
 
 \item \textbf{``Recursive Think-Answer Process for LLMs and VLMs''}
 \\\vspace{1mm}\underline{Byung-Kwan Lee}*, Youngchae Chee*, Yong Man Ro
@@ -349,7 +363,7 @@
 \item \textbf{``Unified Reinforcement and Imitation Learning for Vision-Language Models''}
 \\\vspace{1mm}\underline{Byung-Kwan Lee}, Ryo Hachiuma, Yong Man Ro, Yu-Chiang Frank Wang, Yueh-Hua Wu
 \\\vspace{2mm}Neural Information Processing Systems (NeurIPS), 2025 [\href{https://arxiv.org/abs/2510.19307}{Paper}][\href{https://byungkwanlee.github.io/RIL-page/}{Project}]
-\\\vspace{2mm}U.S. Patent Application Filed (Provisional), NVIDIA Research, 2025
+\\\vspace{2mm}U.S. Patent Application Filed (Non-Provisional), NVIDIA Research, 2025
 
 \item \textbf{``MultiVerse: A Multi-Turn Conversation Benchmark for Evaluating Large Vision and Language Models''}
 \\\vspace{1mm}Young-Jun Lee, \underline{Byung-Kwan Lee}, Jianshu Zhang, Yechan Hwang, Byungsoo Ko, Han-Gyu Kim, Dongyu Yao, Xuankun Rong, Eojin Joo, Seung-Ho Han, Bowon Ko, Ho-Jin Choi
