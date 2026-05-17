@@ -281,10 +281,10 @@
 
       <figure class="pub-radar">
         <div class="radar-head">Author Role &amp; Impact</div>
-        <svg id="pubRadar" class="radar-svg" viewBox="-200 -135 400 280"
+        <svg id="pubRadar" class="radar-svg" viewBox="-225 -130 450 220"
              role="img" aria-labelledby="radarTitle" aria-describedby="radarDesc">
           <title id="radarTitle">Author role and impact profile</title>
-          <desc id="radarDesc">First Author 48%, Top-Tier Venue 67%, NVIDIA Patent 19%, Middle Author 24%, Co-First 29% across 21 publications</desc>
+          <desc id="radarDesc">First Author 10, NVIDIA Patent 4, Corresponding Author 1 across 21 publications</desc>
         </svg>
         <figcaption class="radar-caption">Profile across <strong>21</strong> publications</figcaption>
       </figure>
@@ -612,11 +612,9 @@
       if (!mount) return;
 
       var data = [
-        { label: 'First Author',     value: 10 },
-        { label: 'Top-Tier Venue',   value: 14 },
-        { label: 'NVIDIA Patent',    value:  4 },
-        { label: 'Middle Author',    value:  5 },
-        { label: 'Co-First (Equal)', value:  6 }
+        { label: 'First Author',         value: 10 },
+        { label: 'NVIDIA Patent',        value:  4 },
+        { label: 'Corresponding Author', value:  1 }
       ];
       var TOTAL = 21;
       var R = 95;
