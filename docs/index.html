@@ -646,6 +646,7 @@
         arc.setAttribute('stroke-dashoffset', circ.toFixed(2));
         arc.setAttribute('transform', 'rotate(-90)');
         arc.setAttribute('class', 'ring-arc ring-arc--' + d.key);
+        arc.style.setProperty('--circ', circ.toFixed(2));
         arc.style.setProperty('--target-offset', targetOffset.toFixed(2));
         arc.style.setProperty('--ring-shadow', d.shadow);
         mount.appendChild(arc);
