@@ -124,39 +124,119 @@ ul, ol { padding-left: 1.4em; }
 .nav-links a { color: var(--muted); padding: 4px 2px; border-bottom: 2px solid transparent; transition: all 0.15s; }
 .nav-links a:hover { color: var(--accent-dark); border-bottom-color: var(--accent); text-decoration: none; }
 
-/* CV download button */
-.cv-download {
+/* Hero CV download button (prominent, with PDF logo) */
+.hero-actions {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.cv-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 6px 12px;
-  border-radius: 999px;
-  border: 1.2px solid var(--accent);
-  background: var(--badge-bg);
-  color: var(--accent-dark);
+  gap: 14px;
+  padding: 10px 18px 10px 12px;
+  border-radius: 14px;
+  border: 1.5px solid var(--border);
+  background: linear-gradient(135deg, var(--bg-soft), var(--box-bg));
+  color: var(--primary);
   text-decoration: none;
-  transition: all 0.2s ease;
-  margin-right: 4px;
+  box-shadow: 0 1px 2px rgba(15, 20, 25, 0.06), 0 6px 18px rgba(15, 20, 25, 0.04);
+  transition: transform 0.18s ease, border-color 0.18s ease,
+              box-shadow 0.18s ease, background 0.18s ease;
+  position: relative;
+  overflow: hidden;
 }
-.cv-download:hover {
-  background: var(--accent);
-  color: white;
+.cv-btn:hover {
   text-decoration: none;
-  border-color: var(--accent-dark);
-  transform: translateY(-1px);
-}
-[data-theme="dark"] .cv-download {
-  color: var(--accent-dark);
-  background: rgba(79, 184, 166, 0.05);
-  box-shadow: none;
-}
-[data-theme="dark"] .cv-download:hover {
-  background: var(--accent);
-  color: var(--bg);
   border-color: var(--accent);
-  box-shadow: 0 0 10px rgba(79, 184, 166, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(15, 20, 25, 0.08), 0 10px 28px rgba(79, 184, 166, 0.18);
+}
+
+.cv-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #E53E3E, #C53030);
+  color: #fff;
+  font-size: 18px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 2px 6px rgba(229, 62, 62, 0.35);
+  flex-shrink: 0;
+}
+.cv-btn-icon i { transform: translateY(0.5px); }
+
+.cv-btn-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+}
+.cv-btn-title {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  color: var(--primary);
+}
+.cv-btn-meta {
+  margin-top: 3px;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.01em;
+}
+.cv-btn-meta code {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.92em;
+  background: transparent;
+  padding: 0;
+  color: var(--accent-dark);
+  font-weight: 600;
+}
+
+.cv-btn-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 11px;
+  margin-left: 4px;
+  transition: transform 0.25s ease, color 0.18s ease, border-color 0.18s ease,
+              background 0.18s ease;
+}
+.cv-btn:hover .cv-btn-arrow {
+  color: var(--accent-dark);
+  border-color: var(--accent);
+  background: var(--badge-bg);
+  transform: translateY(2px);
+}
+
+[data-theme="dark"] .cv-btn {
+  background: linear-gradient(135deg, rgba(22, 30, 28, 0.85), rgba(15, 21, 23, 0.85));
+  border-color: rgba(79, 184, 166, 0.25);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+[data-theme="dark"] .cv-btn:hover {
+  border-color: var(--accent);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.4),
+    0 10px 30px rgba(79, 184, 166, 0.22),
+    0 0 0 1px rgba(79, 184, 166, 0.15);
+}
+[data-theme="dark"] .cv-btn-icon {
+  background: linear-gradient(135deg, #F56565, #C53030);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 0 14px rgba(229, 62, 62, 0.4);
 }
 
 /* Theme toggle button */
@@ -786,8 +866,11 @@ section:first-of-type { border-top: none; }
   .awards-list li { flex-direction: column; gap: 2px; }
   .award-year { margin-left: 0; }
   .role-pill { font-size: 13px; padding: 6px 14px; }
-  .cv-download { padding: 5px 9px; font-size: 12px; }
-  .cv-download-label { display: none; }
+  .cv-btn { gap: 10px; padding: 8px 14px 8px 10px; }
+  .cv-btn-icon { width: 32px; height: 32px; font-size: 16px; }
+  .cv-btn-title { font-size: 13.5px; }
+  .cv-btn-meta { font-size: 10.5px; }
+  .cv-btn-arrow { display: none; }
 
   .pub-list > li {
     grid-template-columns: 1fr;
@@ -818,7 +901,8 @@ section:first-of-type { border-top: none; }
 .hero .name,
 .hero .subtitle,
 .hero .role-pill,
-.hero .contact-row {
+.hero .contact-row,
+.hero .hero-actions {
   opacity: 0;
   animation: heroFadeUp 0.75s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
@@ -828,6 +912,7 @@ section:first-of-type { border-top: none; }
 .hero .role-pill                   { animation-delay: 0.55s; }
 .hero .contact-row:nth-of-type(1)  { animation-delay: 0.70s; }
 .hero .contact-row:nth-of-type(2)  { animation-delay: 0.85s; }
+.hero .hero-actions                { animation-delay: 1.00s; }
 
 /* Scroll-reveal sections (only active when JS is available) */
 html.js-reveal main > section,
@@ -920,7 +1005,8 @@ html.js-reveal .pub-list > li.is-visible {
   .hero .name,
   .hero .subtitle,
   .hero .role-pill,
-  .hero .contact-row { animation: none; opacity: 1; }
+  .hero .contact-row,
+  .hero .hero-actions { animation: none; opacity: 1; }
 
   html.js-reveal main > section,
   html.js-reveal main > section .section-title,
