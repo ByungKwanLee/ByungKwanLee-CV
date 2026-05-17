@@ -754,32 +754,6 @@
       io.observe(section);
     })();
 
-    /* ===== Cursor-following ambient glow on hero (dark mode) ===== */
-    (function setupHeroCursorGlow() {
-      var hero = document.querySelector('.hero');
-      if (!hero) return;
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      if (window.matchMedia('(hover: none)').matches) return; /* skip on touch devices */
-
-      hero.style.setProperty('--mouseX', '30%');
-      hero.style.setProperty('--mouseY', '25%');
-
-      var ticking = false;
-      var lastX = 30, lastY = 25;
-      function update() {
-        ticking = false;
-        hero.style.setProperty('--mouseX', lastX.toFixed(1) + '%');
-        hero.style.setProperty('--mouseY', lastY.toFixed(1) + '%');
-      }
-      document.addEventListener('mousemove', function(e) {
-        lastX = (e.clientX / window.innerWidth) * 100;
-        lastY = (e.clientY / window.innerHeight) * 100;
-        if (!ticking) {
-          ticking = true;
-          requestAnimationFrame(update);
-        }
-      }, { passive: true });
-    })();
   </script>
 
 </body>

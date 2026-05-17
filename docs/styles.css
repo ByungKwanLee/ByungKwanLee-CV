@@ -356,10 +356,6 @@ a.role-pill:hover .role-pill-arrow {
   left: calc(50% - 50vw);
   right: calc(50% - 50vw);
   background:
-    /* Cursor-tracked accent glow - follows mouse for an alive feel */
-    radial-gradient(circle 480px at var(--mouseX, 30%) var(--mouseY, 25%),
-      rgba(156, 223, 0, 0.28),
-      transparent 65%),
     radial-gradient(ellipse 45% 55% at 30% 40%,
       rgba(156, 223, 0, 0.22),
       transparent 70%),
@@ -375,7 +371,6 @@ a.role-pill:hover .role-pill-arrow {
   opacity: 0.95;
   transform: translate3d(0, calc(var(--scrollY, 0px) * 0.2), 0);
   will-change: transform;
-  transition: background-position 0.4s ease;
 }
 
 [data-theme="dark"] .name {
