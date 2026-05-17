@@ -962,9 +962,10 @@ section:first-of-type { border-top: none; }
   border-color: var(--accent-dark);
   box-shadow: 0 0 0 2px rgba(79, 128, 119, 0.25);
 }
-.resume-open-btn i {
-  color: #d94841;
-  font-size: 14px;
+.resume-open-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
 }
 .resume-open-btn.is-sending,
 .resume-open-btn:disabled {
