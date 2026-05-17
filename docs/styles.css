@@ -778,16 +778,6 @@ section:first-of-type { border-top: none; }
   letter-spacing: 0.18em;
 }
 
-.rings-caption {
-  margin-top: 4px;
-  text-align: center;
-  font-size: 10.5px;
-  color: var(--muted);
-  letter-spacing: 0.01em;
-  position: relative;
-}
-.rings-caption strong { color: var(--accent-dark); font-weight: 700; }
-
 .ring-track {
   transition: opacity 0.3s ease;
 }
