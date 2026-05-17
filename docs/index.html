@@ -145,6 +145,11 @@
 
 <main class="content">
 
+  <section class="hero-quote-section" aria-label="Quote">
+    <blockquote class="hero-quote-text">&ldquo;Standing on the shoulders of giants.&rdquo;</blockquote>
+    <p class="hero-quote-author">&mdash; Isaac Newton</p>
+  </section>
+
   <!-- &mdash;&mdash; Research Interest &mdash;&mdash; -->
   <section id="research">
     <h2 class="section-title"><i class="fa-solid fa-lightbulb"></i> Research Interest</h2>
@@ -162,7 +167,7 @@
 
   <section id="applications">
     <h2 class="section-title"><i class="fa-solid fa-file-arrow-up"></i> Collaboration Requests &amp; Job Applications</h2>
-    <p class="lead">If your research interests align with mine and you already have a draft idea to discuss and develop together, feel free to reach out for collaboration. For university collaboration, alignment is the primary criterion. We are also actively looking for talented internship and full-time candidates. Preferred qualifications are strong first-author publications at top-tier main-track conferences (not workshops) and deep expertise in one area. In my view, a strong profile means at least seven first-author papers at top-tier venues (CVPR, ICCV, ECCV, NeurIPS, ICLR, ICML, ACL, EMNLP). Other conferences are not considered. Since my current intern already passed this condition, I therefore maintain a high hiring bar. If you meet these criteria, click &quot;Open Gmail&quot; to open a pre-filled draft, attach your resume, and send. Applications are reviewed based on the resume only; additional email wording (e.g., &quot;Hi&quot;, &quot;Best regards&quot;, or self-promotion) is not considered. Please keep it as a brief cold email.</p>
+    <p class="lead">If your research interests align with mine and you already have a draft idea to discuss and develop together, feel free to reach out for collaboration. For university collaboration, alignment is the primary criterion. We are also actively looking for talented internship and full-time candidates. Preferred qualifications are strong first or co-first author publications at top-tier main-track conferences (not workshops) and deep expertise in one area. In my view, a strong profile means at least seven first or co-first author papers at top-tier venues (CVPR, ICCV, ECCV, NeurIPS, ICLR, ICML, ACL, EMNLP). Other conferences and journals are not considered. Since my current intern already passed this condition, I therefore maintain a high hiring bar. If you meet these criteria, click &quot;Open Gmail&quot; to open a pre-filled draft, attach your resume, and send. Applications are reviewed based on the resume only; additional email wording (e.g., &quot;Hi&quot;, &quot;Best regards&quot;, or self-promotion) is not considered. Please keep it as a brief cold email.</p>
     <div class="application-grid">
       <article class="application-card" data-application-type="University Collaboration with NVIDIA">
         <h3 class="application-title">University Collaboration with NVIDIA</h3>
@@ -212,7 +217,6 @@
           <span class="phase">[Completed]</span>
           <span class="dash">&mdash;</span>
           <em class="desc">Mask-progressive RL distillation that gradually unmasks teacher weights and uses offline RL with accuracy &amp; distillation rewards.</em>
-          <div class="impact-line"><strong>Impact:</strong> 4 outputs &middot; 1 top-tier acceptance, 1 non-provisional patent filing, 1 arXiv release, 1 internal release.</div>
           <div class="badges">
             <span class="badge venue">CVPR 2026 Accept</span>
             <span class="badge patent"><i class="fa-solid fa-shield-halved"></i>U.S. Non-Provisional Patent Filed</span>
@@ -227,7 +231,6 @@
           <span class="phase">[Completed]</span>
           <span class="dash">&mdash;</span>
           <em class="desc">Cross-architecture VLM distillation via a Recalibrator that aligns heterogeneous token representations regardless of vocabulary, token splits, or index ordering.</em>
-          <div class="impact-line"><strong>Impact:</strong> 3 outputs &middot; 1 under-review submission, 1 non-provisional patent upgrade, 1 internal tech transfer.</div>
           <div class="badges">
             <span class="badge venue">Under Review</span>
             <span class="badge patent"><i class="fa-solid fa-shield-halved"></i>U.S. Patent Upgraded to Non-Provisional</span>
@@ -241,7 +244,6 @@
           <span class="phase">[Completed]</span>
           <span class="dash">&mdash;</span>
           <em class="desc">Combines RL with adversarial imitation, using an LLM-based discriminator and multi-teacher guidance to build lightweight yet powerful VLMs.</em>
-          <div class="impact-line"><strong>Impact:</strong> 4 outputs &middot; 1 top-tier acceptance, 1 non-provisional patent upgrade, 1 arXiv release, 1 internal release.</div>
           <div class="badges">
             <span class="badge venue">NeurIPS 2025 Accept</span>
             <span class="badge patent"><i class="fa-solid fa-shield-halved"></i>U.S. Patent Upgraded to Non-Provisional</span>
@@ -269,7 +271,6 @@
           <span class="phase">[Completed]</span>
           <span class="dash">&mdash;</span>
           <em class="desc">Layer-wise distillation using intermediate verbalizers, enabling small VLMs (2B/7B) to align with large VLMs' reasoning progression and outperform GPT-4V.</em>
-          <div class="impact-line"><strong>Impact:</strong> 5 outputs &middot; 1 top-tier acceptance, 1 non-provisional patent filing, 1 arXiv release, 1 internal release, 1 internal tech transfer.</div>
           <div class="badges">
             <span class="badge venue">CVPR 2025 Accept</span>
             <span class="badge patent"><i class="fa-solid fa-shield-halved"></i>U.S. Non-Provisional Patent Filed</span>
@@ -285,7 +286,6 @@
           <span class="phase">[Initiated]</span>
           <span class="dash">&mdash;</span>
           <em class="desc">Initial design of the Recalibrator framework for cross-tokenizer VLM distillation; first proof-of-concept and internal demo.</em>
-          <div class="impact-line"><strong>Impact:</strong> 3 outputs &middot; 1 provisional patent filing, 1 arXiv release, 1 internal release.</div>
           <div class="badges">
             <span class="badge status provisional">U.S. Provisional Patent Filed</span>
             <span class="badge arxiv">ArXiv Release</span>
@@ -299,7 +299,6 @@
           <span class="phase">[Initiated]</span>
           <span class="dash">&mdash;</span>
           <em class="desc">First formulation of the RL + adversarial imitation training pipeline; initial experiments and team setup.</em>
-          <div class="impact-line"><strong>Impact:</strong> 1 output &middot; 1 provisional patent filing.</div>
           <div class="badges">
             <span class="badge status provisional">U.S. Provisional Patent Filed</span>
           </div>
@@ -685,6 +684,37 @@
       });
     })();
 
+    (function setupCursorLinkGlow() {
+      var supportsFinePointer = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      if (!supportsFinePointer) return;
+
+      var glow = document.createElement('span');
+      glow.className = 'cursor-glow';
+      glow.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(glow);
+
+      function updateHoverState(target) {
+        var isLink = !!(target && target.closest && target.closest('a[href]'));
+        document.body.classList.toggle('cursor-link-hover', isLink);
+      }
+
+      window.addEventListener('mousemove', function(evt) {
+        glow.style.left = evt.clientX + 'px';
+        glow.style.top = evt.clientY + 'px';
+        updateHoverState(evt.target);
+      }, { passive: true });
+
+      window.addEventListener('mouseout', function(evt) {
+        if (!evt.relatedTarget) {
+          document.body.classList.remove('cursor-link-hover');
+        }
+      });
+
+      window.addEventListener('blur', function() {
+        document.body.classList.remove('cursor-link-hover');
+      });
+    })();
+
     (function setupResumeComposeButtons() {
       var cards = Array.from(document.querySelectorAll('.application-card[data-application-type]'));
       if (!cards.length) return;
@@ -800,6 +830,12 @@
           timezone: 'Etc/UTC',
           theme: chartTheme(),
           style: '1',
+          studies: [
+            'StochasticRSI@tv-basicstudies'
+          ],
+          overrides: {
+            'mainSeriesProperties.priceAxisProperties.log': true
+          },
           locale: 'en',
           allow_symbol_change: false,
           hide_top_toolbar: false,
