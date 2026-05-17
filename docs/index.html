@@ -681,8 +681,7 @@
       var cards = Array.from(document.querySelectorAll('.application-card[data-application-type]'));
       if (!cards.length) return;
 
-      var primaryRecipient = 'bklee.nano@gmail.com';
-      var secondaryRecipient = 'byungkwanl@nvidia.com';
+      var primaryRecipient = 'byungkwanl@nvidia.com';
 
       function setStatus(node, message, tone) {
         node.textContent = message;
@@ -696,11 +695,10 @@
       }
 
       function buildGmailComposeUrl(applicationType) {
-        var subject = '[CV Website] ' + applicationType + ' Resume';
-        var body = 'I am applying for ' + applicationType + '.';
+        var subject = '[Request] ' + applicationType;
+        var body = 'I am applying for ' + applicationType + '.\n\nAttached file is [YOUR ATTACHED FILE NAME]';
         return 'https://mail.google.com/mail/?view=cm&fs=1'
           + '&to=' + encodeURIComponent(primaryRecipient)
-          + '&cc=' + encodeURIComponent(secondaryRecipient)
           + '&su=' + encodeURIComponent(subject)
           + '&body=' + encodeURIComponent(body);
       }
