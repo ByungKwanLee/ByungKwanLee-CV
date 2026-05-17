@@ -36,6 +36,12 @@
 
 % Color definitions
 \definecolor{darkblue}{RGB}{0,0,139}
+\definecolor{primaryColor}{HTML}{1F2A44}   % deep navy for headings/name
+\definecolor{accentColor}{HTML}{76B900}    % NVIDIA green for accents/links
+\definecolor{accentDark}{HTML}{4F7C00}     % darker green for hyperlinks (better contrast)
+\definecolor{mutedGray}{HTML}{4A5568}      % subtle gray for subtitles
+\definecolor{badgeBg}{HTML}{EAF3D9}        % soft green background for venue badges
+\definecolor{boxBg}{HTML}{F4F6F8}          % soft neutral for paper-description boxes
 
 % Page layout
 \setlength{\multicolsep}{0pt} 
@@ -51,9 +57,9 @@
 \usepackage[hidelinks]{hyperref}
 \hypersetup{
     colorlinks=true,
-    linkcolor=darkblue,
-    filecolor=darkblue,
-    urlcolor=darkblue,
+    linkcolor=accentDark,
+    filecolor=accentDark,
+    urlcolor=accentDark,
 }
 
 % Custom box settings
@@ -82,8 +88,18 @@
 
 % Section formatting
 \titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
+  \vspace{-2pt}\bfseries\raggedright\large\color{primaryColor}
+}{}{0em}{}[\vspace{-2pt}{\color{accentColor}\titlerule[1.2pt]} \vspace{-7pt}]
+
+% Venue badge command (for paper venues like CVPR 2026)
+\newtcbox{\venuebadge}{on line, colback=badgeBg, colframe=accentColor,
+  boxrule=0.4pt, arc=2pt, outer arc=2pt, boxsep=1pt, left=3pt, right=3pt,
+  top=1pt, bottom=1pt, fontupper=\footnotesize\bfseries\color{accentDark}}
+
+% Patent / status badge (neutral gray)
+\newtcbox{\statusbadge}{on line, colback=boxBg, colframe=mutedGray!50,
+  boxrule=0.4pt, arc=2pt, outer arc=2pt, boxsep=1pt, left=3pt, right=3pt,
+  top=1pt, bottom=1pt, fontupper=\footnotesize\bfseries\color{mutedGray}}
 
 % Custom commands
 \newcommand{\resumeItem}[2]{
@@ -103,8 +119,8 @@
 \newcommand{\resumeEduheading}[4]{
 \vspace{0.5mm}\item
     \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
-        \textbf{#1} & \textit{\footnotesize{#4}} \\
-        \textit{\small{#3}} &  \footnotesize{#2}\\
+        \textbf{\color{primaryColor}#1} & \textit{\footnotesize{\color{mutedGray}#4}} \\
+        \textit{\small{#3}} &  \footnotesize{\color{mutedGray}#2}\\
     \end{tabular*}
     \vspace{-2.4mm}
 }
@@ -112,7 +128,7 @@
 \newcommand{\resumeSubheading}[3]{
 \vspace{0.5mm}\item
     \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
-        \textbf{\large{#1}}, \color{black}{\textbf{\textit{#2}}} & \textit{\footnotesize{#3}} 
+        \textbf{\large{\color{primaryColor}#1}}~{\color{accentColor}$\bullet$}~{\color{accentDark}\textbf{\textit{#2}}} & \textit{\footnotesize{\color{mutedGray}#3}}
     \end{tabular*}
     \vspace{-1.4mm}
 }
@@ -120,7 +136,7 @@
 \newcommand{\resumeProject}[2]{
 \vspace{0.5mm}\item
     \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
-        \text{#1} & \textit{\footnotesize{#2}}
+        \text{#1} & \textit{\footnotesize{\color{mutedGray}#2}}
     \end{tabular*}
     \vspace{-1mm}
 }
@@ -170,45 +186,52 @@
 
 % Header
 \begin{center}
-    {\Huge\textbf{Byung-Kwan Lee}}
+    {\Huge\textbf{\color{primaryColor}Byung-Kwan Lee}}
 \end{center}
-\vspace{-6mm}
-
-\begin{center}
-    \small{
-    \href{mailto:bklee.nano@gmail.com}{bklee.nano@gmail.com} | \href{mailto:byungkwanl@nvidia.com}{byungkwanl@nvidia.com} | 
-    \href{https://sites.google.com/view/byungkwanlee}{Homepage}
-    }
-\end{center}
-\vspace{-6mm}
-
-\begin{center}
-    \small{
-    \socialicon{\faLinkedin} \href{https://www.linkedin.com/in/byung-kwan-lee-82333716a/}{LinkedIn} | 
-    \socialicon{\faGithub} \href{https://github.com/ByungKwanLee}{Github} | 
-    \ieeeicon{\includegraphics[height=1.3em]{ieee_collabratec_icon.png}} \href{https://scholar.google.com/citations?user=ueXCYIcAAAAJ&hl=ko}{Google Scholar}
-    }
-\end{center}
-
 \vspace{-4mm}
 
-\section{\textbf{Research Interest}}
+\begin{center}
+    {\small\color{mutedGray}\textbf{Research Scientist} at \textbf{\color{accentDark}NVIDIA}~$\cdot$~Ph.D., KAIST Electrical Engineering}
+\end{center}
+\vspace{-2mm}
+
+\begin{center}
+    {\color{accentColor}\rule{0.35\textwidth}{0.6pt}}
+\end{center}
+\vspace{-2mm}
+
+\begin{center}
+    \small{
+    \socialicon{\faEnvelope}~\href{mailto:bklee.nano@gmail.com}{bklee.nano@gmail.com}~$\cdot$~\socialicon{\faEnvelope}~\href{mailto:byungkwanl@nvidia.com}{byungkwanl@nvidia.com}~$\cdot$~\socialicon{\faGlobe}~\href{https://sites.google.com/view/byungkwanlee}{Homepage}
+    }
+\end{center}
+\vspace{-3mm}
+
+\begin{center}
+    \small{
+    \socialicon{\faLinkedin}~\href{https://www.linkedin.com/in/byung-kwan-lee-82333716a/}{LinkedIn}~$\cdot$~\socialicon{\faGithub}~\href{https://github.com/ByungKwanLee}{Github}~$\cdot$~\ieeeicon{\includegraphics[height=1.3em]{ieee_collabratec_icon.png}}~\href{https://scholar.google.com/citations?user=ueXCYIcAAAAJ&hl=ko}{Google Scholar}~$\cdot$~\socialicon{\faSmile}~\href{https://huggingface.co/BK-Lee}{Huggingface}
+    }
+\end{center}
+
+\vspace{-3mm}
+
+\section{\faLightbulb~~Research Interest}
 \vspace{1mm}
 \small{
-Aiming to build high-performing, efficient-size vision language models by merging vision or reasoning modules, modifying transformer architectures to propagation rule, and distilling cross-model or self-model knowledge! Main research interests are distillation, pruning, compression as well as data/training/inference efficiency.
+My research centers on building \textbf{high-performing, efficient-size Vision-Language Models (VLMs)} along three complementary axes: \textbf{(i) Merge} -- integrating vision and reasoning modules across heterogeneous architectures (e.g., recalibration of cross-tokenizer representations, mixture-of-intelligence); \textbf{(ii) Modify} -- redesigning transformer propagation rules for layer-wise interaction, latent traversal, and rationale-guided decoding; \textbf{(iii) Distill} -- transferring cross-model and self-model knowledge via reinforcement learning, adversarial imitation, and progressive teacher masking. Broader interests span \textbf{distillation, RL, pruning, compression}, and \textbf{data/training/inference efficiency} for large-scale multimodal foundation models.
 }
 \vspace{-2mm}
 
 
 
-\section{\textbf{Work Experience}}
+\section{\faBriefcase~~Work Experience}
 \vspace{-0.4mm}
   \resumeSubHeadingListStart
   \resumeSubheading
       {NVIDIA}{Research Scientist}{Oct. 2025 - Current}
       \resumeItemListStart
       \item GenRecal: Generation after Recalibration from Large to Small Vision-Language Models
-        \begin{tcolorbox}[colback=gray!10, colframe=gray!40, boxrule=0.3pt, left=4pt, right=4pt, top=2pt, bottom=2pt, arc=1.5pt, outer arc=1.5pt]
+        \begin{tcolorbox}[colback=boxBg, colframe=accentColor!60, boxrule=0.4pt, left=5pt, right=4pt, top=2pt, bottom=2pt, arc=2pt, outer arc=2pt, leftrule=2pt]
           \small\textit{A general-purpose VLM distillation framework using a Recalibrator to align heterogeneous token representations, enabling cross-architecture knowledge transfer regardless of vocabulary size, token splits, or index ordering.}
         \end{tcolorbox}
         \vspace{0.5mm}
@@ -218,7 +241,7 @@ Aiming to build high-performing, efficient-size vision language models by mergin
           \item Internal Collaboration, Internal Tech Transfer
         \end{itemize}
       \item Unified Reinforcement and Imitation Learning for Vision-Language Models
-        \begin{tcolorbox}[colback=gray!10, colframe=gray!40, boxrule=0.3pt, left=4pt, right=4pt, top=2pt, bottom=2pt, arc=1.5pt, outer arc=1.5pt]
+        \begin{tcolorbox}[colback=boxBg, colframe=accentColor!60, boxrule=0.4pt, left=5pt, right=4pt, top=2pt, bottom=2pt, arc=2pt, outer arc=2pt, leftrule=2pt]
           \small\textit{A training algorithm combining reinforcement learning with adversarial imitation learning, using an LLM-based discriminator and multi-teacher guidance to build lightweight yet powerful VLMs.}
         \end{tcolorbox}
         \vspace{0.5mm}
@@ -227,7 +250,7 @@ Aiming to build high-performing, efficient-size vision language models by mergin
           \item Internal Release, Internal Collaboration
         \end{itemize}
       \item Masking Teacher and Reinforcing Student for Distilling Vision-Language Models
-        \begin{tcolorbox}[colback=gray!10, colframe=gray!40, boxrule=0.3pt, left=4pt, right=4pt, top=2pt, bottom=2pt, arc=1.5pt, outer arc=1.5pt]
+        \begin{tcolorbox}[colback=boxBg, colframe=accentColor!60, boxrule=0.4pt, left=5pt, right=4pt, top=2pt, bottom=2pt, arc=2pt, outer arc=2pt, leftrule=2pt]
           \small\textit{A mask-progressive RL distillation framework that gradually unmasks teacher weights to stabilize knowledge transfer, combined with offline RL using accuracy and distillation rewards.}
         \end{tcolorbox}
         \vspace{0.5mm}
@@ -242,7 +265,7 @@ Aiming to build high-performing, efficient-size vision language models by mergin
       {NVIDIA}{Research Intern}{Oct. 2024 - Oct. 2025}
       \resumeItemListStart
       \item VLsI: Verbalized Layers-to-Interactions from Large to Small Vision Language Models
-        \begin{tcolorbox}[colback=gray!10, colframe=gray!40, boxrule=0.3pt, left=4pt, right=4pt, top=2pt, bottom=2pt, arc=1.5pt, outer arc=1.5pt]
+        \begin{tcolorbox}[colback=boxBg, colframe=accentColor!60, boxrule=0.4pt, left=5pt, right=4pt, top=2pt, bottom=2pt, arc=2pt, outer arc=2pt, leftrule=2pt]
           \small\textit{A layer-wise distillation method using intermediate verbalizers to map features into natural language space, enabling small VLMs (2B/7B) to align with large VLMs' reasoning progression and outperform GPT-4V.}
         \end{tcolorbox}
         \vspace{0.5mm}
@@ -253,7 +276,7 @@ Aiming to build high-performing, efficient-size vision language models by mergin
           \item Internal Release, Internal Collaboration, Internal Tech Transfer
         \end{itemize}
       \item GenRecal: Generation after Recalibration from Large to Small Vision-Language Models
-        \begin{tcolorbox}[colback=gray!10, colframe=gray!40, boxrule=0.3pt, left=4pt, right=4pt, top=2pt, bottom=2pt, arc=1.5pt, outer arc=1.5pt]
+        \begin{tcolorbox}[colback=boxBg, colframe=accentColor!60, boxrule=0.4pt, left=5pt, right=4pt, top=2pt, bottom=2pt, arc=2pt, outer arc=2pt, leftrule=2pt]
           \small\textit{A general-purpose VLM distillation framework using a Recalibrator to align heterogeneous token representations, enabling cross-architecture knowledge transfer regardless of vocabulary size, token splits, or index ordering.}
         \end{tcolorbox}
         \vspace{0.5mm}
@@ -263,7 +286,7 @@ Aiming to build high-performing, efficient-size vision language models by mergin
           \item Internal Release
         \end{itemize}
       \item Unified Reinforcement and Imitation Learning for Vision-Language Models
-        \begin{tcolorbox}[colback=gray!10, colframe=gray!40, boxrule=0.3pt, left=4pt, right=4pt, top=2pt, bottom=2pt, arc=1.5pt, outer arc=1.5pt]
+        \begin{tcolorbox}[colback=boxBg, colframe=accentColor!60, boxrule=0.4pt, left=5pt, right=4pt, top=2pt, bottom=2pt, arc=2pt, outer arc=2pt, leftrule=2pt]
           \small\textit{A training algorithm combining reinforcement learning with adversarial imitation learning, using an LLM-based discriminator and multi-teacher guidance to build lightweight yet powerful VLMs.}
         \end{tcolorbox}
         \vspace{0.5mm}
@@ -275,7 +298,7 @@ Aiming to build high-performing, efficient-size vision language models by mergin
   \resumeSubHeadingListEnd
 \vspace{-6mm}
 
-\section{\textbf{Education}}
+\section{\faGraduationCap~~Education}
 \vspace{-0.4mm}
 \resumeSubHeadingListStart
 
@@ -303,18 +326,18 @@ Aiming to build high-performing, efficient-size vision language models by mergin
 \resumeSubHeadingListEnd
 \vspace{-6mm}
 
-\section{\textbf{Paper (16 Accepts \& 3 Pending \& 2 Tech Reports)}}
+\section{\faBookOpen~~Publications \textnormal{\small\color{mutedGray}(16 Accepts $\cdot$ 3 Pending $\cdot$ 2 Tech Reports)}}
 \vspace{0.2mm}
 \small{
 \begin{enumerate}[leftmargin=*, labelsep=0.5em, align=left, itemindent=0em, label={\textbf{[\arabic*]}}]
 
 \item \textbf{``Hide to See: Reasoning-prefix Masking for Visual-anchored Thinking in VLM Distillation''}
 \\\vspace{1mm}Seonghoon Yu, Dongjun Nam, \underline{Byung-Kwan Lee}, Jeany Son
-\\\vspace{2mm}Under Review
+\\\vspace{2mm}Under Review [\href{https://arxiv.org/abs/2605.11651}{Paper}][\href{https://github.com/Seonghoon-Yu/Masking-KD}{Code}]
 
 \item \textbf{``Why and When Visual Token Pruning Fails? A Study on Relevant Visual Information Shift in MLLMs Decoding''}
 \\\vspace{1mm}Jiwan Kim, Kibum Kim, Wonjoong Kim, \underline{Byung-Kwan Lee}, Chanyoung Park
-\\\vspace{2mm}Under Review
+\\\vspace{2mm}Under Review [\href{https://arxiv.org/abs/2604.12358}{Paper}]
 
 \item \textbf{``GenRecal: Generation after Recalibration from Large to Small Vision Language Models''}
 \\\vspace{1mm}\underline{Byung-Kwan Lee}, Ryo Hachiuma, Yong Man Ro, Yu-Chiang Frank Wang, and Yueh-Hua Wu
@@ -328,7 +351,7 @@ Aiming to build high-performing, efficient-size vision language models by mergin
 
 \item \textbf{``Recursive Think-Answer Process for LLMs and VLMs''}
 \\\vspace{1mm}\underline{Byung-Kwan Lee}*, Youngchae Chee*, Yong Man Ro
-\\\vspace{2mm}IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Findings, 2026
+\\\vspace{2mm}IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Findings, 2026 [\href{https://arxiv.org/abs/2603.02099}{Paper}][\href{https://litcoderr.github.io/rtap_page/}{Project}]
 
 \item \textbf{``RefineBench: Evaluating Refinement Capability in Language Models''}
 \\\vspace{1mm}Young-Jun Lee*, Seungone Kim*, \underline{Byung-Kwan Lee}, Minkyeong Moon, Yechan Hwang, Jong Myoung Kim, Graham Neubig, Sean Welleck, Ho-Jin Choi
@@ -408,7 +431,7 @@ Aiming to build high-performing, efficient-size vision language models by mergin
 \end{enumerate}
 }
 
-\section{\textbf{Reviewer Experience}}
+\section{\faUserCheck~~Reviewer Experience}
 \vspace{-0.4mm}
 \resumeSubHeadingListStart
 
@@ -459,7 +482,7 @@ Aiming to build high-performing, efficient-size vision language models by mergin
 \resumeSubHeadingListEnd
 
 
-\section{\textbf{Invited Talks and Awards}}
+\section{\faTrophy~~Invited Talks and Awards}
 \vspace{-0.4mm}
 \resumeSubHeadingListStart
 
