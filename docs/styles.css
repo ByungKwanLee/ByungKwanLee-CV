@@ -126,11 +126,11 @@ ul, ol { padding-left: 1.4em; }
 .nav-links a:hover { color: var(--accent-dark); border-bottom-color: var(--accent); text-decoration: none; }
 
 /* Hero CV view button (compact, opens PDF in browser viewer) */
-.hero-actions {
-  margin-top: 14px;
+.role-row {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
 }
 .cv-btn {
   display: inline-flex;
@@ -1040,19 +1040,17 @@ section:first-of-type { border-top: none; }
 .hero .hero-photo,
 .hero .name,
 .hero .subtitle,
-.hero .role-pill,
-.hero .contact-row,
-.hero .hero-actions {
+.hero .role-row,
+.hero .contact-row {
   opacity: 0;
   animation: heroFadeUp 0.75s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 .hero .hero-photo                  { animation-name: heroFadeIn; animation-delay: 0.05s; }
 .hero .name                        { animation-delay: 0.20s; }
 .hero .subtitle                    { animation-delay: 0.40s; }
-.hero .role-pill                   { animation-delay: 0.55s; }
-.hero .contact-row:nth-of-type(1)  { animation-delay: 0.70s; }
-.hero .contact-row:nth-of-type(2)  { animation-delay: 0.85s; }
-.hero .hero-actions                { animation-delay: 1.00s; }
+.hero .role-row                    { animation-delay: 0.55s; }
+.hero .contact-row:nth-of-type(1)  { animation-delay: 0.75s; }
+.hero .contact-row:nth-of-type(2)  { animation-delay: 0.90s; }
 
 /* Scroll-reveal sections (only active when JS is available) */
 html.js-reveal main > section,
@@ -1221,9 +1219,8 @@ html.js-reveal .pub-list > li.is-visible .pub-thumb img {
   .hero .hero-photo,
   .hero .name,
   .hero .subtitle,
-  .hero .role-pill,
-  .hero .contact-row,
-  .hero .hero-actions { animation: none; opacity: 1; }
+  .hero .role-row,
+  .hero .contact-row { animation: none; opacity: 1; }
 
   html.js-reveal main > section,
   html.js-reveal main > section .section-title,
