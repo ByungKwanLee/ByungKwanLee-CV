@@ -134,12 +134,12 @@
 
 % Dashed separator (e.g., between roles at the same company)
 \newcommand{\dashedDivider}[1][1.0]{%
-  \par\vspace{1.5mm}%
-  \begin{center}%
+  \par\vspace{-2mm}%
+  \noindent\hspace*{\fill}%
   \tikz \draw[dashed, color=accentDark!55, line width=0.5pt,
               dash pattern=on 3pt off 2.5pt] (0,0) -- (#1\linewidth,0);%
-  \end{center}%
-  \vspace{0.5mm}%
+  \hspace*{\fill}\par
+  \vspace{-1mm}%
 }
 
 % Custom commands
@@ -292,7 +292,7 @@
         \\[0.4mm]\hspace*{-1mm}\statusbadge{U.S. Provisional Patent Filed}~\statusbadge{ArXiv Release}~\statusbadge{Internal Release}
         \vspace{1.2mm}
       \item \leadRole{LEAD}~\textbf{Unified RL \& Imitation Learning for VLMs} \,{\footnotesize\color{accentDark}[\textsc{Initiated}]}\, \textit{\color{mutedGray}\small First formulation of the RL + adversarial imitation training pipeline; initial experiments and team setup.}
-        \\[0.4mm]\hspace*{-1mm}\statusbadge{U.S. Provisional Patent Filed}~\statusbadge{Internal Collaboration}
+        \\[0.4mm]\hspace*{-1mm}\statusbadge{U.S. Provisional Patent Filed}
       \resumeItemListEnd 
   \resumeSubHeadingListEnd
 \vspace{-6mm}
