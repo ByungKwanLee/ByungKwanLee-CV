@@ -505,6 +505,32 @@ section:first-of-type { border-top: none; }
 .project-list .dash { color: var(--muted); margin: 0 4px; }
 .project-list .desc { color: var(--muted); font-style: italic; font-size: 14.5px; }
 
+.proj-link {
+  color: var(--primary);
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.proj-link strong { color: inherit; font-weight: 700; }
+.proj-link .ext-icon {
+  font-size: 0.72em;
+  opacity: 0.55;
+  margin-left: 3px;
+  vertical-align: 1px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.proj-link:hover {
+  color: var(--accent-dark);
+  text-decoration: none;
+  border-bottom-color: var(--accent);
+}
+.proj-link:hover .ext-icon { opacity: 1; transform: translate(1px, -1px); }
+[data-theme="dark"] .proj-link:hover {
+  color: var(--accent-dark);
+  text-shadow: 0 0 8px rgba(123, 212, 196, 0.35);
+  border-bottom-color: var(--accent);
+}
+
 .role-tag {
   display: inline-block;
   font-size: 10.5px;
