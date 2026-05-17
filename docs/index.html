@@ -277,14 +277,17 @@
         </tbody>
       </table>
 
-      <figure class="pub-radar">
-        <div class="radar-head">Author Role &amp; Impact</div>
-        <svg id="pubRadar" class="radar-svg" viewBox="-225 -130 450 220"
-             role="img" aria-labelledby="radarTitle" aria-describedby="radarDesc">
-          <title id="radarTitle">Author role and impact profile</title>
-          <desc id="radarDesc">First Author 10, NVIDIA Patent 4, Corresponding Author 1 across 21 publications</desc>
-        </svg>
-        <figcaption class="radar-caption">Profile across <strong>21</strong> publications</figcaption>
+      <figure class="pub-rings">
+        <div class="rings-head">Publication Profile</div>
+        <div class="rings-body">
+          <svg id="pubRings" class="rings-svg" viewBox="-95 -95 190 190"
+               role="img" aria-labelledby="ringsTitle" aria-describedby="ringsDesc">
+            <title id="ringsTitle">Author role distribution in publications</title>
+            <desc id="ringsDesc">First Author 10/21, NVIDIA Patent 4/21, Corresponding Author 1/21</desc>
+          </svg>
+          <ul id="ringsLegend" class="rings-legend"></ul>
+        </div>
+        <figcaption class="rings-caption">Across <strong>21</strong> publications</figcaption>
       </figure>
     </div>
 
@@ -605,92 +608,76 @@
       update();
     })();
 
-    (function renderPubRadar() {
-      var mount = document.getElementById('pubRadar');
-      if (!mount) return;
+    (function renderPubRings() {
+      var mount = document.getElementById('pubRings');
+      var legend = document.getElementById('ringsLegend');
+      if (!mount || !legend) return;
 
       var data = [
-        { label: 'First Author',         value: 10 },
-        { label: 'NVIDIA Patent',        value:  4 },
-        { label: 'Corresponding Author', value:  1 }
+        { label: 'First Author',         value: 10, color: '#9CDF00', shadow: 'rgba(156, 223,   0, 0.55)', radius: 78, width: 13, key: 'lime' },
+        { label: 'NVIDIA Patent',        value:  4, color: '#4FB8A6', shadow: 'rgba( 79, 184, 166, 0.55)', radius: 58, width: 13, key: 'teal' },
+        { label: 'Corresponding Author', value:  1, color: '#FFB454', shadow: 'rgba(255, 180,  84, 0.55)', radius: 38, width: 13, key: 'amber' }
       ];
       var TOTAL = 21;
-      var R = 95;
-      var LABEL_R = R + 24;
-      var N = data.length;
       var NS = 'http://www.w3.org/2000/svg';
 
-      function angleOf(i) { return Math.PI / 2 - (2 * Math.PI * i) / N; }
-      function pt(i, r) {
-        var a = angleOf(i);
-        return [Math.cos(a) * r, -Math.sin(a) * r];
-      }
+      data.forEach(function(d) {
+        var circ = 2 * Math.PI * d.radius;
+        var dashLen = circ * (d.value / TOTAL);
+        var targetOffset = circ - dashLen;
 
-      [0.25, 0.5, 0.75, 1.0].forEach(function(f) {
-        var pts = [];
-        for (var i = 0; i < N; i++) {
-          var p = pt(i, R * f);
-          pts.push(p[0].toFixed(1) + ',' + p[1].toFixed(1));
-        }
-        var poly = document.createElementNS(NS, 'polygon');
-        poly.setAttribute('points', pts.join(' '));
-        poly.setAttribute('class', 'radar-grid');
-        mount.appendChild(poly);
+        var track = document.createElementNS(NS, 'circle');
+        track.setAttribute('cx', 0);
+        track.setAttribute('cy', 0);
+        track.setAttribute('r', d.radius);
+        track.setAttribute('fill', 'none');
+        track.setAttribute('stroke', d.color);
+        track.setAttribute('stroke-width', d.width);
+        track.setAttribute('class', 'ring-track');
+        track.style.opacity = '0.14';
+        mount.appendChild(track);
+
+        var arc = document.createElementNS(NS, 'circle');
+        arc.setAttribute('cx', 0);
+        arc.setAttribute('cy', 0);
+        arc.setAttribute('r', d.radius);
+        arc.setAttribute('fill', 'none');
+        arc.setAttribute('stroke', d.color);
+        arc.setAttribute('stroke-width', d.width);
+        arc.setAttribute('stroke-linecap', 'round');
+        arc.setAttribute('stroke-dasharray', circ.toFixed(2));
+        arc.setAttribute('stroke-dashoffset', circ.toFixed(2));
+        arc.setAttribute('transform', 'rotate(-90)');
+        arc.setAttribute('class', 'ring-arc ring-arc--' + d.key);
+        arc.style.setProperty('--target-offset', targetOffset.toFixed(2));
+        arc.style.setProperty('--ring-shadow', d.shadow);
+        mount.appendChild(arc);
       });
 
-      for (var i = 0; i < N; i++) {
-        var p = pt(i, R);
-        var line = document.createElementNS(NS, 'line');
-        line.setAttribute('x1', 0);
-        line.setAttribute('y1', 0);
-        line.setAttribute('x2', p[0].toFixed(1));
-        line.setAttribute('y2', p[1].toFixed(1));
-        line.setAttribute('class', 'radar-axis');
-        mount.appendChild(line);
-      }
+      var total = document.createElementNS(NS, 'text');
+      total.setAttribute('x', 0);
+      total.setAttribute('y', -1);
+      total.setAttribute('text-anchor', 'middle');
+      total.setAttribute('class', 'rings-total');
+      total.textContent = TOTAL;
+      mount.appendChild(total);
 
-      var dataPts = data.map(function(d, i) {
-        var p = pt(i, R * (d.value / TOTAL));
-        return p[0].toFixed(1) + ',' + p[1].toFixed(1);
-      });
-      var area = document.createElementNS(NS, 'polygon');
-      area.setAttribute('points', dataPts.join(' '));
-      area.setAttribute('class', 'radar-area');
-      mount.appendChild(area);
+      var sub = document.createElementNS(NS, 'text');
+      sub.setAttribute('x', 0);
+      sub.setAttribute('y', 14);
+      sub.setAttribute('text-anchor', 'middle');
+      sub.setAttribute('class', 'rings-sub');
+      sub.textContent = 'PAPERS';
+      mount.appendChild(sub);
 
-      data.forEach(function(d, i) {
-        var p = pt(i, R * (d.value / TOTAL));
-        var dot = document.createElementNS(NS, 'circle');
-        dot.setAttribute('cx', p[0].toFixed(1));
-        dot.setAttribute('cy', p[1].toFixed(1));
-        dot.setAttribute('r', 3.5);
-        dot.setAttribute('class', 'radar-dot');
-        mount.appendChild(dot);
-      });
-
-      data.forEach(function(d, i) {
-        var a = angleOf(i);
-        var x = Math.cos(a) * LABEL_R;
-        var y = -Math.sin(a) * LABEL_R;
-        var anchor = 'middle';
-        if (Math.cos(a) > 0.15) anchor = 'start';
-        else if (Math.cos(a) < -0.15) anchor = 'end';
-
-        var label = document.createElementNS(NS, 'text');
-        label.setAttribute('x', x.toFixed(1));
-        label.setAttribute('y', y.toFixed(1));
-        label.setAttribute('text-anchor', anchor);
-        label.setAttribute('class', 'radar-label');
-        label.textContent = d.label;
-        mount.appendChild(label);
-
-        var pct = document.createElementNS(NS, 'text');
-        pct.setAttribute('x', x.toFixed(1));
-        pct.setAttribute('y', (y + 12).toFixed(1));
-        pct.setAttribute('text-anchor', anchor);
-        pct.setAttribute('class', 'radar-pct');
-        pct.textContent = Math.round((d.value / TOTAL) * 100) + '% (' + d.value + ')';
-        mount.appendChild(pct);
+      data.forEach(function(d) {
+        var pct = Math.round((d.value / TOTAL) * 100);
+        var li = document.createElement('li');
+        li.innerHTML =
+          '<span class="ring-swatch" style="background:' + d.color + ';box-shadow:0 0 6px ' + d.shadow + '"></span>' +
+          '<span class="ring-label">' + d.label + '</span>' +
+          '<span class="ring-value">' + d.value + '<small> / ' + TOTAL + ' &middot; ' + pct + '%</small></span>';
+        legend.appendChild(li);
       });
     })();
   </script>

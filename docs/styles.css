@@ -686,115 +686,152 @@ section:first-of-type { border-top: none; }
   .pub-summary { grid-template-columns: 1fr; }
 }
 
-.pub-radar {
+/* Activity-rings style publication profile (Apple Watch-inspired) */
+.pub-rings {
   margin: 0;
-  padding: 14px 12px 12px;
+  padding: 14px 14px 12px;
   border: 1px solid var(--border);
   border-radius: 14px;
   background: var(--bg-soft);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   position: relative;
   overflow: hidden;
 }
-.pub-radar::before {
+.pub-rings::before {
   content: "";
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 50% at 50% 50%,
-      rgba(79, 184, 166, 0.06),
-      transparent 70%);
+    radial-gradient(ellipse 50% 50% at 30% 40%,
+      rgba(156, 223,   0, 0.06), transparent 70%),
+    radial-gradient(ellipse 50% 50% at 75% 65%,
+      rgba( 79, 184, 166, 0.06), transparent 70%);
   pointer-events: none;
 }
-.radar-head {
+.rings-head {
   font-size: 11.5px;
   font-weight: 700;
   color: var(--accent-dark);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
+  text-align: center;
   position: relative;
 }
-.radar-svg {
+.rings-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  position: relative;
+}
+.rings-svg {
+  flex: 0 0 160px;
+  width: 160px;
+  height: 160px;
   display: block;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  position: relative;
 }
-.radar-caption {
-  margin-top: 2px;
+
+.rings-legend {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.rings-legend li {
+  display: grid;
+  grid-template-columns: 12px 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 8px;
+  row-gap: 2px;
+  align-items: center;
+  font-size: 11.5px;
+  line-height: 1.25;
+}
+.ring-swatch {
+  grid-row: 1 / span 2;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  align-self: center;
+}
+.ring-label {
+  color: var(--primary);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+.ring-value {
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--accent-dark);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+.ring-value small {
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 0.92em;
+}
+
+.rings-total {
+  font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  fill: var(--primary);
+  letter-spacing: -0.02em;
+}
+.rings-sub {
+  font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  fill: var(--muted);
+  letter-spacing: 0.18em;
+}
+
+.rings-caption {
+  margin-top: 10px;
+  text-align: center;
   font-size: 11px;
   color: var(--muted);
   letter-spacing: 0.01em;
   position: relative;
 }
-.radar-caption strong { color: var(--accent-dark); font-weight: 700; }
+.rings-caption strong { color: var(--accent-dark); font-weight: 700; }
 
-.radar-grid {
-  fill: none;
-  stroke: var(--border);
-  stroke-width: 1;
-  opacity: 0.7;
+.ring-track {
+  transition: opacity 0.3s ease;
 }
-.radar-axis {
-  stroke: var(--border);
-  stroke-width: 1;
-  opacity: 0.8;
-}
-.radar-area {
-  fill: rgba(79, 184, 166, 0.20);
-  stroke: var(--accent);
-  stroke-width: 1.8;
-  stroke-linejoin: round;
-}
-.radar-dot {
-  fill: var(--accent-dark);
-  stroke: var(--bg-soft);
-  stroke-width: 1.5;
-}
-.radar-label {
-  font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
-  font-size: 10.5px;
-  fill: var(--primary);
-  font-weight: 600;
-}
-.radar-pct {
-  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 9.5px;
-  fill: var(--accent-dark);
-  font-weight: 700;
-  letter-spacing: 0.02em;
+.ring-arc {
+  transition: stroke-dashoffset 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.40s;
 }
 
-[data-theme="dark"] .pub-radar {
+/* Dark mode: subtle background tweaks and per-ring neon glow */
+[data-theme="dark"] .pub-rings {
   background: rgba(15, 21, 23, 0.55);
   border-color: rgba(79, 184, 166, 0.22);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.30);
 }
-[data-theme="dark"] .pub-radar::before {
+[data-theme="dark"] .pub-rings::before {
   background:
-    radial-gradient(ellipse 65% 55% at 50% 50%,
-      rgba(79, 184, 166, 0.10),
-      transparent 70%);
+    radial-gradient(ellipse 55% 55% at 30% 40%,
+      rgba(156, 223,   0, 0.10), transparent 70%),
+    radial-gradient(ellipse 55% 55% at 75% 65%,
+      rgba( 79, 184, 166, 0.10), transparent 70%);
 }
-[data-theme="dark"] .radar-grid,
-[data-theme="dark"] .radar-axis {
-  stroke: rgba(143, 160, 159, 0.30);
+[data-theme="dark"] .ring-track { opacity: 0.18; }
+[data-theme="dark"] .ring-arc {
+  filter: drop-shadow(0 0 4px var(--ring-shadow, transparent));
 }
-[data-theme="dark"] .radar-area {
-  fill: rgba(79, 184, 166, 0.22);
-  stroke: var(--accent-dark);
-  filter: drop-shadow(0 0 8px rgba(79, 184, 166, 0.40));
+[data-theme="dark"] .rings-sub { fill: #8FA09F; }
+
+@media (max-width: 480px) {
+  .rings-body { flex-direction: column; gap: 10px; }
+  .rings-svg { flex: 0 0 150px; width: 150px; height: 150px; }
+  .rings-legend { width: 100%; }
 }
-[data-theme="dark"] .radar-dot {
-  fill: var(--accent-dark);
-  stroke: var(--bg);
-  filter: drop-shadow(0 0 4px rgba(79, 184, 166, 0.6));
-}
-[data-theme="dark"] .radar-pct { fill: #A8E063; }
 
 .pub-overview {
   border-collapse: collapse;
@@ -1081,45 +1118,39 @@ html.js-reveal main > section.is-visible .section-title::before {
   box-shadow: 0 0 6px rgba(79, 184, 166, 0.5);
 }
 
-/* Radar chart scale-in + polygon stroke draw */
-html.js-reveal .pub-radar .radar-svg {
+/* Activity rings scroll-reveal: card scales in, rings fill in sequence */
+html.js-reveal .pub-rings {
   opacity: 0;
-  transform: scale(0.78);
+  transform: scale(0.92);
   transform-origin: center;
   transition:
-    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.30s,
-    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.30s;
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.20s,
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.20s;
 }
-html.js-reveal main > section.is-visible .pub-radar .radar-svg {
+html.js-reveal main > section.is-visible .pub-rings {
   opacity: 1;
   transform: scale(1);
 }
-html.js-reveal .pub-radar .radar-area {
-  stroke-dasharray: 800;
-  stroke-dashoffset: 800;
-  fill-opacity: 0;
-  transition:
-    stroke-dashoffset 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.55s,
-    fill-opacity 0.7s ease 1.10s;
+
+html.js-reveal .ring-arc { stroke-dashoffset: var(--circ, 999); }
+html.js-reveal .ring-arc--lime  { transition-delay: 0.50s; }
+html.js-reveal .ring-arc--teal  { transition-delay: 0.70s; }
+html.js-reveal .ring-arc--amber { transition-delay: 0.90s; }
+html.js-reveal main > section.is-visible .ring-arc {
+  stroke-dashoffset: var(--target-offset);
 }
-html.js-reveal main > section.is-visible .pub-radar .radar-area {
-  stroke-dashoffset: 0;
-  fill-opacity: 1;
-}
-html.js-reveal .pub-radar .radar-dot,
-html.js-reveal .pub-radar .radar-label,
-html.js-reveal .pub-radar .radar-pct {
+
+html.js-reveal .rings-total,
+html.js-reveal .rings-sub,
+html.js-reveal .rings-legend li {
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.6s ease;
 }
-html.js-reveal main > section.is-visible .pub-radar .radar-dot { transition-delay: 1.2s; }
-html.js-reveal main > section.is-visible .pub-radar .radar-label { transition-delay: 1.3s; }
-html.js-reveal main > section.is-visible .pub-radar .radar-pct { transition-delay: 1.4s; }
-html.js-reveal main > section.is-visible .pub-radar .radar-dot,
-html.js-reveal main > section.is-visible .pub-radar .radar-label,
-html.js-reveal main > section.is-visible .pub-radar .radar-pct {
-  opacity: 1;
-}
+html.js-reveal main > section.is-visible .rings-total { opacity: 1; transition-delay: 0.65s; }
+html.js-reveal main > section.is-visible .rings-sub   { opacity: 1; transition-delay: 0.75s; }
+html.js-reveal main > section.is-visible .rings-legend li:nth-child(1) { opacity: 1; transition-delay: 0.85s; }
+html.js-reveal main > section.is-visible .rings-legend li:nth-child(2) { opacity: 1; transition-delay: 0.95s; }
+html.js-reveal main > section.is-visible .rings-legend li:nth-child(3) { opacity: 1; transition-delay: 1.05s; }
 
 /* Stagger items inside a section that just became visible */
 html.js-reveal main > section .project-list > li,
@@ -1230,13 +1261,13 @@ html.js-reveal .pub-list > li.is-visible .pub-thumb img {
   html.js-reveal .pub-list > li:nth-child(odd),
   html.js-reveal .pub-list > li:nth-child(even),
   html.js-reveal .pub-list > li .pub-thumb img,
-  html.js-reveal .pub-radar .radar-svg,
-  html.js-reveal .pub-radar .radar-area,
-  html.js-reveal .pub-radar .radar-dot,
-  html.js-reveal .pub-radar .radar-label,
-  html.js-reveal .pub-radar .radar-pct {
+  html.js-reveal .pub-rings,
+  html.js-reveal .ring-arc,
+  html.js-reveal .rings-total,
+  html.js-reveal .rings-sub,
+  html.js-reveal .rings-legend li {
     opacity: 1; transform: none; filter: none;
-    stroke-dashoffset: 0; fill-opacity: 1;
+    stroke-dashoffset: var(--target-offset, 0);
     transition: none;
   }
   html.js-reveal main > section .section-title::before {
