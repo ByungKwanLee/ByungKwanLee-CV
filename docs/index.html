@@ -143,13 +143,13 @@
         <a href="mailto:byungkwanl@nvidia.com"><i class="fa-solid fa-building"></i> byungkwanl@nvidia.com</a>
       </div>
       <div class="contact-row">
-        <a href="https://www.linkedin.com/in/byung-kwan-lee-82333716a/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <a href="https://www.linkedin.com/in/byung-kwan-lee-82333716a/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn <span class="social-count is-loading" data-social-count="linkedin" aria-label="LinkedIn followers">...</span></a>
         <span class="dot">&middot;</span>
-        <a href="https://github.com/ByungKwanLee" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+        <a href="https://github.com/ByungKwanLee" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub <span class="social-count is-loading" data-social-count="github" aria-label="GitHub followers">...</span></a>
         <span class="dot">&middot;</span>
-        <a href="https://scholar.google.com/citations?user=ueXCYIcAAAAJ&amp;hl=ko" target="_blank" rel="noopener"><i class="fa-solid fa-graduation-cap"></i> Google Scholar</a>
+        <a href="https://scholar.google.com/citations?user=ueXCYIcAAAAJ&amp;hl=ko" target="_blank" rel="noopener"><i class="fa-solid fa-graduation-cap"></i> Google Scholar <span class="social-count is-loading" data-social-count="scholar" aria-label="Google Scholar citations">...</span></a>
         <span class="dot">&middot;</span>
-        <a href="https://huggingface.co/BK-Lee" target="_blank" rel="noopener"><i class="fa-solid fa-face-smile"></i> Huggingface</a>
+        <a href="https://huggingface.co/BK-Lee" target="_blank" rel="noopener"><i class="fa-solid fa-face-smile"></i> Huggingface <span class="social-count is-loading" data-social-count="huggingface" aria-label="Hugging Face followers">...</span></a>
       </div>
     </div>
   </div>
@@ -332,6 +332,7 @@
       <div class="edu-extra">
         Dissertation: <em>Building High-performing, Efficient-size Vision Language Models: Merge, Modify, and Distill</em>
         &nbsp;[<a href="https://library.kaist.ac.kr/search/ctlgSearch/posesn/view.do?bibctrlno=1142905&amp;se=t0&amp;ty=B" target="_blank" rel="noopener">Link</a>]
+        &nbsp;[<a href="assets/(3)-PhD-Degree.pdf" target="_blank" rel="noopener">Degree Certificate</a>]
       </div>
     </div>
 
@@ -344,6 +345,7 @@
       <div class="edu-extra">
         Thesis: <em>Training Encoder-Attention through Fully-Connected CRFs for Efficient End-to-End Lane Detection Model</em>
         &nbsp;[<a href="https://library.kaist.ac.kr/search/detail/view.do?bibCtrlNo=910033&amp;flag=dissertation" target="_blank" rel="noopener">Link</a>]
+        &nbsp;[<a href="assets/(2)-MS-Degree.pdf" target="_blank" rel="noopener">Degree Certificate</a>]
       </div>
     </div>
 
@@ -353,6 +355,9 @@
         <span class="period">Mar. 2014 &mdash; Feb. 2018</span>
       </div>
       <div class="edu-sub">B.S., Mathematics and Electronic Engineering <span class="gpa">GPA 3.86 / 4.5</span></div>
+      <div class="edu-extra">
+        [<a href="assets/(1)-BS-Degree.pdf" target="_blank" rel="noopener">Degree Certificate</a>]
+      </div>
     </div>
   </section>
 
@@ -692,6 +697,145 @@
         var next = current === 'dark' ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
+      });
+    })();
+
+    (function setupSocialCounts() {
+      var countNodes = {
+        linkedin: document.querySelector('[data-social-count="linkedin"]'),
+        github: document.querySelector('[data-social-count="github"]'),
+        scholar: document.querySelector('[data-social-count="scholar"]'),
+        huggingface: document.querySelector('[data-social-count="huggingface"]')
+      };
+      if (!countNodes.linkedin && !countNodes.github && !countNodes.scholar && !countNodes.huggingface) return;
+
+      var CACHE_KEY = 'social-count-cache-v1';
+      var CACHE_TTL_MS = 1000 * 60 * 60 * 6;
+
+      function parseIntSafe(value) {
+        var n = parseInt(String(value || '').replace(/[^0-9]/g, ''), 10);
+        return isNaN(n) ? null : n;
+      }
+
+      function formatNumber(value) {
+        return Number(value).toLocaleString('en-US');
+      }
+
+      function setCount(key, value, tone) {
+        var node = countNodes[key];
+        if (!node) return;
+        node.classList.remove('is-loading', 'is-error', 'is-hidden');
+        if (value === null || value === undefined || value === '') {
+          node.textContent = '';
+          node.classList.add('is-hidden');
+          return;
+        }
+        node.textContent = value;
+        if (tone) node.classList.add(tone);
+      }
+
+      function applyCounts(counts) {
+        Object.keys(countNodes).forEach(function(key) {
+          if (!countNodes[key]) return;
+          var raw = counts && counts[key];
+          var parsed = parseIntSafe(raw);
+          setCount(key, parsed === null ? null : formatNumber(parsed));
+        });
+      }
+
+      function loadCache() {
+        try {
+          var raw = localStorage.getItem(CACHE_KEY);
+          if (!raw) return null;
+          var parsed = JSON.parse(raw);
+          if (!parsed || typeof parsed !== 'object') return null;
+          return parsed;
+        } catch (e) {
+          return null;
+        }
+      }
+
+      function saveCache(counts) {
+        try {
+          localStorage.setItem(CACHE_KEY, JSON.stringify({
+            ts: Date.now(),
+            counts: counts
+          }));
+        } catch (e) {}
+      }
+
+      function fetchJson(url) {
+        return fetch(url, {
+          headers: { 'Accept': 'application/json' }
+        }).then(function(res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        });
+      }
+
+      function fetchText(url) {
+        return fetch(url).then(function(res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.text();
+        });
+      }
+
+      function parseLinkedInFollowers(text) {
+        var match = text.match(/([0-9][0-9,]*)\s+followers/i);
+        var value = match ? parseIntSafe(match[1]) : null;
+        if (value === null) throw new Error('LinkedIn follower count not found');
+        return value;
+      }
+
+      function parseScholarCitations(text) {
+        var matches = Array.from(text.matchAll(/\[(\d{1,6})\]\(https?:\/\/scholar\.google\.com\/scholar\?oi=bibs/gi));
+        if (!matches.length) throw new Error('Scholar citations not found');
+        var total = matches.reduce(function(sum, m) {
+          return sum + (parseIntSafe(m[1]) || 0);
+        }, 0);
+        if (!total) throw new Error('Scholar citation total is empty');
+        return total;
+      }
+
+      var cached = loadCache();
+      if (cached && cached.counts) {
+        applyCounts(cached.counts);
+      } else {
+        Object.keys(countNodes).forEach(function(key) {
+          setCount(key, '...', 'is-loading');
+        });
+      }
+
+      var isCacheFresh = cached && cached.ts && (Date.now() - cached.ts < CACHE_TTL_MS);
+      if (isCacheFresh) return;
+
+      Promise.allSettled([
+        fetchText('https://r.jina.ai/http://www.linkedin.com/in/byung-kwan-lee-82333716a/').then(parseLinkedInFollowers),
+        fetchJson('https://api.github.com/users/ByungKwanLee').then(function(data) { return parseIntSafe(data.followers); }),
+        fetchText('https://r.jina.ai/http://scholar.google.com/citations?user=ueXCYIcAAAAJ&hl=ko').then(parseScholarCitations),
+        fetchJson('https://huggingface.co/api/users/BK-Lee/overview').then(function(data) { return parseIntSafe(data.numFollowers); })
+      ]).then(function(results) {
+        var nextCounts = {};
+        var keys = ['linkedin', 'github', 'scholar', 'huggingface'];
+
+        keys.forEach(function(key, idx) {
+          var result = results[idx];
+          if (result.status === 'fulfilled' && result.value !== null) {
+            nextCounts[key] = result.value;
+            setCount(key, formatNumber(result.value));
+            return;
+          }
+
+          if (cached && cached.counts && parseIntSafe(cached.counts[key]) !== null) {
+            nextCounts[key] = parseIntSafe(cached.counts[key]);
+            setCount(key, formatNumber(nextCounts[key]));
+            return;
+          }
+
+          setCount(key, null);
+        });
+
+        saveCache(nextCounts);
       });
     })();
 
