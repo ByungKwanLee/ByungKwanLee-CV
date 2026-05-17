@@ -131,12 +131,13 @@ ul, ol { padding-left: 1.4em; }
   align-items: center;
   flex-wrap: wrap;
   gap: 12px;
+  margin-bottom: 14px;
 }
 .cv-btn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 7px 14px 7px 8px;
+  padding: 5px 14px 5px 6px;
   border-radius: 11px;
   border: 1px solid var(--border);
   background: linear-gradient(135deg, var(--bg-soft), var(--box-bg));
@@ -147,6 +148,8 @@ ul, ol { padding-left: 1.4em; }
               box-shadow 0.18s ease, background 0.18s ease;
   position: relative;
   overflow: hidden;
+  min-height: 40px;
+  box-sizing: border-box;
 }
 .cv-btn:hover {
   text-decoration: none;
@@ -298,11 +301,12 @@ ul, ol { padding-left: 1.4em; }
   background: var(--pill-bg);
   border: 1.2px solid var(--accent);
   border-radius: 999px;
-  padding: 6px 16px;
+  padding: 8px 16px;
   font-size: 14px;
   color: var(--primary);
-  margin-bottom: 18px;
   box-shadow: var(--glow-nvidia);
+  min-height: 40px;
+  box-sizing: border-box;
 }
 .role-pill .nvidia-logo {
   height: 16px;
