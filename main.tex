@@ -34,14 +34,15 @@
 \usepackage[T1]{fontenc}
 \usepackage{fontawesome5}
 
-% Color definitions
+% Color definitions -- soft pastel palette (warm dusty rose + cream)
 \definecolor{darkblue}{RGB}{0,0,139}
-\definecolor{primaryColor}{HTML}{1F2A44}   % deep navy for headings/name
-\definecolor{accentColor}{HTML}{76B900}    % NVIDIA green for accents/links
-\definecolor{accentDark}{HTML}{4F7C00}     % darker green for hyperlinks (better contrast)
-\definecolor{mutedGray}{HTML}{4A5568}      % subtle gray for subtitles
-\definecolor{badgeBg}{HTML}{EAF3D9}        % soft green background for venue badges
-\definecolor{boxBg}{HTML}{F4F6F8}          % soft neutral for paper-description boxes
+\definecolor{primaryColor}{HTML}{3D3B40}   % deep warm charcoal for headings/name
+\definecolor{accentColor}{HTML}{D4A5A5}    % dusty rose pastel for accent lines/highlights
+\definecolor{accentDark}{HTML}{A66B6B}     % deeper dusty rose for hyperlinks/numbers (contrast)
+\definecolor{mutedGray}{HTML}{6B6B7B}      % soft slate gray for subtitles
+\definecolor{badgeBg}{HTML}{FBE9E9}        % very pale rose for venue badges
+\definecolor{boxBg}{HTML}{FBF6F4}          % warm cream for paper-description boxes
+\definecolor{highlightColor}{HTML}{F5DEDE} % pale rose blush for marker-style highlights
 
 % Page layout
 \setlength{\multicolsep}{0pt} 
@@ -100,6 +101,12 @@
 \newtcbox{\statusbadge}{on line, colback=boxBg, colframe=mutedGray!50,
   boxrule=0.4pt, arc=2pt, outer arc=2pt, boxsep=1pt, left=3pt, right=3pt,
   top=1pt, bottom=1pt, fontupper=\footnotesize\bfseries\color{mutedGray}}
+
+% Marker-style label highlight (like a highlighter pen)
+\newtcbox{\labelhl}{on line, colback=highlightColor, colframe=highlightColor,
+  boxrule=0pt, arc=2pt, outer arc=2pt, boxsep=0pt,
+  left=4pt, right=4pt, top=1.5pt, bottom=1.5pt,
+  fontupper=\bfseries\color{primaryColor}}
 
 % Custom commands
 \newcommand{\resumeItem}[2]{
@@ -333,13 +340,13 @@
 
 % --- Publication Overview ---
 \small{
-\setlength{\extrarowheight}{2.4pt}
-\begin{tabular}{@{}l@{\hspace{2em}}l@{}}
-\textbf{\color{primaryColor}Overall} & {\color{accentDark}\textbf{16}} Accepts~$\cdot$~{\color{accentDark}\textbf{3}} Pending~$\cdot$~{\color{accentDark}\textbf{2}} Tech Reports \\
-\textbf{\color{primaryColor}Computer Vision} & {\color{accentDark}\textbf{5}} CVPR~$\cdot$~{\color{accentDark}\textbf{2}} ICCV~$\cdot$~{\color{accentDark}\textbf{1}} ECCV~$\cdot$~{\color{accentDark}\textbf{1}} ICIP \\
-\textbf{\color{primaryColor}Machine Learning} & {\color{accentDark}\textbf{3}} NeurIPS~$\cdot$~{\color{accentDark}\textbf{1}} ICLR \\
-\textbf{\color{primaryColor}NLP} & {\color{accentDark}\textbf{1}} ACL~$\cdot$~{\color{accentDark}\textbf{1}} EMNLP \\
-\textbf{\color{primaryColor}Journal} & {\color{accentDark}\textbf{1}} Pattern Recognition \\
+\setlength{\extrarowheight}{3.0pt}
+\begin{tabular}{@{}l@{\hspace{1.8em}}l@{}}
+\labelhl{Overall} & {\color{accentDark}\textbf{16}} Accepts~$\cdot$~{\color{accentDark}\textbf{3}} Pending~$\cdot$~{\color{accentDark}\textbf{2}} Tech Reports \\
+\labelhl{Computer Vision} & {\color{accentDark}\textbf{5}} CVPR~$\cdot$~{\color{accentDark}\textbf{2}} ICCV~$\cdot$~{\color{accentDark}\textbf{1}} ECCV~$\cdot$~{\color{accentDark}\textbf{1}} ICIP \\
+\labelhl{Machine Learning} & {\color{accentDark}\textbf{3}} NeurIPS~$\cdot$~{\color{accentDark}\textbf{1}} ICLR \\
+\labelhl{NLP} & {\color{accentDark}\textbf{1}} ACL~$\cdot$~{\color{accentDark}\textbf{1}} EMNLP \\
+\labelhl{Journal} & {\color{accentDark}\textbf{1}} Pattern Recognition \\
 \end{tabular}
 }
 \vspace{2mm}
