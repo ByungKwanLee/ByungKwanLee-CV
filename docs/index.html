@@ -266,15 +266,27 @@
   <section id="publications">
     <h2 class="section-title"><i class="fa-solid fa-book-open"></i> Publications</h2>
 
-    <table class="pub-overview">
-      <tbody>
-        <tr><td class="label"><span class="hl">Overall</span></td><td><strong class="cnt">16</strong> Accepts &middot; <strong class="cnt">3</strong> Pending &middot; <strong class="cnt">2</strong> Tech Reports</td></tr>
-        <tr><td class="label"><span class="hl">Computer Vision</span></td><td><strong class="cnt">5</strong> CVPR &middot; <strong class="cnt">2</strong> ICCV &middot; <strong class="cnt">1</strong> ECCV &middot; <strong class="cnt">1</strong> ICIP</td></tr>
-        <tr><td class="label"><span class="hl">Machine Learning</span></td><td><strong class="cnt">3</strong> NeurIPS &middot; <strong class="cnt">1</strong> ICLR</td></tr>
-        <tr><td class="label"><span class="hl">NLP</span></td><td><strong class="cnt">1</strong> ACL &middot; <strong class="cnt">1</strong> EMNLP</td></tr>
-        <tr><td class="label"><span class="hl">Journal</span></td><td><strong class="cnt">1</strong> Pattern Recognition</td></tr>
-      </tbody>
-    </table>
+    <div class="pub-summary">
+      <table class="pub-overview">
+        <tbody>
+          <tr><td class="label"><span class="hl">Overall</span></td><td><strong class="cnt">16</strong> Accepts &middot; <strong class="cnt">3</strong> Pending &middot; <strong class="cnt">2</strong> Tech Reports</td></tr>
+          <tr><td class="label"><span class="hl">Computer Vision</span></td><td><strong class="cnt">5</strong> CVPR &middot; <strong class="cnt">2</strong> ICCV &middot; <strong class="cnt">1</strong> ECCV &middot; <strong class="cnt">1</strong> ICIP</td></tr>
+          <tr><td class="label"><span class="hl">Machine Learning</span></td><td><strong class="cnt">3</strong> NeurIPS &middot; <strong class="cnt">1</strong> ICLR</td></tr>
+          <tr><td class="label"><span class="hl">NLP</span></td><td><strong class="cnt">1</strong> ACL &middot; <strong class="cnt">1</strong> EMNLP</td></tr>
+          <tr><td class="label"><span class="hl">Journal</span></td><td><strong class="cnt">1</strong> Pattern Recognition</td></tr>
+        </tbody>
+      </table>
+
+      <figure class="pub-radar">
+        <div class="radar-head">Author Role &amp; Impact</div>
+        <svg id="pubRadar" class="radar-svg" viewBox="-200 -135 400 280"
+             role="img" aria-labelledby="radarTitle" aria-describedby="radarDesc">
+          <title id="radarTitle">Author role and impact profile</title>
+          <desc id="radarDesc">First Author 48%, Top-Tier Venue 67%, NVIDIA Patent 19%, Middle Author 24%, Co-First 29% across 21 publications</desc>
+        </svg>
+        <figcaption class="radar-caption">Profile across <strong>21</strong> publications</figcaption>
+      </figure>
+    </div>
 
     <ol class="pub-list">
       <li>
@@ -591,6 +603,97 @@
       }, { passive: true });
 
       update();
+    })();
+
+    (function renderPubRadar() {
+      var mount = document.getElementById('pubRadar');
+      if (!mount) return;
+
+      var data = [
+        { label: 'First Author',     value: 10 },
+        { label: 'Top-Tier Venue',   value: 14 },
+        { label: 'NVIDIA Patent',    value:  4 },
+        { label: 'Middle Author',    value:  5 },
+        { label: 'Co-First (Equal)', value:  6 }
+      ];
+      var TOTAL = 21;
+      var R = 95;
+      var LABEL_R = R + 24;
+      var N = data.length;
+      var NS = 'http://www.w3.org/2000/svg';
+
+      function angleOf(i) { return Math.PI / 2 - (2 * Math.PI * i) / N; }
+      function pt(i, r) {
+        var a = angleOf(i);
+        return [Math.cos(a) * r, -Math.sin(a) * r];
+      }
+
+      [0.25, 0.5, 0.75, 1.0].forEach(function(f) {
+        var pts = [];
+        for (var i = 0; i < N; i++) {
+          var p = pt(i, R * f);
+          pts.push(p[0].toFixed(1) + ',' + p[1].toFixed(1));
+        }
+        var poly = document.createElementNS(NS, 'polygon');
+        poly.setAttribute('points', pts.join(' '));
+        poly.setAttribute('class', 'radar-grid');
+        mount.appendChild(poly);
+      });
+
+      for (var i = 0; i < N; i++) {
+        var p = pt(i, R);
+        var line = document.createElementNS(NS, 'line');
+        line.setAttribute('x1', 0);
+        line.setAttribute('y1', 0);
+        line.setAttribute('x2', p[0].toFixed(1));
+        line.setAttribute('y2', p[1].toFixed(1));
+        line.setAttribute('class', 'radar-axis');
+        mount.appendChild(line);
+      }
+
+      var dataPts = data.map(function(d, i) {
+        var p = pt(i, R * (d.value / TOTAL));
+        return p[0].toFixed(1) + ',' + p[1].toFixed(1);
+      });
+      var area = document.createElementNS(NS, 'polygon');
+      area.setAttribute('points', dataPts.join(' '));
+      area.setAttribute('class', 'radar-area');
+      mount.appendChild(area);
+
+      data.forEach(function(d, i) {
+        var p = pt(i, R * (d.value / TOTAL));
+        var dot = document.createElementNS(NS, 'circle');
+        dot.setAttribute('cx', p[0].toFixed(1));
+        dot.setAttribute('cy', p[1].toFixed(1));
+        dot.setAttribute('r', 3.5);
+        dot.setAttribute('class', 'radar-dot');
+        mount.appendChild(dot);
+      });
+
+      data.forEach(function(d, i) {
+        var a = angleOf(i);
+        var x = Math.cos(a) * LABEL_R;
+        var y = -Math.sin(a) * LABEL_R;
+        var anchor = 'middle';
+        if (Math.cos(a) > 0.15) anchor = 'start';
+        else if (Math.cos(a) < -0.15) anchor = 'end';
+
+        var label = document.createElementNS(NS, 'text');
+        label.setAttribute('x', x.toFixed(1));
+        label.setAttribute('y', y.toFixed(1));
+        label.setAttribute('text-anchor', anchor);
+        label.setAttribute('class', 'radar-label');
+        label.textContent = d.label;
+        mount.appendChild(label);
+
+        var pct = document.createElementNS(NS, 'text');
+        pct.setAttribute('x', x.toFixed(1));
+        pct.setAttribute('y', (y + 12).toFixed(1));
+        pct.setAttribute('text-anchor', anchor);
+        pct.setAttribute('class', 'radar-pct');
+        pct.textContent = Math.round((d.value / TOTAL) * 100) + '% (' + d.value + ')';
+        mount.appendChild(pct);
+      });
     })();
   </script>
 
