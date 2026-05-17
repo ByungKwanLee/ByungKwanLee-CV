@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <script>
+    (function() {
+      var saved = localStorage.getItem('theme');
+      var theme = saved || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Byung-Kwan Lee &mdash; Research Scientist at NVIDIA. Vision-Language Models, Distillation, RL, Pruning." />
+  <meta name="author" content="Byung-Kwan Lee" />
+  <title>Byung-Kwan Lee &mdash; Research Scientist at NVIDIA</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- &mdash;&mdash; Sticky Navigation &mdash;&mdash; -->
+<nav class="topnav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand">Byung-Kwan Lee</a>
+    <div class="nav-links">
+      <a href="#research">Research</a>
+      <a href="#work">Work</a>
+      <a href="#education">Education</a>
+      <a href="#publications">Publications</a>
+      <a href="#reviewer">Reviewer</a>
+      <a href="#awards">Talks &amp; Awards</a>
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+        <i class="fa-solid fa-moon icon-moon"></i>
+        <i class="fa-solid fa-sun icon-sun"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- &mdash;&mdash; Hero &mdash;&mdash; -->
+<header class="hero" id="top">
+  <div class="hero-grid">
+    <div class="hero-photo">
+      <img src="assets/profile.jpg" alt="Byung-Kwan Lee" />
+    </div>
+    <div class="hero-text">
+      <h1 class="name">Byung-Kwan Lee</h1>
+      <div class="subtitle">
+        <span class="grad-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+        Ph.D., School of Electrical Engineering at KAIST
+      </div>
+      <div class="role-pill">
+        <span><strong>Research Scientist</strong> at</span>
+        <img src="assets/nvidia.svg" alt="NVIDIA" class="nvidia-logo" />
+        <strong class="nvidia-text">NVIDIA</strong>
+      </div>
+
+      <div class="contact-row">
+        <a href="mailto:bklee.nano@gmail.com"><i class="fa-solid fa-envelope"></i> bklee.nano@gmail.com</a>
+        <span class="dot">&middot;</span>
+        <a href="mailto:byungkwanl@nvidia.com"><i class="fa-solid fa-building"></i> byungkwanl@nvidia.com</a>
+        <span class="dot">&middot;</span>
+        <a href="https://sites.google.com/view/byungkwanlee" target="_blank" rel="noopener"><i class="fa-solid fa-globe"></i> Homepage</a>
+      </div>
+      <div class="contact-row">
+        <a href="https://www.linkedin.com/in/byung-kwan-lee-82333716a/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <span class="dot">&middot;</span>
+        <a href="https://github.com/ByungKwanLee" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+        <span class="dot">&middot;</span>
+        <a href="https://scholar.google.com/citations?user=ueXCYIcAAAAJ&amp;hl=ko" target="_blank" rel="noopener"><i class="fa-solid fa-graduation-cap"></i> Google Scholar</a>
+        <span class="dot">&middot;</span>
+        <a href="https://huggingface.co/BK-Lee" target="_blank" rel="noopener"><i class="fa-solid fa-face-smile"></i> Huggingface</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="content">
+
+  <!-- &mdash;&mdash; Research Interest &mdash;&mdash; -->
+  <section id="research">
+    <h2 class="section-title"><i class="fa-solid fa-lightbulb"></i> Research Interest</h2>
+    <p class="lead">
+      Building <strong>efficient, high-performing Vision-Language Models (VLMs)</strong>, with focus on:
+    </p>
+    <ul class="research-list">
+      <li>Distillation / RL</li>
+      <li>Pruning</li>
+      <li>Compression</li>
+      <li>Data / Training / Inference Efficiency</li>
+    </ul>
+  </section>
+
+  <!-- &mdash;&mdash; Work Experience &mdash;&mdash; -->
+  <section id="work">
+    <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Work Experience</h2>
+
+    <div class="role-block">
+      <div class="role-header">
+        <span class="company">NVIDIA</span>
+        <span class="dot-sep"></span>
+        <span class="position">Research Scientist</span>
+        <span class="period">Oct. 2025 &mdash; Current</span>
+      </div>
+
+      <ul class="project-list">
+        <li>
+          <span class="role-tag lead">LEAD</span>
+          <strong>Masking Teacher and Reinforcing Student</strong>
+          <span class="dash">&mdash;</span>
+          <em class="desc">Mask-progressive RL distillation that gradually unmasks teacher weights and uses offline RL with accuracy &amp; distillation rewards.</em>
+          <div class="badges">
+            <span class="badge venue">CVPR 2026 Accept</span>
+            <span class="badge status">U.S. Non-Provisional Patent Filed</span>
+            <span class="badge status">ArXiv Release</span>
+            <span class="badge status">Internal Release</span>
+          </div>
+        </li>
+
+        <li>
+          <span class="role-tag lead">LEAD</span>
+          <strong>GenRecal</strong>
+          <span class="phase">[Completed]</span>
+          <span class="dash">&mdash;</span>
+          <em class="desc">Cross-architecture VLM distillation via a Recalibrator that aligns heterogeneous token representations regardless of vocabulary, token splits, or index ordering.</em>
+          <div class="badges">
+            <span class="badge status">Paper Under Review</span>
+            <span class="badge status">Patent Upgraded to Non-Provisional</span>
+            <span class="badge tech">Internal Tech Transfer</span>
+          </div>
+        </li>
+
+        <li>
+          <span class="role-tag lead">LEAD</span>
+          <strong>Unified RL &amp; Imitation Learning for VLMs</strong>
+          <span class="phase">[Completed]</span>
+          <span class="dash">&mdash;</span>
+          <em class="desc">Combines RL with adversarial imitation, using an LLM-based discriminator and multi-teacher guidance to build lightweight yet powerful VLMs.</em>
+          <div class="badges">
+            <span class="badge venue">NeurIPS 2025 Accept</span>
+            <span class="badge status">Patent Upgraded to Non-Provisional</span>
+            <span class="badge status">ArXiv Release</span>
+            <span class="badge status">Internal Release</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="dashed-divider"></div>
+
+    <div class="role-block">
+      <div class="role-header">
+        <span class="company">NVIDIA</span>
+        <span class="dot-sep"></span>
+        <span class="position">Research Intern</span>
+        <span class="period">Oct. 2024 &mdash; Oct. 2025</span>
+      </div>
+
+      <ul class="project-list">
+        <li>
+          <span class="role-tag lead">LEAD</span>
+          <strong>VLsI: Verbalized Layers-to-Interactions</strong>
+          <span class="dash">&mdash;</span>
+          <em class="desc">Layer-wise distillation using intermediate verbalizers, enabling small VLMs (2B/7B) to align with large VLMs' reasoning progression and outperform GPT-4V.</em>
+          <div class="badges">
+            <span class="badge venue">CVPR 2025 Accept</span>
+            <span class="badge status">U.S. Non-Provisional Patent Filed</span>
+            <span class="badge status">ArXiv Release</span>
+            <span class="badge status">Internal Release</span>
+            <span class="badge tech">Internal Tech Transfer</span>
+          </div>
+        </li>
+
+        <li>
+          <span class="role-tag lead">LEAD</span>
+          <strong>GenRecal</strong>
+          <span class="phase">[Initiated]</span>
+          <span class="dash">&mdash;</span>
+          <em class="desc">Initial design of the Recalibrator framework for cross-tokenizer VLM distillation; first proof-of-concept and internal demo.</em>
+          <div class="badges">
+            <span class="badge status">U.S. Provisional Patent Filed</span>
+            <span class="badge status">ArXiv Release</span>
+            <span class="badge status">Internal Release</span>
+          </div>
+        </li>
+
+        <li>
+          <span class="role-tag lead">LEAD</span>
+          <strong>Unified RL &amp; Imitation Learning for VLMs</strong>
+          <span class="phase">[Initiated]</span>
+          <span class="dash">&mdash;</span>
+          <em class="desc">First formulation of the RL + adversarial imitation training pipeline; initial experiments and team setup.</em>
+          <div class="badges">
+            <span class="badge status">U.S. Provisional Patent Filed</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- &mdash;&mdash; Education &mdash;&mdash; -->
+  <section id="education">
+    <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+
+    <div class="edu-block">
+      <div class="edu-head">
+        <span class="school">KAIST</span>
+        <span class="period">Mar. 2020 &mdash; Aug. 2025</span>
+      </div>
+      <div class="edu-sub">School of Electrical Engineering, Ph.D. <span class="gpa">GPA 3.77 / 4.3</span></div>
+      <div class="edu-extra">
+        Dissertation: <em>Building High-performing, Efficient-size Vision Language Models: Merge, Modify, and Distill</em>
+        &nbsp;[<a href="https://library.kaist.ac.kr/search/ctlgSearch/posesn/view.do?bibctrlno=1142905&amp;se=t0&amp;ty=B" target="_blank" rel="noopener">Link</a>]
+      </div>
+    </div>
+
+    <div class="edu-block">
+      <div class="edu-head">
+        <span class="school">KAIST</span>
+        <span class="period">Mar. 2018 &mdash; Feb. 2020</span>
+      </div>
+      <div class="edu-sub">The Cho Chun Sik Graduate School of Green Transportation, M.S. <span class="gpa">GPA 3.72 / 4.3</span></div>
+      <div class="edu-extra">
+        Thesis: <em>Training Encoder-Attention through Fully-Connected CRFs for Efficient End-to-End Lane Detection Model</em>
+        &nbsp;[<a href="https://library.kaist.ac.kr/search/detail/view.do?bibCtrlNo=910033&amp;flag=dissertation" target="_blank" rel="noopener">Link</a>]
+      </div>
+    </div>
+
+    <div class="edu-block">
+      <div class="edu-head">
+        <span class="school">Hanyang University</span>
+        <span class="period">Mar. 2014 &mdash; Feb. 2018</span>
+      </div>
+      <div class="edu-sub">Mathematics and Electronic Engineering, B.S. <span class="gpa">GPA 3.86 / 4.5</span></div>
+    </div>
+  </section>
+
+  <!-- &mdash;&mdash; Publications &mdash;&mdash; -->
+  <section id="publications">
+    <h2 class="section-title"><i class="fa-solid fa-book-open"></i> Publications</h2>
+
+    <table class="pub-overview">
+      <tbody>
+        <tr><td class="label"><span class="hl">Overall</span></td><td><strong class="cnt">16</strong> Accepts &middot; <strong class="cnt">3</strong> Pending &middot; <strong class="cnt">2</strong> Tech Reports</td></tr>
+        <tr><td class="label"><span class="hl">Computer Vision</span></td><td><strong class="cnt">5</strong> CVPR &middot; <strong class="cnt">2</strong> ICCV &middot; <strong class="cnt">1</strong> ECCV &middot; <strong class="cnt">1</strong> ICIP</td></tr>
+        <tr><td class="label"><span class="hl">Machine Learning</span></td><td><strong class="cnt">3</strong> NeurIPS &middot; <strong class="cnt">1</strong> ICLR</td></tr>
+        <tr><td class="label"><span class="hl">NLP</span></td><td><strong class="cnt">1</strong> ACL &middot; <strong class="cnt">1</strong> EMNLP</td></tr>
+        <tr><td class="label"><span class="hl">Journal</span></td><td><strong class="cnt">1</strong> Pattern Recognition</td></tr>
+      </tbody>
+    </table>
+
+    <ol class="pub-list">
+      <li>
+        <div class="pub-thumb is-wide"><img src="assets/papers/hide2see.jpg" alt="Hide to See" loading="lazy" /></div>
+        <div class="pub-body">
+          <div class="pub-title">"Hide to See: Reasoning-prefix Masking for Visual-anchored Thinking in VLM Distillation"</div>
+          <div class="pub-authors">Seonghoon Yu, Dongjun Nam, <u>Byung-Kwan Lee</u>, Jeany Son</div>
+          <div class="pub-venue">Under Review &nbsp; [<a href="https://arxiv.org/abs/2605.11651" target="_blank" rel="noopener">Paper</a>][<a href="https://github.com/Seonghoon-Yu/Masking-KD" target="_blank" rel="noopener">Code</a>]</div>
+        </div>
+      </li>
+
+      <li>
+        <div class="pub-thumb is-wide"><img src="assets/papers/dstp.jpg" alt="DSTP" loading="lazy" /></div>
+        <div class="pub-body">
+          <div class="pub-title">"Why and When Visual Token Pruning Fails? A Study on Relevant Visual Information Shift in MLLMs Decoding"</div>
+          <div class="pub-authors">Jiwan Kim, Kibum Kim, Wonjoong Kim, <u>Byung-Kwan Lee</u>, Chanyoung Park</div>
+          <div class="pub-venue">Under Review &nbsp; [<a href="https://arxiv.org/abs/2604.12358" target="_blank" rel="noopener">Paper</a>][<a href="https://ptkjw1997.github.io/DSTP-page/" target="_blank" rel="noopener">Project</a>]</div>
+        </div>
+      </li>
+
+      <li>
+        <div class="pub-thumb is-wide"><img src="assets/papers/genrecal.jpg" alt="GenRecal" loading="lazy" /></div>
+        <div class="pub-body">
+          <div class="pub-title">"GenRecal: Generation after Recalibration from Large to Small Vision Language Models"</div>
+          <div class="pub-authors"><u>Byung-Kwan Lee</u>, Ryo Hachiuma, Yong Man Ro, Yu-Chiang Frank Wang, Yueh-Hua Wu</div>
+          <div class="pub-venue">Under Review &nbsp; [<a href="https://arxiv.org/abs/2506.15681" target="_blank" rel="noopener">Paper</a>][<a href="https://byungkwanlee.github.io/GenRecal-page/" target="_blank" rel="noopener">Project</a>]</div>
+          <div class="pub-extra">U.S. Patent Application Filed (Non-Provisional), NVIDIA Research, 2025</div>
+        </div>
+      </li>
+
+      <li>
+        <div class="pub-thumb is-wide"><img src="assets/papers/mtrs.jpg" alt="MTRS" loading="lazy" /></div>
+        <div class="pub-body">
+          <div class="pub-title">"Masking Teacher and Reinforcing Student for Distilling Vision-Language Models"</div>
+          <div class="pub-authors"><u>Byung-Kwan Lee</u>, Yu-Chiang Frank Wang, Ryo Hachiuma</div>
+          <div class="pub-venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2026 &nbsp; [<a href="https://www.arxiv.org/abs/2512.22238" target="_blank" rel="noopener">Paper</a>]</div>
+          <div class="pub-extra">U.S. Patent Application Filed (Non-Provisional), NVIDIA Research, 2026</div>
+        </div>
+      </li>
+
+      <li>
+        <div class="pub-thumb is-wide"><img src="assets/papers/rtap.jpg" alt="R-TAP" loading="lazy" /></div>
+        <div class="pub-body">
+          <div class="pub-title">"Recursive Think-Answer Process for LLMs and VLMs"</div>
+          <div class="pub-authors"><u>Byung-Kwan Lee</u>*, Youngchae Chee*, Yong Man Ro</div>
+          <div class="pub-venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Findings, 2026 &nbsp; [<a href="https://arxiv.org/abs/2603.02099" target="_blank" rel="noopener">Paper</a>][<a href="https://litcoderr.github.io/rtap_page/" target="_blank" rel="noopener">Project</a>]</div>
+        </div>
+      </li>
+
+      <li>
+        <div class="pub-thumb is-wide"><img src="assets/papers/refinebench.jpg" alt="RefineBench" loading="lazy" /></div>
+        <div class="pub-body">
+          <div class="pub-title">"RefineBench: Evaluating Refinement Capability in Language Models"</div>
+          <div class="pub-authors">Young-Jun Lee*, Seungone Kim*, <u>Byung-Kwan Lee</u>, Minkyeong Moon, Yechan Hwang, Jong Myoung Kim, Graham Neubig, Sean Welleck, Ho-Jin Choi</div>
+          <div class="pub-venue">International Conference on Learning Representations (ICLR), 2026 &nbsp; [<a href="https://arxiv.org/abs/2511.22173" target="_blank" rel="noopener">Paper</a>][<a href="https://passing2961.github.io/refinebench-page/" target="_blank" rel="noopener">Project</a>]</div>
+          <div class="pub-extra">Best Runner-Up Award (Oral, Top 1%), Multi-Turn Interactions in LLMs Workshop @ NeurIPS 2025 &nbsp; [<a href="https://neurips.cc/virtual/2025/loc/san-diego/130841" target="_blank" rel="noopener">Link</a>]</div>
+        </div>
+      </li>
+
+      <li>
+        <div class="pub-thumb is-wide"><img src="assets/papers/ril.jpg" alt="RIL" loading="lazy" /></div>
+        <div class="pub-body">
+          <div class="pub-title">"Unified Reinforcement and Imitation Learning for Vision-Language Models"</div>
+          <div class="pub-authors"><u>Byung-Kwan Lee</u>, Ryo Hachiuma, Yong Man Ro, Yu-Chiang Frank Wang, Yueh-Hua Wu</div>
+          <div class="pub-venue">Neural Information Processing Systems (NeurIPS), 2025 &nbsp; [<a href="https://arxiv.org/abs/2510.19307" target="_blank" rel="noopener">Paper</a>][<a href="https://byungkwanlee.github.io/RIL-page/" target="_blank" rel="noopener">Project</a>]</div>
+          <div class="pub-extra">U.S. Patent Application Filed (Non-Provisional), NVIDIA Research, 2025</div>
+        </div>
+      </li>
+
+      <li>
+        <div class="pub-thumb"><img src="assets/papers/multiverse.jpg" alt="MultiVerse" loading="lazy" /></div>
+        <div class="pub-body">
+          <div class="pub-title">"MultiVerse: A Multi-Turn Conversation Benchmark for Evaluating Large Vision and Language Models"</div>
+          <div class="pub-authors">Young-Jun Lee, <u>Byung-Kwan Lee</u>, Jianshu Zhang, Yechan Hwang, Byungsoo Ko, Han-Gyu Kim, Dongyu Yao, Xuankun Rong, Eojin Joo, Seung-Ho Han, Bowon Ko, Ho-Jin Choi</div>
+          <div class="pub-venue">IEEE/CVF International Conference on Computer Vision (ICCV), 2025 &nbsp; [<a href="https://www.arxiv.org/abs/2510.16641" target="_blank" rel="noopener">Paper</a>][<a href="https://passing2961.github.io/multiverse-project-page/" target="_blank" rel="noopener">Project</a>]</div>
+          <div class="pub-extra">Workshop for Knowledge-Intensive Multimodal Reasoning, ICCV 2025 &nbsp; [<a href="https://knowledgemr-workshop.github.io/" target="_blank" rel="noopener">Link</a>]</div>
+        </div>
+      </li>
+
+      <li>
+        <div class="pub-thumb"><img src="assets/papers/vlsi.jpg" alt="VLsI" loading="lazy" /></div>
+        <div class="pub-body">
+          <div class="pub-title">"VLsI: Verbalized Layers-to-Interactions from Large to Small Vision Language Models"</div>
+          <div class="pub-authors"><u>Byung-Kwan Lee</u>, Ryo Hachiuma, Yu-Chiang Frank Wang, Yong Man Ro, Yueh-Hua Wu</div>
+          <div class="pub-venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2025 &nbsp; [<a href="https://arxiv.org/abs/2412.01822" target="_blank" rel="noopener">Paper</a>][<a href="https://byungkwanlee.github.io/VLsI-page/" target="_blank" rel="noopener">Project</a>]</div>
+          <div class="pub-extra">U.S. Patent Application Filed (Non-Provisional), NVIDIA Research, 2025</div>
+        </div>
+      </li>
+
+      <li>
+        <div class="pub-thumb is-wide"><img src="assets/papers/phantom.jpg" alt="Phantom" loading="lazy" /></div>
+        <div class="pub-body">
+          <div class="pub-title">"Phantom of Latent for Large Language and Vision Models"</div>
+          <div class="pub-authors"><u>Byung-Kwan Lee</u>, Sangyun Chung, Chae Won Kim, Beomchan Park, Yong Man Ro</div>
+          <div class="pub-venue">Technical Report &nbsp; [<a href="https://arxiv.org/abs/2409.14713" target="_blank" rel="noopener">Paper</a>][<a href="https://github.com/ByungKwanLee/Phantom" target="_blank" rel="noopener">Code</a>][<a href="https://huggingface.co/collections/BK-Lee/phantom-66f1368c1f47e626066263c0" target="_blank" rel="noopener">HF Model</a>]</div>
+        </div>
+      </li>
+
+      <li>
+        <div class="pub-thumb"><img src="assets/papers/trol.png" alt="TroL" loading="lazy" /></div>
+        <div class="pub-body">
+          <div class="pub-title">"TroL: Traversal of Layers for Large Language and Vision Models"</div>
+          <div class="pub-authors"><u>Byung-Kwan Lee</u>, Sangyun Chung, Chae Won Kim, Beomchan Park, Yong Man Ro</div>
+          <div class="pub-venue">Empirical Methods in Natural Language Processing (EMNLP), 2024 &nbsp; [<a href="https://arxiv.org/abs/2406.12246" target="_blank" rel="noopener">Paper</a>][<a href="https://github.com/ByungKwanLee/TroL" target="_blank" rel="noopener">Code</a>][<a href="https://huggingface.co/collections/BK-Lee/trol-6671374e78e410e0f8cb5ef8" target="_blank" rel="noopener">HF Model</a>]</div>
+        </div>
+      </li>
+
+      <li>
+        <div class="pub-thumb"><img src="assets/papers/meteor.jpg" alt="Meteor" loading="lazy" /></div>
+        <div class="pub-body">
+          <div class="pub-title">"Meteor: Mamba-based Traversal of Rationale for Large Language and Vision Models"</div>
+          <div class="pub-authors"><u>Byung-Kwan Lee</u>, Chae Won Kim, Beomchan Park, Yong Man Ro</div>
+          <div class="pub-venue">Neural Information Processing Systems (NeurIPS), 2024 &nbsp; [<a href="https://arxiv.org/abs/2405.15574" target="_blank" rel="noopener">Paper</a>][<a href="https://github.com/ByungKwanLee/Meteor" target="_blank" rel="noopener">Code</a>][<a href="https://huggingface.co/collections/BK-Lee/meteor-66561614b88e4539b263f8a0" target="_blank" rel="noopener">HF Model</a>]</div>
+          <div class="pub-extra">31th Samsung HumanTech Paper Awards in Computer Science &amp; Engineering</div>
+        </div>
+      </li>
+
+      <li>
+        <div class="pub-thumb is-wide"><img src="assets/papers/moai.jpg" alt="MoAI" loading="lazy" /></div>
+        <div class="pub-body">
+          <div class="pub-title">"MoAI: Mixture of All Intelligence for Large Language and Vision Models"</div>
+          <div class="pub-authors"><u>Byung-Kwan Lee</u>, Beomchan Park, Chae Won Kim, Yong Man Ro</div>
+          <div class="pub-venue">European Conference on Computer Vision (ECCV), 2024 &nbsp; [<a href="https://arxiv.org/abs/2403.07508" target="_blank" rel="noopener">Paper</a>][<a href="https://github.com/ByungKwanLee/MoAI" target="_blank" rel="noopener">Code</a>][<a href="https://huggingface.co/collections/BK-Lee/collavo-and-moai-66561821e16f34509f5c2040" target="_blank" rel="noopener">HF Model</a>]</div>
+        </div>
+      </li>
+
+      <li>
+        <div class="pub-thumb is-wide"><img src="assets/papers/collavo.jpg" alt="CoLLaVO" loading="lazy" /></div>
+        <div class="pub-body">
+          <div class="pub-title">"CoLLaVO: Crayon Large Language and Vision mOdel"</div>
+          <div class="pub-authors"><u>Byung-Kwan Lee</u>, Beomchan Park, Chae Won Kim, Yong Man Ro</div>
+          <div class="pub-venue">Findings of the Association for Computational Linguistics (ACL), 2024 &nbsp; [<a href="https://arxiv.org/abs/2402.11248" target="_blank" rel="noopener">Paper</a>][<a href="https://github.com/ByungKwanLee/CoLLaVO" target="_blank" rel="noopener">Code</a>][<a href="https://huggingface.co/collections/BK-Lee/collavo-and-moai-66561821e16f34509f5c2040" target="_blank" rel="noopener">HF Model</a>]</div>
+          <div class="pub-extra">2024 KCC XAI Workshop, Best Paper Awards</div>
+        </div>
+      </li>
+
+      <li>
+        <div class="pub-thumb is-wide"><img src="assets/papers/cus.jpg" alt="Causal Unsupervised Segmentation" loading="lazy" /></div>
+        <div class="pub-body">
+          <div class="pub-title">"Causal Unsupervised Semantic Segmentation"</div>
+          <div class="pub-authors">Junho Kim*, <u>Byung-Kwan Lee</u>*, Yong Man Ro</div>
+          <div class="pub-venue">Journal of Pattern Recognition &nbsp; [<a href="https://arxiv.org/abs/2310.07379" target="_blank" rel="noopener">Paper</a>][<a href="https://github.com/ByungKwanLee/Causal-Unsupervised-Segmentation" target="_blank" rel="noopener">Code</a>]</div>
+        </div>
+      </li>
+
+      <li>
+        <div class="pub-thumb is-wide"><img src="assets/papers/ddml.jpg" alt="Adversarial Double ML" loading="lazy" /></div>
+        <div class="pub-body">
+          <div class="pub-title">"Mitigating Adversarial Vulnerability through Causal Parameter Estimation by Adversarial Double Machine Learning"</div>
+          <div class="pub-authors"><u>Byung-Kwan Lee</u>*, Junho Kim*, Yong Man Ro</div>
+          <div class="pub-venue">IEEE/CVF International Conference on Computer Vision (ICCV), 2023 &nbsp; [<a href="https://arxiv.org/abs/2307.07250" target="_blank" rel="noopener">Paper</a>][<a href="https://github.com/ByungKwanLee/Double-Debiased-Adversary" target="_blank" rel="noopener">Code</a>]</div>
+        </div>
+      </li>
+
+      <li>
+        <div class="pub-thumb venue-card vc-icip"><span class="vc-line1">ICIP</span><span class="vc-line2">2023</span></div>
+        <div class="pub-body">
+          <div class="pub-title">"Mitigating Dataset Bias in Image Captioning through CLIP Confounder-free Captioning Network"</div>
+          <div class="pub-authors">YeonJu Kim, Junho Kim, <u>Byung-Kwan Lee</u>, Sebin Shin, Yong Man Ro</div>
+          <div class="pub-venue">IEEE International Conference on Image Processing (ICIP), 2023 &nbsp; [<a href="https://ieeexplore.ieee.org/document/10222502" target="_blank" rel="noopener">Paper</a>][<a href="https://github.com/yeonju7kim/C2Cap" target="_blank" rel="noopener">Code</a>]</div>
+        </div>
+      </li>
+
+      <li>
+        <div class="pub-thumb"><img src="assets/papers/cai.jpg" alt="Causal Adversarial Instruments" loading="lazy" /></div>
+        <div class="pub-body">
+          <div class="pub-title">"Demystifying Causal Features on Adversarial Examples and Causal Inoculation for Robust Network by Adversarial Instrumental Variable Regression"</div>
+          <div class="pub-authors">Junho Kim*, <u>Byung-Kwan Lee</u>*, Yong Man Ro</div>
+          <div class="pub-venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2023 &nbsp; [<a href="https://arxiv.org/abs/2303.01052" target="_blank" rel="noopener">Paper</a>][<a href="https://github.com/ByungKwanLee/Causal-Adversarial-Instruments" target="_blank" rel="noopener">Code</a>]</div>
+        </div>
+      </li>
+
+      <li>
+        <div class="pub-thumb"><img src="assets/papers/mad.jpg" alt="Masking Adversarial Damage" loading="lazy" /></div>
+        <div class="pub-body">
+          <div class="pub-title">"Masking Adversarial Damage: Finding Adversarial Saliency for Robust and Sparse Network"</div>
+          <div class="pub-authors"><u>Byung-Kwan Lee</u>*, Junho Kim*, Yong Man Ro</div>
+          <div class="pub-venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2022 &nbsp; [<a href="https://arxiv.org/abs/2204.02738" target="_blank" rel="noopener">Paper</a>][<a href="https://github.com/ByungKwanLee/Masking-Adversarial-Damage" target="_blank" rel="noopener">Code</a>]</div>
+        </div>
+      </li>
+
+      <li>
+        <div class="pub-thumb"><img src="assets/papers/aib.jpg" alt="Information Bottleneck" loading="lazy" /></div>
+        <div class="pub-body">
+          <div class="pub-title">"Distilling Robust and Non-Robust Features in Adversarial Examples by Information Bottleneck"</div>
+          <div class="pub-authors">Junho Kim*, <u>Byung-Kwan Lee</u>*, Yong Man Ro</div>
+          <div class="pub-venue">Neural Information Processing Systems (NeurIPS), 2021 &nbsp; [<a href="https://arxiv.org/abs/2204.02735" target="_blank" rel="noopener">Paper</a>][<a href="https://github.com/ByungKwanLee/Adversarial-Information-Bottleneck" target="_blank" rel="noopener">Code</a>]</div>
+        </div>
+      </li>
+
+      <li>
+        <div class="pub-thumb"><img src="assets/papers/hbd.jpg" alt="Hierarchical Bayesian Defense" loading="lazy" /></div>
+        <div class="pub-body">
+          <div class="pub-title">"Towards Adversarial Robustness of Bayesian Neural Network through Hierarchical Variational Inference"</div>
+          <div class="pub-authors"><u>Byung-Kwan Lee</u>, Youngjoon Yu, Yong Man Ro</div>
+          <div class="pub-venue">Technical Report &nbsp; [<a href="https://openreview.net/pdf?id=Cue2ZEBf12" target="_blank" rel="noopener">Paper</a>][<a href="https://github.com/ByungKwanLee/Hierarchical-Bayesian-Defense" target="_blank" rel="noopener">Code</a>]</div>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- &mdash;&mdash; Reviewer Experience &mdash;&mdash; -->
+  <section id="reviewer">
+    <h2 class="section-title"><i class="fa-solid fa-user-check"></i> Reviewer Experience</h2>
+
+    <h3 class="subhead">Journal</h3>
+    <ul class="plain-list">
+      <li>IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)</li>
+      <li>Elsevier on Computer Vision and Image Understanding (CVIU)</li>
+      <li>IEEE Transactions on Neural Networks and Learning Systems (TNNLS)</li>
+      <li>IEEE Transactions on Circuits and Systems for Video Technology (TCSVT)</li>
+    </ul>
+
+    <h3 class="subhead">Conference</h3>
+    <ul class="plain-list two-col">
+      <li>CVPR <span class="years">2021 / 2022 / 2023 / 2024 / 2026</span></li>
+      <li>ICCV <span class="years">2021 / 2023 / 2025</span></li>
+      <li>ECCV <span class="years">2022 / 2024 / 2026</span></li>
+      <li>ICLR <span class="years">2023 / 2024 / 2025</span></li>
+      <li>NeurIPS <span class="years">2023 / 2024 / 2025 / 2026</span></li>
+      <li>ICML <span class="years">2024 / 2025 / 2026</span></li>
+      <li>AAAI <span class="years">2025</span></li>
+      <li>ACCV <span class="years">2024</span></li>
+    </ul>
+  </section>
+
+  <!-- &mdash;&mdash; Invited Talks & Awards &mdash;&mdash; -->
+  <section id="awards">
+    <h2 class="section-title"><i class="fa-solid fa-trophy"></i> Invited Talks &amp; Awards</h2>
+    <ul class="awards-list">
+      <li><span class="award-text">Silver Reviewer Award, International Conference on Machine Learning (ICML)</span><span class="award-year">2026</span></li>
+      <li><span class="award-text">Best Runner-Up Award (Oral, Top 1%), Multi-Turn Interactions in LLMs Workshop @ NeurIPS</span><span class="award-year">2025</span></li>
+      <li><span class="award-text">Invited Talk at Kongju University</span><span class="award-year">2025</span></li>
+      <li><span class="award-text">Invited Talk at Hanyang University ERICA</span><span class="award-year">2025</span></li>
+      <li><span class="award-text">Invited Talk at Kookmin University</span><span class="award-year">2025</span></li>
+      <li><span class="award-text">Invited Talk at Dongseo University</span><span class="award-year">2025</span></li>
+      <li><span class="award-text">31th Samsung HumanTech Paper Awards in Computer Science &amp; Engineering</span><span class="award-year">2025</span></li>
+      <li><span class="award-text">KCC XAI Workshop, Best Paper Awards</span><span class="award-year">2024</span></li>
+      <li><span class="award-text">Invited Talk at Korea Institute of Science and Technology Information (KISTI)</span><span class="award-year">2024</span></li>
+      <li><span class="award-text">Invited Talk at NAVER HyperCLOVA X</span><span class="award-year">2024</span></li>
+      <li><span class="award-text">Invited Talk at Kakao Brain</span><span class="award-year">2024</span></li>
+      <li><span class="award-text">1st Award for Research Presentation, Center for Applied Research in AI (CARAI)</span><span class="award-year">2023</span></li>
+      <li><span class="award-text">GIRE Research Mentor, Seoul International School &mdash; "MUsE", Journal of Student Research [<a href="https://www.jsr.org/hs/index.php/path/article/view/8071" target="_blank" rel="noopener">Publication</a>]</span><span class="award-year">2023</span></li>
+      <li><span class="award-text">KAIST SW IT Academy, AI Project Director of 1st Award Topic</span><span class="award-year">2023</span></li>
+      <li><span class="award-text">Invitation to Presenter in Korean Conference on Computer Vision (KCCV)</span><span class="award-year">2023</span></li>
+      <li><span class="award-text">KAIST SW IT Academy, Lecturer of Data Structure &amp; Algorithm, Deep Learning, Computer Vision</span><span class="award-year">2023</span></li>
+      <li><span class="award-text">Invitation to Presenter in Korean Conference on Computer Vision (KCCV)</span><span class="award-year">2022</span></li>
+      <li><span class="award-text">2nd Award for Research Presentation, Center for Applied Research in AI (CARAI)</span><span class="award-year">2022</span></li>
+      <li><span class="award-text">KAIST Fellowship</span><span class="award-year">Mar. 2020 &mdash; Feb. 2024</span></li>
+      <li><span class="award-text">National Government Fellowship</span><span class="award-year">Mar. 2018 &mdash; Feb. 2020</span></li>
+      <li><span class="award-text">1st President's Award for International Autonomous Vehicle Competition, Team Leader [<a href="https://www.youtube.com/watch?v=PrQSh7iqp3s" target="_blank" rel="noopener">YouTube</a>][<a href="http://www.chi.or.kr/front/program/proVodView.do?contentIdx=204098" target="_blank" rel="noopener">Talk</a>]</span><span class="award-year">2018</span></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>&copy; 2026 Byung-Kwan Lee &middot; Built with care on <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a></p>
+</footer>
+
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (!btn) return;
+    btn.addEventListener('click', function() {
+      var current = document.documentElement.getAttribute('data-theme') || 'light';
+      var next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  })();
+</script>
+
+</body>
+</html>
