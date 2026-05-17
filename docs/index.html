@@ -16,7 +16,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Byung-Kwan Lee &mdash; Research Scientist at NVIDIA. Vision-Language Models, Distillation, RL, Pruning." />
   <meta name="author" content="Byung-Kwan Lee" />
-  <meta name="resume-upload-endpoint" content="https://formsubmit.co/ajax/bklee.nano@gmail.com" />
   <title>Byung-Kwan Lee &mdash; Research Scientist at NVIDIA</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -82,8 +81,8 @@
       <a href="#education">Education</a>
       <a href="#publications">Publications</a>
       <a href="#reviewer">Reviewer</a>
-      <a href="#nvda-stock">NVIDIA Stock</a>
       <a href="#awards">Talks &amp; Awards</a>
+      <a href="#nvda-stock">NVIDIA Stock</a>
       <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
         <i class="fa-solid fa-moon icon-moon"></i>
         <i class="fa-solid fa-sun icon-sun"></i>
@@ -162,7 +161,7 @@
 
   <section id="applications">
     <h2 class="section-title"><i class="fa-solid fa-file-arrow-up"></i> Collaboration Requests &amp; Job Applications</h2>
-    <p class="lead">Drop a resume file here (or click to upload), and it will be emailed immediately to me. I review and evaluate applications by myself based only on the resume; additional written content is never considered.</p>
+    <p class="lead">Drop a resume file here (or click to upload), and Gmail compose will open with recipient, subject, and content pre-filled. Please attach the selected file and click send. I review applications based only on the resume; additional written content is never considered. (Just cold mail please. Mail Content can be just "I am [Your name]"". it is enough to me.))</p>
     <div class="application-grid">
       <article class="application-card" data-application-type="University Collaboration with NVIDIA">
         <h3 class="application-title">University Collaboration with NVIDIA</h3>
@@ -687,16 +686,8 @@
 
       var primaryRecipient = 'bklee.nano@gmail.com';
       var secondaryRecipient = 'byungkwanl@nvidia.com';
-      var endpointMeta = document.querySelector('meta[name="resume-upload-endpoint"]');
-      var configuredEndpoint = (
-        window.CV_RESUME_UPLOAD_ENDPOINT ||
-        (endpointMeta && endpointMeta.getAttribute('content')) ||
-        ''
-      ).trim();
-      var fallbackEndpoint = 'https://formsubmit.co/ajax/' + primaryRecipient;
-      var endpoint = configuredEndpoint || fallbackEndpoint;
       var maxFileSize = 15 * 1024 * 1024;
-      var dropConfirmMessage = 'Do you really want to drop this file?\n\nNotice: By confirming, an email will be sent immediately. Do you wish to send it?';
+      var dropConfirmMessage = 'Do you really want to drop this file?\n\nNotice: Gmail compose will open with a pre-filled subject and content. Please attach this file manually and click Send.';
 
       function formatBytes(bytes) {
         if (bytes < 1024) return bytes + ' B';
@@ -717,33 +708,23 @@
         if (input) input.disabled = isBusy;
       }
 
-      function buildPayload(applicationType, file) {
-        var data = new FormData();
-        data.append('resume', file, file.name);
-        data.append('_subject', '[CV Website] ' + applicationType + ' Resume');
-        data.append('_cc', secondaryRecipient);
-        data.append('_captcha', 'false');
-        data.append('_template', 'table');
-        data.append('applicationType', applicationType);
-        data.append('submittedAtUtc', new Date().toISOString());
-        data.append('source', window.location.href);
-        return data;
-      }
-
-      function submitViaAjax(applicationType, file) {
-        return fetch(endpoint, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: buildPayload(applicationType, file)
-        }).then(function(response) {
-          return response.json().catch(function() { return {}; }).then(function(payload) {
-            if (!response.ok || !payload || payload.ok !== true) {
-              var message = (payload && (payload.message || payload.error)) || ('HTTP ' + response.status);
-              throw new Error(message);
-            }
-            return payload;
-          });
-        });
+      function buildGmailComposeUrl(applicationType, file) {
+        var subject = '[CV Website] ' + applicationType + ' Resume';
+        var body = [
+          'Hello Byung-Kwan Lee,',
+          '',
+          'I am applying for: ' + applicationType,
+          'Selected file: ' + file.name + ' (' + formatBytes(file.size) + ')',
+          '',
+          'Please find my resume attached.',
+          '',
+          'Best regards,'
+        ].join('\n');
+        return 'https://mail.google.com/mail/?view=cm&fs=1'
+          + '&to=' + encodeURIComponent(primaryRecipient)
+          + '&cc=' + encodeURIComponent(secondaryRecipient)
+          + '&su=' + encodeURIComponent(subject)
+          + '&body=' + encodeURIComponent(body);
       }
 
       function submitFile(applicationType, file, statusNode, dropzone, input, source) {
@@ -759,26 +740,16 @@
         }
 
         setBusy(dropzone, input, true);
-        setStatus(statusNode, 'Sending "' + file.name + '" ...', 'is-muted');
+        setStatus(statusNode, 'Opening Gmail compose for "' + file.name + '" ...', 'is-muted');
 
-        submitViaAjax(applicationType, file)
-          .then(function() {
-            setStatus(statusNode, 'Sent successfully. Thank you for your submission.', 'is-success');
-          })
-          .catch(function(error) {
-            var message = (error && error.message) ? error.message : 'Please try again in a moment.';
-            if (/activate|activation|verify|verification/i.test(message)) {
-              message = 'Form activation required. Check your inbox and click the FormSubmit activation link.';
-            }
-            if (/failed to fetch|network|timeout/i.test(message)) {
-              message = 'Network/server connection failed. Please try again in a moment.';
-            }
-            setStatus(statusNode, 'Failed to send: ' + message, 'is-error');
-          })
-          .finally(function() {
-            setBusy(dropzone, input, false);
-            if (input) input.value = '';
-          });
+        var composeUrl = buildGmailComposeUrl(applicationType, file);
+        var popup = window.open(composeUrl, '_blank', 'noopener');
+        if (!popup) {
+          window.location.href = composeUrl;
+        }
+        setStatus(statusNode, 'Gmail compose opened. Attach "' + file.name + '" and click Send.', 'is-success');
+        setBusy(dropzone, input, false);
+        if (input) input.value = '';
       }
 
       cards.forEach(function(card) {
