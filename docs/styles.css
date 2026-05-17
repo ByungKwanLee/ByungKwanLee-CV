@@ -1202,21 +1202,61 @@ html.js-reveal .pub-list > li.is-visible .pub-thumb img {
   opacity: 1;
 }
 
-/* Top scroll-progress bar */
+/* Top scroll-progress bar - shimmering gradient with comet leading edge */
 .scroll-progress {
   position: fixed;
   top: 0;
   left: 0;
   height: 3px;
   width: 0%;
-  background: linear-gradient(90deg, var(--accent), var(--nvidia));
   z-index: 200;
   pointer-events: none;
-  transition: width 80ms linear;
+  overflow: hidden;
+  transition: width 90ms cubic-bezier(0.4, 0, 0.2, 1);
   will-change: width;
+  background: linear-gradient(
+    90deg,
+    var(--accent) 0%,
+    var(--nvidia) 22%,
+    #C9F050 45%,
+    var(--nvidia) 68%,
+    var(--accent) 100%
+  );
+  background-size: 220% 100%;
+  background-position: 0% 50%;
+  animation: progressShimmer 4.5s linear infinite;
+  filter:
+    drop-shadow(0 0 4px rgba(156, 223, 0, 0.40))
+    drop-shadow(0 0 10px rgba(79, 184, 166, 0.25));
+  border-bottom-right-radius: 2px;
 }
+/* Comet / leading-edge highlight that always sits at the progress tip */
+.scroll-progress::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 110px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0)    0%,
+    rgba(255, 255, 255, 0.35) 55%,
+    rgba(255, 255, 255, 0.85) 92%,
+    rgba(255, 255, 255, 1)   100%
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+@keyframes progressShimmer {
+  0%   { background-position:    0% 50%; }
+  100% { background-position: -220% 50%; }
+}
+
 [data-theme="dark"] .scroll-progress {
-  box-shadow: 0 0 8px rgba(156, 223, 0, 0.5), 0 0 14px rgba(79, 184, 166, 0.3);
+  filter:
+    drop-shadow(0 0 5px rgba(156, 223, 0, 0.65))
+    drop-shadow(0 0 14px rgba(79, 184, 166, 0.40));
 }
 
 /* Respect users who prefer reduced motion */
