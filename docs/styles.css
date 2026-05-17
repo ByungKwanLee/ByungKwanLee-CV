@@ -831,36 +831,6 @@ a.role-pill:hover .role-pill-arrow {
   margin: 0 2px;
   transition: color 0.25s ease, text-shadow 0.25s ease;
 }
-.contact-row .social-count {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 1.9em;
-  margin-left: 4px;
-  padding: 0 6px;
-  border-radius: 999px;
-  border: 1px solid rgba(79, 128, 119, 0.24);
-  background: rgba(168, 197, 191, 0.16);
-  color: var(--accent-dark);
-  font-size: 11px;
-  font-weight: 600;
-  line-height: 1.45;
-  vertical-align: middle;
-}
-[data-theme="dark"] .contact-row .social-count {
-  border-color: rgba(123, 212, 196, 0.3);
-  background: rgba(79, 184, 166, 0.14);
-  color: var(--accent-dark);
-}
-.contact-row .social-count.is-loading {
-  opacity: 0.72;
-}
-.contact-row .social-count.is-error {
-  opacity: 0.56;
-}
-.contact-row .social-count.is-hidden {
-  display: none;
-}
 .contact-row a:hover {
   color: var(--primary);
   text-decoration: none;
@@ -1933,11 +1903,6 @@ section:first-of-type { border-top: none; }
     line-height: 1.45;
   }
   .contact-row a { margin: 0; white-space: nowrap; }
-  .contact-row .social-count {
-    margin-left: 3px;
-    padding: 0 4px;
-    font-size: 10px;
-  }
   .contact-row .dot { display: none; }
 
   .pub-list > li {
