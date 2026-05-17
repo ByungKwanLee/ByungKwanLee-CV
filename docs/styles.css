@@ -1400,7 +1400,7 @@ section:first-of-type { border-top: none; }
   grid-template-rows: auto auto;
   column-gap: 10px;
   row-gap: 4px;
-  align-items: center;
+  align-items: start;
 }
 .pct-dot {
   grid-row: 1 / span 2;
@@ -1416,7 +1416,7 @@ section:first-of-type { border-top: none; }
   font-weight: 600;
   letter-spacing: -0.005em;
   line-height: 1.25;
-  white-space: nowrap;
+  white-space: normal;
 }
 .pct-sub {
   font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
@@ -1428,8 +1428,7 @@ section:first-of-type { border-top: none; }
 .pct-legend-item-lime .pct-sub { color: #6EA300; }
 .pct-legend-item-sky  .pct-sub { color: #1F93C4; }
 .pct-note {
-  width: 100%;
-  margin-top: 8px;
+  margin-top: 10px;
   font-size: 11.5px;
   line-height: 1.42;
   color: var(--muted);

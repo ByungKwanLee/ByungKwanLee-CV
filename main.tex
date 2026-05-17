@@ -51,6 +51,18 @@
 \definecolor{arxivPinkBg}{HTML}{FCE7F0}    % pale pink background for arxiv badge
 \definecolor{arxivPink}{HTML}{EC4899}      % pink border for arxiv badge
 \definecolor{arxivPinkDark}{HTML}{BE185D}  % deep magenta text for arxiv badge
+\definecolor{reviewBg}{HTML}{E4EEFF}       % stronger pale blue for under-review badge
+\definecolor{reviewBorder}{HTML}{3B82F6}   % vivid blue border for under-review badge
+\definecolor{reviewText}{HTML}{1E40AF}     % deep blue text for under-review badge
+\definecolor{patentBg}{HTML}{E6F7CA}       % strong lime tint for non-provisional patent badge
+\definecolor{patentBorder}{HTML}{65A30D}   % vivid olive-lime border for patent badge
+\definecolor{patentText}{HTML}{3F6212}     % dark olive text for patent badge
+\definecolor{provisionalBg}{HTML}{F3FBDD}  % lighter lime tint for provisional patent badge
+\definecolor{provisionalBorder}{HTML}{A3C957}
+\definecolor{provisionalText}{HTML}{5F7F1F}
+\definecolor{internalBg}{HTML}{F1F5F9}     % cool gray for internal-release badge
+\definecolor{internalBorder}{HTML}{64748B}
+\definecolor{internalText}{HTML}{334155}
 
 % Page layout
 \setlength{\multicolsep}{0pt} 
@@ -105,10 +117,25 @@
   boxrule=0.4pt, arc=2pt, outer arc=2pt, boxsep=1pt, left=3pt, right=3pt,
   top=1pt, bottom=1pt, fontupper=\footnotesize\bfseries\color{accentDark}}
 
-% Patent / status badge (subtle teal)
-\newtcbox{\statusbadge}{on line, colback=boxBg, colframe=accentColor!85,
-  boxrule=0.4pt, arc=2pt, outer arc=2pt, boxsep=1pt, left=3pt, right=3pt,
-  top=1pt, bottom=1pt, fontupper=\footnotesize\bfseries\color{accentDark}}
+% Under-review badge
+\newtcbox{\reviewbadge}{on line, colback=reviewBg, colframe=reviewBorder,
+  boxrule=0.55pt, arc=2pt, outer arc=2pt, boxsep=1pt, left=3pt, right=3pt,
+  top=1pt, bottom=1pt, fontupper=\footnotesize\bfseries\color{reviewText}}
+
+% Non-provisional patent badge
+\newtcbox{\patentbadge}{on line, colback=patentBg, colframe=patentBorder,
+  boxrule=0.6pt, arc=2pt, outer arc=2pt, boxsep=1pt, left=3pt, right=3pt,
+  top=1pt, bottom=1pt, fontupper=\footnotesize\bfseries\color{patentText}}
+
+% Provisional patent badge
+\newtcbox{\provisionalbadge}{on line, colback=provisionalBg, colframe=provisionalBorder,
+  boxrule=0.55pt, arc=2pt, outer arc=2pt, boxsep=1pt, left=3pt, right=3pt,
+  top=1pt, bottom=1pt, fontupper=\footnotesize\bfseries\color{provisionalText}}
+
+% Internal-release badge
+\newtcbox{\statusbadge}{on line, colback=internalBg, colframe=internalBorder,
+  boxrule=0.55pt, arc=2pt, outer arc=2pt, boxsep=1pt, left=3pt, right=3pt,
+  top=1pt, bottom=1pt, fontupper=\footnotesize\bfseries\color{internalText}}
 
 % Marker-style label highlight (like a highlighter pen)
 \newtcbox{\labelhl}{on line, colback=highlightColor, colframe=highlightColor,
@@ -285,26 +312,26 @@
       {NVIDIA}{Research Scientist}{Oct. 2025 - Current}
       \resumeItemListStart
       \item \leadRole{LEAD}~\textbf{Masking Teacher and Reinforcing Student} \,{\footnotesize\color{accentDark}[\textsc{Completed}]}\, \textit{\color{mutedGray}\small Mask-progressive RL distillation that gradually unmasks teacher weights and uses offline RL with accuracy \& distillation rewards.}
-        \\[0.4mm]\hspace*{-1mm}\venuebadge{CVPR 2026 Accept}~\statusbadge{U.S. Non-Provisional Patent Filed}~\arxivbadge{ArXiv Release}~\statusbadge{Internal Release}
+        \\[0.4mm]\hspace*{-1mm}\venuebadge{CVPR 2026 Accept}~\patentbadge{U.S. Non-Provisional Patent Filed}~\arxivbadge{ArXiv Release}~\statusbadge{Internal Release}
         \vspace{1.2mm}
       \item \leadRole{LEAD}~\textbf{GenRecal} \,{\footnotesize\color{accentDark}[\textsc{Completed}]}\, \textit{\color{mutedGray}\small Cross-architecture VLM distillation via a Recalibrator that aligns heterogeneous token representations regardless of vocabulary, token splits, or index ordering.}
-        \\[0.4mm]\hspace*{-1mm}\statusbadge{Under Review}~\statusbadge{U.S. Patent Upgraded to Non-Provisional}~\techbadge{Internal Tech Transfer}
+        \\[0.4mm]\hspace*{-1mm}\reviewbadge{Under Review}~\patentbadge{U.S. Patent Upgraded to Non-Provisional}~\techbadge{Internal Tech Transfer}
         \vspace{1.2mm}
       \item \leadRole{LEAD}~\textbf{Unified RL \& Imitation Learning for VLMs} \,{\footnotesize\color{accentDark}[\textsc{Completed}]}\, \textit{\color{mutedGray}\small Combines RL with adversarial imitation, using an LLM-based discriminator and multi-teacher guidance to build lightweight yet powerful VLMs.}
-        \\[0.4mm]\hspace*{-1mm}\venuebadge{NeurIPS 2025 Accept}~\statusbadge{U.S. Patent Upgraded to Non-Provisional}~\arxivbadge{ArXiv Release}~\statusbadge{Internal Release}
+        \\[0.4mm]\hspace*{-1mm}\venuebadge{NeurIPS 2025 Accept}~\patentbadge{U.S. Patent Upgraded to Non-Provisional}~\arxivbadge{ArXiv Release}~\statusbadge{Internal Release}
       \resumeItemListEnd
     \dashedDivider
     \resumeSubheading 
       {NVIDIA}{Research Intern}{Oct. 2024 - Oct. 2025}
       \resumeItemListStart
       \item \leadRole{LEAD}~\textbf{VLsI: Verbalized Layers-to-Interactions} \,{\footnotesize\color{accentDark}[\textsc{Completed}]}\, \textit{\color{mutedGray}\small Layer-wise distillation using intermediate verbalizers, enabling small VLMs (2B/7B) to align with large VLMs' reasoning progression and outperform GPT-4V.}
-        \\[0.4mm]\hspace*{-1mm}\venuebadge{CVPR 2025 Accept}~\statusbadge{U.S. Non-Provisional Patent Filed}~\arxivbadge{ArXiv Release}~\statusbadge{Internal Release}~\techbadge{Internal Tech Transfer}
+        \\[0.4mm]\hspace*{-1mm}\venuebadge{CVPR 2025 Accept}~\patentbadge{U.S. Non-Provisional Patent Filed}~\arxivbadge{ArXiv Release}~\statusbadge{Internal Release}~\techbadge{Internal Tech Transfer}
         \vspace{1.2mm}
       \item \leadRole{LEAD}~\textbf{GenRecal} \,{\footnotesize\color{accentDark}[\textsc{Initiated}]}\, \textit{\color{mutedGray}\small Initial design of the Recalibrator framework for cross-tokenizer VLM distillation; first proof-of-concept and internal demo.}
-        \\[0.4mm]\hspace*{-1mm}\statusbadge{U.S. Provisional Patent Filed}~\arxivbadge{ArXiv Release}~\statusbadge{Internal Release}
+        \\[0.4mm]\hspace*{-1mm}\provisionalbadge{U.S. Provisional Patent Filed}~\arxivbadge{ArXiv Release}~\statusbadge{Internal Release}
         \vspace{1.2mm}
       \item \leadRole{LEAD}~\textbf{Unified RL \& Imitation Learning for VLMs} \,{\footnotesize\color{accentDark}[\textsc{Initiated}]}\, \textit{\color{mutedGray}\small First formulation of the RL + adversarial imitation training pipeline; initial experiments and team setup.}
-        \\[0.4mm]\hspace*{-1mm}\statusbadge{U.S. Provisional Patent Filed}
+        \\[0.4mm]\hspace*{-1mm}\provisionalbadge{U.S. Provisional Patent Filed}
       \resumeItemListEnd 
   \resumeSubHeadingListEnd
 \vspace{-6mm}
