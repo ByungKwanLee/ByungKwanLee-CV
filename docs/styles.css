@@ -292,6 +292,11 @@ ul, ol { padding-left: 1.4em; }
   gap: 16px;
   flex-wrap: wrap;
 }
+.nav-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 .nav-brand {
   font-family: 'Lora', serif;
   font-weight: 700;
@@ -299,15 +304,38 @@ ul, ol { padding-left: 1.4em; }
   color: var(--primary);
 }
 .nav-brand:hover { text-decoration: none; color: var(--accent-dark); }
+.nav-links-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
 .nav-links {
   display: flex;
   flex-wrap: wrap;
   gap: 4px 18px;
   font-size: 14px;
   font-weight: 500;
+  justify-content: flex-end;
+  min-width: 0;
 }
 .nav-links a { color: var(--muted); padding: 4px 2px; border-bottom: 2px solid transparent; transition: all 0.15s; }
 .nav-links a:hover { color: var(--accent-dark); border-bottom-color: var(--accent); text-decoration: none; }
+.nav-slide-hint {
+  display: none;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.2;
+  opacity: 0.78;
+  white-space: nowrap;
+  user-select: none;
+}
+.nav-slide-hint i {
+  margin-right: 4px;
+  font-size: 10px;
+}
 
 /* Hero CV view button (compact, opens PDF in browser viewer) */
 .role-row {
@@ -428,7 +456,7 @@ ul, ol { padding-left: 1.4em; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-left: 4px;
+  margin-left: 0;
   font-size: 13px;
   transition: all 0.3s ease;
   position: relative;
@@ -868,22 +896,22 @@ section:first-of-type { border-top: none; }
   border: 1px solid rgba(127, 184, 173, 0.28);
   background: linear-gradient(135deg, rgba(168, 197, 191, 0.14), rgba(168, 197, 191, 0.02));
   color: var(--primary);
-  font-size: 17px;
-  font-style: italic;
-  font-weight: 500;
-  line-height: 1.34;
+  font-family: 'Great Vibes', 'Dancing Script', cursive;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.18;
   text-align: center;
   letter-spacing: 0.01em;
 }
 .hero-quote-author {
-  display: block;
-  margin-top: 5px;
+  display: inline;
+  margin-left: 8px;
   color: var(--muted);
   font-size: inherit;
   font-style: normal;
   font-weight: 500;
   line-height: 1.3;
-  text-align: center;
   opacity: 0.86;
 }
 
@@ -1839,8 +1867,17 @@ section:first-of-type { border-top: none; }
   }
 }
 @media (max-width: 760px) {
-  .nav-inner { padding: 10px 12px; gap: 8px; }
+  .nav-inner { padding: 10px 12px; gap: 6px; }
+  .nav-head {
+    width: 100%;
+    justify-content: space-between;
+  }
   .nav-brand { font-size: 15px; }
+  .nav-links-wrap {
+    width: 100%;
+    align-items: stretch;
+    gap: 4px;
+  }
   .nav-links {
     width: 100%;
     flex-wrap: nowrap;
@@ -1852,15 +1889,19 @@ section:first-of-type { border-top: none; }
     scrollbar-width: none;
   }
   .nav-links::-webkit-scrollbar { display: none; }
-  .nav-links a,
-  .nav-links .theme-toggle { flex: 0 0 auto; }
+  .nav-links a { flex: 0 0 auto; }
   .nav-links a { padding: 4px 0; }
-  .theme-toggle { margin-left: 0; }
+  .nav-slide-hint {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 1px;
+  }
   .hero { padding: 30px 14px 22px; }
   .content { padding: 0 14px 40px; }
   .hero-quote-section { max-width: 500px; padding: 8px 0 12px; }
-  .hero-quote-text { font-size: 15.5px; padding: 9px 11px; }
-  .hero-quote-author { font-size: inherit; margin-top: 4px; }
+  .hero-quote-text { font-size: 20px; padding: 9px 11px; }
+  .hero-quote-author { font-size: inherit; margin-left: 6px; }
   .hero-grid { grid-template-columns: 1fr; gap: 18px; justify-items: center; }
   .hero-photo { width: 150px; height: 150px; justify-self: center; margin: 0 auto; }
   .hero-text { text-align: center; margin-left: 0; width: 100%; max-width: 100%; }
@@ -1935,7 +1976,7 @@ section:first-of-type { border-top: none; }
     row-gap: 6px;
   }
   .hero-quote-section { max-width: 100%; }
-  .hero-quote-text { font-size: 14.5px; }
+  .hero-quote-text { font-size: 18px; }
   .hero-quote-author { font-size: inherit; }
 }
 

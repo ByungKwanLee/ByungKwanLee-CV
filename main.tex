@@ -390,7 +390,7 @@
 \begin{tikzpicture}
   \def\outerR{1.35}
   \def\innerR{0.83}
-  \pgfmathsetmacro{\majorSweep}{76*3.6}
+  \pgfmathsetmacro{\majorSweep}{81*3.6}
   \pgfmathsetmacro{\majorEnd}{90-\majorSweep}
 
   \fill[accentDark!85] (0,0) -- (90:\outerR)
@@ -404,14 +404,14 @@
     arc[start angle=-270, end angle=\majorEnd, radius=\innerR] -- cycle;
 
   \fill[white] (0,0) circle (\innerR);
-  \node[font=\bfseries\small\color{accentDark}] at (0,0.10) {76\%};
-  \node[font=\scriptsize\color{mutedGray}] at (0,-0.26) {First \& Corr.};
+  \node[font=\bfseries\small\color{accentDark}] at (0,0.10) {81\%};
+  \node[font=\tiny\color{mutedGray}, align=center] at (0,-0.26) {First \& Lead\\Author};
 \end{tikzpicture}
 \\[-0.1mm]
 {\scriptsize
 \begin{tabular}{@{}l@{}}
-\textcolor{accentDark}{\rule{0.72ex}{0.72ex}}\hspace{0.42em}{\color{accentDark}\textbf{76\%}}~(16/21) First \& Corr.\\
-\textcolor{accentColor}{\rule{0.72ex}{0.72ex}}\hspace{0.42em}{\color{accentDark}\textbf{24\%}}~(5/21) Co-Author
+\textcolor{accentDark}{\rule{0.72ex}{0.72ex}}\hspace{0.42em}{\color{accentDark}\textbf{81\%}}~(17/21) First \& Lead Author\\
+\textcolor{accentColor}{\rule{0.72ex}{0.72ex}}\hspace{0.42em}{\color{accentDark}\textbf{19\%}}~(4/21) Co-Author
 \end{tabular}
 }
 \end{minipage}
