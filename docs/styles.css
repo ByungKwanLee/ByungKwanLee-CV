@@ -1967,6 +1967,28 @@ section:first-of-type { border-top: none; }
   }
 }
 
+/* On mobile, force content visible even if reveal observer lags/fails. */
+@media (max-width: 760px) {
+  html.js-reveal main > section,
+  html.js-reveal main > section .section-title,
+  html.js-reveal .pub-rings,
+  html.js-reveal .pct-ring,
+  html.js-reveal .pct-legend-item,
+  html.js-reveal main > section .project-list > li,
+  html.js-reveal main > section .research-list > li,
+  html.js-reveal main > section .awards-list > li,
+  html.js-reveal main > section .plain-list > li,
+  html.js-reveal .pub-list > li,
+  html.js-reveal .pub-list > li:nth-child(odd),
+  html.js-reveal .pub-list > li:nth-child(even),
+  html.js-reveal .pub-list > li .pub-thumb img {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
+
 @media (max-width: 560px) {
   .role-row {
     flex-direction: column;
