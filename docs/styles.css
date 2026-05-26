@@ -1672,6 +1672,8 @@ section:first-of-type { border-top: none; }
 
 .pub-body { min-width: 0; }
 .pub-title { font-weight: 700; color: var(--primary); margin-bottom: 2px; }
+.pub-title-link { color: inherit; text-decoration: none; }
+.pub-title-link:hover { text-decoration: underline; }
 .pub-authors { font-size: 14px; color: var(--primary); margin-bottom: 2px; }
 .pub-authors u { font-weight: 600; }
 .pub-venue { font-size: 13.5px; color: var(--muted); font-style: italic; }
