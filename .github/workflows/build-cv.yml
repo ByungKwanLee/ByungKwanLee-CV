@@ -33,10 +33,16 @@ jobs:
           mv main.pdf docs/Byung-Kwan-Lee-CV.pdf
           ls -lh docs/Byung-Kwan-Lee-CV.pdf
 
-      - name: Commit updated PDF
+      - name: Bump CV link cache buster
+        run: |
+          SHA=$(git rev-parse --short HEAD)
+          sed -i -E "s|href=\"Byung-Kwan-Lee-CV\\.pdf(\\?v=[^\"]*)?\"|href=\"Byung-Kwan-Lee-CV.pdf?v=${SHA}\"|g" docs/index.html
+          grep 'Byung-Kwan-Lee-CV.pdf' docs/index.html
+
+      - name: Commit updated PDF and CV link
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "ci: rebuild CV PDF [skip ci]"
-          file_pattern: docs/Byung-Kwan-Lee-CV.pdf
+          file_pattern: docs/Byung-Kwan-Lee-CV.pdf docs/index.html
           commit_user_name: github-actions[bot]
           commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com

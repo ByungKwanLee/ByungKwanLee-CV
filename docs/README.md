@@ -2,6 +2,23 @@
 
 Personal academic homepage built from CV, designed in a soft sage/teal pastel palette.
 
+## Daily update (one push) — 운영 루틴
+
+**로컬에서 `git pull` 할 필요 없음.** push 한 번이면 웹사이트·CV PDF가 자동으로 맞춰짐.
+
+1. 수정: `main.tex` (PDF 이력서), `docs/index.html` (홈페이지), 필요 시 `docs/assets/papers/`
+2. 커밋 & push: `git add -A && git commit -m "..." && git push`
+3. 1~2분 후 **라이브 URL**에서 확인  
+   - 홈: https://byungkwanlee.github.io/ByungKwanLee-CV/  
+   - CV: 상단 **View CV** 버튼 (또는 `.../Byung-Kwan-Lee-CV.pdf`)
+
+`main.tex`를 push하면 GitHub Actions가 PDF를 다시 만들고, **View CV** 링크에 캐시 버스터(`?v=...`)를 붙여 브라우저가 예전 PDF를 물고 있지 않게 함.
+
+| 확인 위치 | pull 필요? |
+|---|---|
+| GitHub Pages (위 URL) | 아니오 — push만 하면 됨 |
+| 로컬 `docs/Byung-Kwan-Lee-CV.pdf` 파일 직접 열기 | 가끔 — CI 커밋이 늦게 들어올 수 있음. 웹에서 보면 pull 불필요 |
+
 ## File structure
 
 ```
@@ -66,17 +83,15 @@ python -m http.server 8000
 
 ## CV PDF auto-build
 
-The "CV" download button in the top-right corner of the site points to
-`docs/Byung-Kwan-Lee-CV.pdf`. This file is regenerated automatically by the
-GitHub Action defined in `.github/workflows/build-cv.yml` whenever
-`main.tex`, `latexmkrc`, or the header images at repo root are pushed.
+The **View CV** button points to `docs/Byung-Kwan-Lee-CV.pdf` (with a `?v=<git-sha>`
+cache buster updated by CI). The PDF is regenerated automatically by
+`.github/workflows/build-cv.yml` when you push changes to `main.tex`, `latexmkrc`,
+or header images at repo root.
 
-The action compiles `main.tex` with `pdflatex` inside a TeX Live container,
-copies the resulting PDF into `docs/`, and commits it back to the same branch
-with the message `ci: rebuild CV PDF [skip ci]`.
+The action compiles `main.tex`, copies the PDF into `docs/`, bumps the cache buster
+on the CV link in `index.html`, and commits both with `ci: rebuild CV PDF [skip ci]`.
 
-To trigger a manual rebuild without changing anything, go to
-**Actions → Build CV PDF → Run workflow**.
+Manual rebuild: **Actions → Build CV PDF → Run workflow**.
 
 ## Resume upload API (Cloudflare Worker + Resend)
 
