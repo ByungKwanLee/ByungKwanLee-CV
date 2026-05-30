@@ -1682,6 +1682,9 @@ section:first-of-type { border-top: none; }
   text-underline-offset: 2px;
 }
 .pub-venue { font-size: 13.5px; color: var(--muted); font-style: italic; }
+.pub-venue a {
+  font-style: normal;
+}
 .pub-venue a[href*="github.io"] {
   color: var(--nvidia);
   text-decoration-color: var(--nvidia);
