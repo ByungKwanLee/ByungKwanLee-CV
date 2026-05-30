@@ -1675,7 +1675,12 @@ section:first-of-type { border-top: none; }
 .pub-title-link { color: inherit; text-decoration: none; }
 .pub-title-link:hover { text-decoration: underline; }
 .pub-authors { font-size: 14px; color: var(--primary); margin-bottom: 2px; }
-.pub-authors u { font-weight: 600; }
+.pub-authors u {
+  font-weight: 600;
+  color: var(--accent-dark);
+  text-decoration-color: var(--accent-dark);
+  text-underline-offset: 2px;
+}
 .pub-venue { font-size: 13.5px; color: var(--muted); font-style: italic; }
 .pub-extra { font-size: 13px; color: var(--muted); margin-top: 2px; }
 
