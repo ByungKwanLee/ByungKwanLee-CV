@@ -1562,7 +1562,7 @@ section:first-of-type { border-top: none; }
   max-width: 720px;
 }
 .pub-overview td { padding: 7px 8px; vertical-align: middle; }
-.pub-overview td.label { width: 30%; white-space: nowrap; }
+.pub-overview td.label { width: 1%; white-space: nowrap; }
 .pub-overview .hl {
   background: var(--highlight);
   font-weight: 700;
