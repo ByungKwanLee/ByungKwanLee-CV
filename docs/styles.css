@@ -1682,6 +1682,10 @@ section:first-of-type { border-top: none; }
   text-underline-offset: 2px;
 }
 .pub-venue { font-size: 13.5px; color: var(--muted); font-style: italic; }
+.pub-venue a[href*="github.io"] {
+  color: var(--nvidia);
+  text-decoration-color: var(--nvidia);
+}
 .pub-extra { font-size: 13px; color: var(--muted); margin-top: 2px; }
 
 /* -------- Reviewer / Lists -------- */
