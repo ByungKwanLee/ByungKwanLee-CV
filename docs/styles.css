@@ -1681,13 +1681,11 @@ section:first-of-type { border-top: none; }
   text-decoration-color: var(--accent-dark);
   text-underline-offset: 2px;
 }
-.pub-venue { font-size: 13.5px; color: var(--muted); font-style: italic; }
+.pub-venue { font-size: 13.5px; color: var(--muted); font-style: normal; }
 .pub-venue a {
   font-style: normal;
-}
-.pub-venue a[href*="github.io"] {
-  color: var(--nvidia);
-  text-decoration-color: var(--nvidia);
+  color: var(--accent-dark);
+  text-decoration-color: var(--accent-dark);
 }
 .pub-extra { font-size: 13px; color: var(--muted); margin-top: 2px; }
 
