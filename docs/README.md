@@ -93,36 +93,12 @@ on the CV link in `index.html`, and commits both with `ci: rebuild CV PDF [skip 
 
 Manual rebuild: **Actions → Build CV PDF → Run workflow**.
 
-## Resume upload API (Cloudflare Worker + Resend)
+## Application buttons (Gmail compose)
 
-The 3 resume dropzones in `docs/index.html` now send files to a custom API
-endpoint (not FormSubmit). The endpoint is read from:
-
-```html
-<meta name="resume-upload-endpoint" content="https://YOUR_WORKER_URL.workers.dev" />
-```
-
-### One-time setup
-
-1. Install/deploy tools for Cloudflare Workers (`wrangler`) and log in.
-2. Create a Resend API key.
-3. Copy `resume-upload-worker.wrangler.toml.example` to `wrangler.toml`.
-4. Edit `wrangler.toml` values:
-   - `ALLOWED_ORIGIN` (your GitHub Pages origin)
-   - `PRIMARY_TO`, `SECONDARY_TO`
-   - `FROM_EMAIL` (must be valid in your Resend account/domain)
-5. Add the secret:
-   - `wrangler secret put RESEND_API_KEY`
-6. Deploy:
-   - `wrangler deploy`
-7. Put the deployed Worker URL in `docs/index.html` meta tag
-   (`resume-upload-endpoint`).
-
-### Notes
-
-- If `FROM_EMAIL` is not verified in Resend, sending can fail.
-- Max upload size is 15 MB by default (`MAX_FILE_BYTES`).
-- The frontend expects JSON response: `{ "ok": true }` on success.
+The Collaboration / Application cards in `docs/index.html` open a pre-filled
+Gmail compose window (`https://mail.google.com/mail/?view=cm&...`) addressed to
+`byungkwanl@nvidia.com`. The visitor attaches their resume and sends it
+themselves — no backend, API key, or server is required.
 
 ## Customization
 
