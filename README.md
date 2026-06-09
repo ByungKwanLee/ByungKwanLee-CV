@@ -11,5 +11,3 @@ Personal homepage + LaTeX CV in one repo.
 3. Wait ~2 minutes, then open the live site (or **View CV** on the site). No `git pull` needed.
 
 GitHub Actions rebuilds `docs/Byung-Kwan-Lee-CV.pdf` from `main.tex` and updates the CV link cache buster automatically.
-
-Details: [docs/README.md](docs/README.md)
