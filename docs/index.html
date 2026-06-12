@@ -402,7 +402,7 @@
     <div class="pub-summary">
       <table class="pub-overview">
         <tbody>
-          <tr><td class="label"><span class="hl">Overall</span></td><td><strong class="cnt">16</strong> Accepts &middot; <strong class="cnt">4</strong> Pending &middot; <strong class="cnt">2</strong> Tech Reports</td></tr>
+          <tr><td class="label"><span class="hl">Overall</span></td><td><strong class="cnt">16</strong> Accepts &middot; <strong class="cnt">5</strong> Pending &middot; <strong class="cnt">2</strong> Tech Reports</td></tr>
           <tr><td class="label"><span class="hl">CV</span></td><td><strong class="cnt">5</strong> CVPR &middot; <strong class="cnt">2</strong> ICCV &middot; <strong class="cnt">1</strong> ECCV &middot; <strong class="cnt">1</strong> ICIP</td></tr>
           <tr><td class="label"><span class="hl">ML</span></td><td><strong class="cnt">3</strong> NeurIPS &middot; <strong class="cnt">1</strong> ICLR</td></tr>
           <tr><td class="label"><span class="hl">NLP</span></td><td><strong class="cnt">1</strong> ACL &middot; <strong class="cnt">1</strong> EMNLP</td></tr>
@@ -412,25 +412,25 @@
 
       <figure class="pub-rings">
         <div class="rings-head">Publication Profile</div>
-        <div class="pct-single" role="img" aria-label="Author role percentage distribution: First and lead-author papers are 82 percent in lime; co-author papers are 18 percent in sky blue.">
-          <div class="pct-ring" style="--major:82;">
+        <div class="pct-single" role="img" aria-label="Author role percentage distribution: First and lead-author papers are 78 percent in lime; co-author papers are 22 percent in sky blue.">
+          <div class="pct-ring" style="--major:78;">
             <span class="pct-sector-label pct-sector-label-lime">
-              <span class="ring-value-pct" data-target="82">82</span>%
+              <span class="ring-value-pct" data-target="78">78</span>%
             </span>
             <span class="pct-sector-label pct-sector-label-sky">
-              <span class="ring-value-pct" data-target="18">18</span>%
+              <span class="ring-value-pct" data-target="22">22</span>%
             </span>
           </div>
           <ul class="pct-legend">
             <li class="pct-legend-item pct-legend-item-lime">
               <span class="pct-dot pct-dot-lime"></span>
               <span class="pct-label">First &amp; Lead Author</span>
-              <span class="pct-sub"><span class="ring-value-num" data-target="18">18</span> / 22 = <span class="ring-value-pct" data-target="82">82</span>%</span>
+              <span class="pct-sub"><span class="ring-value-num" data-target="18">18</span> / 23 = <span class="ring-value-pct" data-target="78">78</span>%</span>
             </li>
             <li class="pct-legend-item pct-legend-item-sky">
               <span class="pct-dot pct-dot-sky"></span>
               <span class="pct-label">Co-Author</span>
-              <span class="pct-sub"><span class="ring-value-num" data-target="4">4</span> / 22 = <span class="ring-value-pct" data-target="18">18</span>%</span>
+              <span class="pct-sub"><span class="ring-value-num" data-target="5">5</span> / 23 = <span class="ring-value-pct" data-target="22">22</span>%</span>
             </li>
           </ul>
         </div>
@@ -438,6 +438,16 @@
     </div>
 
     <ol class="pub-list">
+      <li>
+        <div class="pub-thumb is-wide"><img src="assets/papers/spatialclaw.png" alt="SpatialClaw" loading="lazy" /></div>
+        <div class="pub-body">
+          <div class="pub-title">SpatialClaw: Rethinking Action Interface for Agentic Spatial Reasoning</div>
+          <div class="pub-authors">Seokju Cho, Ryo Hachiuma, Abhishek Badki, Hang Su, <u>Byung-Kwan Lee</u>, Chan Hee Song, Sifei Liu, Subhashree Radhakrishnan, Seungryong Kim, Yu-Chiang Frank Wang, Min-Hung Chen</div>
+          <div class="pub-venue">Under Review &nbsp; [<a href="https://spatialclaw.github.io/static/pdfs/spatialclaw.pdf" target="_blank" rel="noopener">Paper</a>][<a href="https://spatialclaw.github.io" target="_blank" rel="noopener">Project</a>][<a href="https://github.com/NVlabs/SpatialClaw" target="_blank" rel="noopener">Code</a>]</div>
+          <div class="pub-extra">U.S. Patent Application, NVIDIA Research, 2026</div>
+        </div>
+      </li>
+
       <li>
         <div class="pub-thumb is-wide"><img src="assets/papers/axpo.png" alt="AXPO" loading="lazy" /></div>
         <div class="pub-body">
@@ -991,7 +1001,7 @@
         var inlineValue = parseFloat(ring.style.getPropertyValue('--major'));
         if (!isNaN(inlineValue)) return inlineValue;
         var computedValue = parseFloat(getComputedStyle(ring).getPropertyValue('--major'));
-        return isNaN(computedValue) ? 82 : computedValue;
+        return isNaN(computedValue) ? 78 : computedValue;
       }
 
       function animateRingFill(ring, target, duration) {
