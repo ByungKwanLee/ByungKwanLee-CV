@@ -243,6 +243,20 @@
       <ul class="project-list">
         <li>
           <span class="role-tag lead">LEAD</span>
+          <a class="proj-link" href="https://byungkwanlee.github.io/ZPPO-page/" target="_blank" rel="noopener"><strong>ZPPO: Zone of Proximal Policy Optimization</strong> <i class="fa-solid fa-arrow-up-right-from-square ext-icon"></i></a>
+          <span class="phase">[Completed]</span>
+          <span class="dash">&mdash;</span>
+          <em class="desc">RL post-training that keeps the teacher inside the prompt rather than the policy gradient, using BCQ/NCQ question reformulations and a prompt replay buffer to lift small students on hard questions without policy drift.</em>
+          <div class="badges">
+            <span class="badge venue">Under Review</span>
+            <span class="badge status provisional">U.S. Provisional Patent Filed 2026</span>
+            <span class="badge arxiv">ArXiv Release</span>
+            <span class="badge status internal">Internal Release</span>
+          </div>
+        </li>
+
+        <li>
+          <span class="role-tag lead">LEAD</span>
           <a class="proj-link" href="https://byungkwanlee.github.io/AXPO-page/" target="_blank" rel="noopener"><strong>AXPO: Agent eXplorative Policy Optimization</strong> <i class="fa-solid fa-arrow-up-right-from-square ext-icon"></i></a>
           <span class="phase">[Completed]</span>
           <span class="dash">&mdash;</span>
@@ -403,7 +417,7 @@
     <div class="pub-summary">
       <table class="pub-overview">
         <tbody>
-          <tr><td class="label"><span class="hl">Overall</span></td><td><strong class="cnt">16</strong> Accepts &middot; <strong class="cnt">5</strong> Pending &middot; <strong class="cnt">2</strong> Tech Reports</td></tr>
+          <tr><td class="label"><span class="hl">Overall</span></td><td><strong class="cnt">16</strong> Accepts &middot; <strong class="cnt">6</strong> Pending &middot; <strong class="cnt">2</strong> Tech Reports</td></tr>
           <tr><td class="label"><span class="hl">CV</span></td><td><strong class="cnt">5</strong> CVPR &middot; <strong class="cnt">2</strong> ICCV &middot; <strong class="cnt">1</strong> ECCV &middot; <strong class="cnt">1</strong> ICIP</td></tr>
           <tr><td class="label"><span class="hl">ML</span></td><td><strong class="cnt">3</strong> NeurIPS &middot; <strong class="cnt">1</strong> ICLR</td></tr>
           <tr><td class="label"><span class="hl">NLP</span></td><td><strong class="cnt">1</strong> ACL &middot; <strong class="cnt">1</strong> EMNLP</td></tr>
@@ -413,25 +427,25 @@
 
       <figure class="pub-rings">
         <div class="rings-head">Publication Profile</div>
-        <div class="pct-single" role="img" aria-label="Author role percentage distribution: First and lead-author papers are 78 percent in lime; co-author papers are 22 percent in sky blue.">
-          <div class="pct-ring" style="--major:78;">
+        <div class="pct-single" role="img" aria-label="Author role percentage distribution: First and lead-author papers are 79 percent in lime; co-author papers are 21 percent in sky blue.">
+          <div class="pct-ring" style="--major:79;">
             <span class="pct-sector-label pct-sector-label-lime">
-              <span class="ring-value-pct" data-target="78">78</span>%
+              <span class="ring-value-pct" data-target="79">79</span>%
             </span>
             <span class="pct-sector-label pct-sector-label-sky">
-              <span class="ring-value-pct" data-target="22">22</span>%
+              <span class="ring-value-pct" data-target="21">21</span>%
             </span>
           </div>
           <ul class="pct-legend">
             <li class="pct-legend-item pct-legend-item-lime">
               <span class="pct-dot pct-dot-lime"></span>
               <span class="pct-label">First &amp; Lead Author</span>
-              <span class="pct-sub"><span class="ring-value-num" data-target="18">18</span> / 23 = <span class="ring-value-pct" data-target="78">78</span>%</span>
+              <span class="pct-sub"><span class="ring-value-num" data-target="19">19</span> / 24 = <span class="ring-value-pct" data-target="79">79</span>%</span>
             </li>
             <li class="pct-legend-item pct-legend-item-sky">
               <span class="pct-dot pct-dot-sky"></span>
               <span class="pct-label">Co-Author</span>
-              <span class="pct-sub"><span class="ring-value-num" data-target="5">5</span> / 23 = <span class="ring-value-pct" data-target="22">22</span>%</span>
+              <span class="pct-sub"><span class="ring-value-num" data-target="5">5</span> / 24 = <span class="ring-value-pct" data-target="21">21</span>%</span>
             </li>
           </ul>
         </div>
@@ -439,6 +453,16 @@
     </div>
 
     <ol class="pub-list">
+      <li>
+        <div class="pub-thumb is-wide"><img src="assets/papers/zppo.png" alt="ZPPO" loading="lazy" /></div>
+        <div class="pub-body">
+          <div class="pub-title">Zone of Proximal Policy Optimization: Teacher in Prompts, Not Gradients</div>
+          <div class="pub-authors"><u>Byung-Kwan Lee</u>, Ximing Lu, Shizhe Diao, Minki Kang, Saurav Muralidharan, Karan Sapra, Andrew Tao, Pavlo Molchanov, Yejin Choi, Yu-Chiang Frank Wang, Ryo Hachiuma</div>
+          <div class="pub-venue">Under Review &nbsp; [<a href="https://arxiv.org/abs/2606.18216" target="_blank" rel="noopener">Paper</a>][<a href="https://byungkwanlee.github.io/ZPPO-page/" target="_blank" rel="noopener">Project</a>]</div>
+          <div class="pub-extra">U.S. Patent Application Filed (Provisional), NVIDIA Research, 2026</div>
+        </div>
+      </li>
+
       <li>
         <div class="pub-thumb is-wide"><img src="assets/papers/spatialclaw.png" alt="SpatialClaw" loading="lazy" /></div>
         <div class="pub-body">
@@ -1002,7 +1026,7 @@
         var inlineValue = parseFloat(ring.style.getPropertyValue('--major'));
         if (!isNaN(inlineValue)) return inlineValue;
         var computedValue = parseFloat(getComputedStyle(ring).getPropertyValue('--major'));
-        return isNaN(computedValue) ? 78 : computedValue;
+        return isNaN(computedValue) ? 79 : computedValue;
       }
 
       function animateRingFill(ring, target, duration) {
