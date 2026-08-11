@@ -268,8 +268,12 @@ body {
   left: 0;
   will-change: transform;
 }
-/* Tip of the arrow sits on the viewBox origin, i.e. exactly on the pointer */
+/* The arrow tip sits on the viewBox origin, so it lands on the pointer as-is;
+   the hand is pulled back so its fingertip lands there instead. */
 .cursor-fx svg { display: block; overflow: visible; }
+.cursor-fx .c-hand { display: none; margin: -0.44px 0 0 -5.94px; }
+.cursor-fx.is-interactive .c-arrow { display: none; }
+.cursor-fx.is-interactive .c-hand { display: block; }
 .cursor-fx path {
   fill: currentColor;
   stroke: var(--cursor-rim);
@@ -313,6 +317,7 @@ body {
               transform 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.5);
 }
 .cursor-fx.is-interactive .cursor-fx-halo i {
+  margin: -5px 0 0 -13px;
   opacity: 0.9;
   transform: scale(1);
 }
@@ -324,6 +329,7 @@ body {
   margin: -4px 0 0 -8px;
   opacity: 0;
 }
+.cursor-fx.is-interactive .cursor-fx-pulse i { margin: -3px 0 0 -11px; }
 .cursor-fx.is-down .cursor-fx-pulse i { animation: cursorPulse 0.5s ease-out; }
 @keyframes cursorPulse {
   from { opacity: 0.85; transform: scale(0.3); }
