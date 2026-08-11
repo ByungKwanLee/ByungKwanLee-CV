@@ -1108,6 +1108,137 @@
       io.observe(section);
     })();
 
+    /* ===== Custom cursor: arrow head trailed by fading afterimages ===== */
+    (function setupCursorFx() {
+      if (!window.matchMedia) return;
+      if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (!document.body || !document.body.appendChild) return;
+
+      var GHOSTS = 7;
+      var ARROW = '<svg width="16.6" height="23.3" viewBox="0 0 15.1 21.2">' +
+                  '<path d="M0 0 0 17 4.5 12.9 7.6 19.6 10.9 18.1 7.9 11.6 13.5 11.4Z"/></svg>';
+      var INTERACTIVE = 'a[href], button, [role="button"], summary, ' +
+                        '.theme-toggle, .pub-thumb, label[for]';
+      /* Places that keep a meaningful native cursor (resize, progress, frames) */
+      var PASS_THROUGH = 'iframe, .stock-head, .stock-resize-handle, ' +
+                         '.resume-open-btn.is-sending, .resume-open-btn:disabled';
+
+      var root = document.createElement('div');
+      root.className = 'cursor-fx';
+      root.setAttribute('aria-hidden', 'true');
+
+      function addRing(cls) {
+        var d = document.createElement('div');
+        d.className = cls;
+        d.appendChild(document.createElement('i'));
+        root.appendChild(d);
+        return d;
+      }
+
+      var ghosts = [];
+      for (var i = GHOSTS; i >= 1; i--) {
+        var g = document.createElement('div');
+        g.className = 'cursor-fx-ghost';
+        g.style.setProperty('--i', String(i));
+        g.innerHTML = ARROW;
+        root.appendChild(g);
+        ghosts.unshift(g);
+      }
+      var halo = addRing('cursor-fx-halo');
+      var pulse = addRing('cursor-fx-pulse');
+      var head = document.createElement('div');
+      head.className = 'cursor-fx-head';
+      head.innerHTML = ARROW;
+      root.appendChild(head);
+
+      var mx = -300, my = -300, px = mx, py = my;
+      var spd = 0, running = false, seen = false;
+      var pts = [];
+      for (var k = 0; k < GHOSTS; k++) pts.push({ x: mx, y: my });
+
+      function trs(x, y) {
+        return 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0)';
+      }
+
+      function tick() {
+        var dx = mx - px, dy = my - py;
+        px = mx; py = my;
+        spd += (Math.min(1, Math.sqrt(dx * dx + dy * dy) / 16) - spd) * 0.2;
+        root.style.setProperty('--spd', spd.toFixed(3));
+
+        var at = trs(mx, my);
+        head.style.transform = at;
+        halo.style.transform = at;
+        pulse.style.transform = at;
+
+        var settled = spd < 0.005;
+        var ax = mx, ay = my;
+        for (var j = 0; j < GHOSTS; j++) {
+          var p = pts[j];
+          p.x += (ax - p.x) * 0.4;
+          p.y += (ay - p.y) * 0.4;
+          if (Math.abs(ax - p.x) > 0.4 || Math.abs(ay - p.y) > 0.4) settled = false;
+          ghosts[j].style.transform =
+            trs(p.x, p.y) + ' scale(' + (1 - (j + 1) * 0.075).toFixed(3) + ')';
+          ax = p.x; ay = p.y;
+        }
+
+        if (settled) { running = false; return; }
+        requestAnimationFrame(tick);
+      }
+
+      function start() {
+        if (running) return;
+        running = true;
+        requestAnimationFrame(tick);
+      }
+
+      document.addEventListener('mousemove', function(e) {
+        mx = e.clientX; my = e.clientY;
+        if (!seen) {
+          seen = true;
+          px = mx; py = my;
+          for (var j = 0; j < GHOSTS; j++) { pts[j].x = mx; pts[j].y = my; }
+          root.classList.add('is-visible');
+        }
+        var t = e.target;
+        var over = t && t.closest ? t.closest(PASS_THROUGH) : null;
+        root.classList.toggle('is-hidden', !!over);
+        root.classList.toggle('is-interactive',
+          !over && !!(t && t.closest && t.closest(INTERACTIVE)));
+        start();
+      }, { passive: true });
+
+      /* Pointer events stop reaching us inside embedded frames */
+      document.addEventListener('mouseover', function(e) {
+        if (e.target && e.target.tagName === 'IFRAME') root.classList.add('is-hidden');
+      }, { passive: true });
+
+      document.addEventListener('mousedown', function() {
+        root.classList.remove('is-down');
+        void root.offsetWidth;
+        root.classList.add('is-down');
+        start();
+      }, { passive: true });
+      pulse.firstChild.addEventListener('animationend', function() {
+        root.classList.remove('is-down');
+      });
+
+      document.addEventListener('mouseleave', function() {
+        root.classList.remove('is-visible');
+      });
+      document.addEventListener('mouseenter', function() {
+        if (seen) root.classList.add('is-visible');
+      });
+      window.addEventListener('blur', function() {
+        root.classList.remove('is-visible');
+      });
+
+      document.body.appendChild(root);
+      document.documentElement.classList.add('has-cursor-fx');
+    })();
+
   </script>
 
 </body>

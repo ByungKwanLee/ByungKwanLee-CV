@@ -25,6 +25,9 @@
   --glow-name:    0 0 24px rgba(168, 197, 191, 0.18);
   --glow-photo:   0 0 0 rgba(168, 197, 191, 0);
   --glow-hover:   0 4px 14px rgba(79, 128, 119, 0.18);
+
+  --cursor-rim:   rgba(45, 62, 64, 0.55);
+  --cursor-glow:  rgba(79, 128, 119, 0.40);
 }
 
 /* ========== Dark theme (neon) ========== */
@@ -48,6 +51,9 @@
   --glow-name:    0 0 12px rgba(123, 212, 196, 0.45), 0 0 36px rgba(79, 184, 166, 0.25);
   --glow-photo:   0 0 28px rgba(79, 184, 166, 0.45);
   --glow-hover:   0 0 22px rgba(123, 212, 196, 0.5);
+
+  --cursor-rim:   rgba(6, 11, 13, 0.75);
+  --cursor-glow:  rgba(123, 212, 196, 0.55);
 }
 
 /* -------- Reset & Base -------- */
@@ -229,23 +235,99 @@ body {
   50%      { opacity: 0.52; }
 }
 
-/* -------- Easter egg: profile emoji cursor (desktop only) -------- */
+/* -------- Custom cursor: arrow with a comet trail (desktop, JS only) -------- */
 @media (hover: hover) and (pointer: fine) {
-  html, body {
-    cursor: url("assets/cursor-profile-emoji.png") 6 6, default;
+  html.has-cursor-fx,
+  html.has-cursor-fx body,
+  html.has-cursor-fx a[href],
+  html.has-cursor-fx a[href] *,
+  html.has-cursor-fx button,
+  html.has-cursor-fx [role="button"],
+  html.has-cursor-fx summary,
+  html.has-cursor-fx .theme-toggle,
+  html.has-cursor-fx .pub-thumb,
+  html.has-cursor-fx label[for] {
+    cursor: none;
   }
-  button, [role="button"], summary,
-  .theme-toggle, .pub-thumb,
-  input[type="button"], input[type="submit"], label[for] {
-    cursor: url("assets/cursor-profile-emoji.png") 6 6, pointer;
-  }
-  a[href], a[href] * {
-    cursor: pointer;
-  }
-  input[type="text"], input[type="email"], input[type="search"],
-  textarea {
-    cursor: url("assets/cursor-profile-emoji.png") 6 6, text;
-  }
+}
+
+.cursor-fx {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+.cursor-fx.is-visible { opacity: 1; }
+.cursor-fx.is-hidden  { opacity: 0; }
+
+.cursor-fx > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+/* Tip of the arrow sits on the viewBox origin, i.e. exactly on the pointer */
+.cursor-fx svg { display: block; overflow: visible; }
+.cursor-fx path {
+  fill: currentColor;
+  stroke: var(--cursor-rim);
+  stroke-width: 1.15;
+  stroke-linejoin: round;
+  paint-order: stroke fill;
+}
+
+.cursor-fx-head {
+  color: var(--accent-dark);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.30))
+          drop-shadow(0 0 7px var(--cursor-glow));
+  transition: color 0.22s ease;
+}
+.cursor-fx.is-interactive .cursor-fx-head { color: var(--nvidia); }
+
+/* Afterimages: only visible while the pointer is actually moving (--spd) */
+.cursor-fx-ghost {
+  color: var(--accent);
+  opacity: calc(var(--spd, 0) * (0.5 - var(--i) * 0.055));
+  transform-origin: 0 0;
+  transition: color 0.22s ease;
+}
+.cursor-fx-ghost path { stroke: none; }
+.cursor-fx.is-interactive .cursor-fx-ghost { color: var(--nvidia); }
+
+.cursor-fx-halo i,
+.cursor-fx-pulse i {
+  display: block;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+}
+.cursor-fx-halo { color: var(--nvidia); }
+.cursor-fx-halo i {
+  width: 34px;
+  height: 34px;
+  margin: -6px 0 0 -10px;
+  opacity: 0;
+  transform: scale(0.35);
+  transition: opacity 0.2s ease,
+              transform 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.5);
+}
+.cursor-fx.is-interactive .cursor-fx-halo i {
+  opacity: 0.9;
+  transform: scale(1);
+}
+
+.cursor-fx-pulse { color: var(--accent-dark); }
+.cursor-fx-pulse i {
+  width: 30px;
+  height: 30px;
+  margin: -4px 0 0 -8px;
+  opacity: 0;
+}
+.cursor-fx.is-down .cursor-fx-pulse i { animation: cursorPulse 0.5s ease-out; }
+@keyframes cursorPulse {
+  from { opacity: 0.85; transform: scale(0.3); }
+  to   { opacity: 0;    transform: scale(2.1); }
 }
 body,
 .topnav,
