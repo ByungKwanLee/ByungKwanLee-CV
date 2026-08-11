@@ -870,6 +870,14 @@ a.role-pill:hover .role-pill-arrow {
 }
 .contact-row i { margin-right: 4px; }
 .contact-row .dot { color: var(--accent); margin: 0 6px; }
+.contact-row .nvidia-mini {
+  height: 12px;
+  vertical-align: -1px;
+  margin-right: 3px;
+}
+[data-theme="dark"] .contact-row .nvidia-mini {
+  filter: drop-shadow(0 0 4px rgba(156, 223, 0, 0.5));
+}
 
 /* -------- Main Content -------- */
 .content {
