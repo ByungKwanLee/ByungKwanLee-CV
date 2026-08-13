@@ -832,6 +832,18 @@ a.role-pill:hover .role-pill-arrow {
   text-shadow: var(--glow-nvidia);
 }
 
+.hero-bio {
+  max-width: 60ch;
+  margin: 9px 0 7px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.hero-bio strong {
+  font-weight: 600;
+  color: var(--accent-dark);
+}
+
 .contact-row {
   font-size: 14px;
   margin: 5px 0;
@@ -2059,6 +2071,7 @@ section:first-of-type { border-top: none; }
 .hero .name,
 .hero .subtitle,
 .hero .role-row,
+.hero .hero-bio,
 .hero .contact-row {
   opacity: 0;
   animation: heroFadeUp 0.75s cubic-bezier(0.2, 0.7, 0.2, 1) both;
@@ -2067,6 +2080,7 @@ section:first-of-type { border-top: none; }
 .hero .name                        { animation-delay: 0.20s; }
 .hero .subtitle                    { animation-delay: 0.40s; }
 .hero .role-row                    { animation-delay: 0.55s; }
+.hero .hero-bio                    { animation-delay: 0.68s; }
 .hero .contact-row:nth-of-type(1)  { animation-delay: 0.75s; }
 .hero .contact-row:nth-of-type(2)  { animation-delay: 0.90s; }
 
@@ -2319,6 +2333,7 @@ html.js-reveal .pub-list > li.is-visible .pub-thumb img {
   .hero .name,
   .hero .subtitle,
   .hero .role-row,
+  .hero .hero-bio,
   .hero .contact-row { animation: none; opacity: 1; }
 
   html.js-reveal main > section,
