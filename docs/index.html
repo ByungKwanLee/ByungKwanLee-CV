@@ -1073,7 +1073,8 @@
         ring.style.setProperty('--major', '0');
         var start = performance.now();
         function step(now) {
-          var t = Math.min(1, (now - start) / duration);
+          /* A frame timestamp can predate `start`, which would ease below zero */
+          var t = Math.max(0, Math.min(1, (now - start) / duration));
           var eased = 1 - Math.pow(1 - t, 3);
           var value = target * eased;
           ring.style.setProperty('--major', value.toFixed(2));
@@ -1087,7 +1088,8 @@
         if (prefersReduced) { el.textContent = target; return; }
         var start = performance.now();
         function step(now) {
-          var t = Math.min(1, (now - start) / duration);
+          /* A frame timestamp can predate `start`, which would ease below zero */
+          var t = Math.max(0, Math.min(1, (now - start) / duration));
           var eased = 1 - Math.pow(1 - t, 3);
           el.textContent = Math.round(target * eased);
           if (t < 1) requestAnimationFrame(step);
