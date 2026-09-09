@@ -106,12 +106,6 @@ body {
   width: 100%;
   height: 100%;
   display: block;
-  will-change: transform;
-  transform: translate3d(
-    calc(var(--scroll-v, 0) * -0.55px),
-    calc(var(--scroll-p, 0) * -140px),
-    0
-  );
 }
 [data-theme="dark"] .circuit-bg {
   opacity: 0.34;
@@ -269,15 +263,6 @@ ul, ol { padding-left: 1.4em; }
   -webkit-backdrop-filter: saturate(160%) blur(14px);
   border-bottom-color: rgba(79, 184, 166, 0.14);
   box-shadow: 0 1px 0 rgba(79, 184, 166, 0.06);
-}
-.topnav.is-compact {
-  box-shadow: 0 10px 28px rgba(15, 20, 25, 0.10);
-}
-[data-theme="dark"] .topnav.is-compact {
-  background: rgba(11, 15, 17, 0.82);
-  box-shadow:
-    0 1px 0 rgba(79, 184, 166, 0.10),
-    0 12px 32px rgba(0, 0, 0, 0.35);
 }
 .nav-inner {
   max-width: 980px;
@@ -2001,20 +1986,10 @@ section:first-of-type { border-top: none; }
   html.js-reveal .pub-rings,
   html.js-reveal .pct-ring,
   html.js-reveal .pct-legend-item,
+  html.js-reveal main > section .project-list > li,
   html.js-reveal main > section .research-list > li,
   html.js-reveal main > section .awards-list > li,
   html.js-reveal main > section .plain-list > li,
-  html.js-reveal main > section .lead,
-  html.js-reveal .project-list > li,
-  html.js-reveal .project-list > li:nth-child(odd),
-  html.js-reveal .project-list > li:nth-child(even),
-  html.js-reveal .role-header,
-  html.js-reveal .edu-block,
-  html.js-reveal .application-card,
-  html.js-reveal .application-card:nth-child(1),
-  html.js-reveal .application-card:nth-child(2),
-  html.js-reveal .application-card:nth-child(3),
-  html.js-reveal .hero-quote-text,
   html.js-reveal .pub-list > li,
   html.js-reveal .pub-list > li:nth-child(odd),
   html.js-reveal .pub-list > li:nth-child(even),
@@ -2022,13 +1997,7 @@ section:first-of-type { border-top: none; }
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;
-    clip-path: none !important;
     transition: none !important;
-  }
-  html.js-reveal .hero-grid,
-  html.js-reveal .hero-photo img,
-  .circuit-bg svg {
-    transform: none !important;
   }
 }
 
@@ -2115,23 +2084,14 @@ section:first-of-type { border-top: none; }
 .hero .contact-row:nth-of-type(1)  { animation-delay: 0.75s; }
 .hero .contact-row:nth-of-type(2)  { animation-delay: 0.90s; }
 
-html.js-reveal .hero-grid {
-  will-change: transform;
-  transform: translate3d(0, calc(var(--scroll-y, 0px) * 0.18), 0);
-}
-html.js-reveal .hero-photo img {
-  will-change: transform;
-  transform: translate3d(0, calc(var(--scroll-y, 0px) * 0.06), 0) scale(calc(1 + var(--scroll-p, 0) * 0.04));
-}
-
 /* Scroll-reveal sections (only active when JS is available) */
 html.js-reveal main > section,
 html.js-reveal main > section .section-title {
   opacity: 0;
-  transform: translateY(88px);
+  transform: translateY(60px);
   transition:
-    opacity 1.05s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1.05s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
 }
 html.js-reveal main > section.is-visible,
 html.js-reveal main > section.is-visible .section-title {
@@ -2227,113 +2187,43 @@ html.js-reveal main > section.is-visible .pct-legend-item:nth-child(1) { transit
 html.js-reveal main > section.is-visible .pct-legend-item:nth-child(2) { transition-delay: 1.14s; }
 
 /* Stagger items inside a section that just became visible */
+html.js-reveal main > section .project-list > li,
 html.js-reveal main > section .research-list > li,
 html.js-reveal main > section .awards-list > li,
 html.js-reveal main > section .plain-list > li {
   opacity: 0;
-  transform: translateY(22px) scale(0.96);
-  filter: blur(8px);
+  transform: translateY(14px);
   transition:
-    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.55s ease;
+    opacity 0.55s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
+html.js-reveal main > section.is-visible .project-list > li,
 html.js-reveal main > section.is-visible .research-list > li,
 html.js-reveal main > section.is-visible .awards-list > li,
 html.js-reveal main > section.is-visible .plain-list > li {
   opacity: 1;
   transform: none;
-  filter: blur(0);
 }
+html.js-reveal main > section.is-visible .project-list > li:nth-child(1),
 html.js-reveal main > section.is-visible .research-list > li:nth-child(1),
 html.js-reveal main > section.is-visible .awards-list > li:nth-child(1),
-html.js-reveal main > section.is-visible .plain-list > li:nth-child(1) { transition-delay: 0.12s; }
+html.js-reveal main > section.is-visible .plain-list > li:nth-child(1) { transition-delay: 0.10s; }
+html.js-reveal main > section.is-visible .project-list > li:nth-child(2),
 html.js-reveal main > section.is-visible .research-list > li:nth-child(2),
 html.js-reveal main > section.is-visible .awards-list > li:nth-child(2),
-html.js-reveal main > section.is-visible .plain-list > li:nth-child(2) { transition-delay: 0.22s; }
+html.js-reveal main > section.is-visible .plain-list > li:nth-child(2) { transition-delay: 0.18s; }
+html.js-reveal main > section.is-visible .project-list > li:nth-child(3),
 html.js-reveal main > section.is-visible .research-list > li:nth-child(3),
 html.js-reveal main > section.is-visible .awards-list > li:nth-child(3),
-html.js-reveal main > section.is-visible .plain-list > li:nth-child(3) { transition-delay: 0.32s; }
+html.js-reveal main > section.is-visible .plain-list > li:nth-child(3) { transition-delay: 0.26s; }
+html.js-reveal main > section.is-visible .project-list > li:nth-child(4),
 html.js-reveal main > section.is-visible .research-list > li:nth-child(4),
 html.js-reveal main > section.is-visible .awards-list > li:nth-child(4),
-html.js-reveal main > section.is-visible .plain-list > li:nth-child(4) { transition-delay: 0.42s; }
+html.js-reveal main > section.is-visible .plain-list > li:nth-child(4) { transition-delay: 0.34s; }
+html.js-reveal main > section.is-visible .project-list > li:nth-child(n+5),
 html.js-reveal main > section.is-visible .research-list > li:nth-child(n+5),
 html.js-reveal main > section.is-visible .awards-list > li:nth-child(n+5),
-html.js-reveal main > section.is-visible .plain-list > li:nth-child(n+5) { transition-delay: 0.50s; }
-
-/* Work items reveal one-by-one as they enter the viewport */
-html.js-reveal .project-list > li {
-  opacity: 0;
-  filter: blur(10px);
-  transition:
-    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.6s ease;
-}
-html.js-reveal .project-list > li:nth-child(odd) {
-  transform: translate3d(-56px, 28px, 0) rotateZ(-0.6deg);
-}
-html.js-reveal .project-list > li:nth-child(even) {
-  transform: translate3d(56px, 28px, 0) rotateZ(0.6deg);
-}
-html.js-reveal .project-list > li.is-visible {
-  opacity: 1;
-  transform: none;
-  filter: blur(0);
-}
-
-html.js-reveal .application-grid {
-  perspective: 1100px;
-}
-html.js-reveal .role-header,
-html.js-reveal .edu-block,
-html.js-reveal .application-card,
-html.js-reveal .hero-quote-text {
-  opacity: 0;
-  filter: blur(10px);
-  transition:
-    opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.95s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.6s ease,
-    clip-path 1.1s cubic-bezier(0.16, 1, 0.3, 1);
-}
-html.js-reveal .application-card {
-  transform-style: preserve-3d;
-}
-html.js-reveal .role-header {
-  transform: translateY(28px);
-}
-html.js-reveal .edu-block {
-  transform: translateX(-48px);
-}
-html.js-reveal .application-card:nth-child(1) { transform: translate3d(-36px, 40px, 0) rotateY(8deg); }
-html.js-reveal .application-card:nth-child(2) { transform: translate3d(0, 48px, 0) scale(0.94); }
-html.js-reveal .application-card:nth-child(3) { transform: translate3d(36px, 40px, 0) rotateY(-8deg); }
-html.js-reveal .hero-quote-text {
-  transform: scale(0.94) translateY(18px);
-  clip-path: inset(0 18% 0 18%);
-}
-html.js-reveal .role-header.is-visible,
-html.js-reveal .edu-block.is-visible,
-html.js-reveal .application-card.is-visible,
-html.js-reveal .hero-quote-text.is-visible {
-  opacity: 1;
-  transform: none;
-  filter: blur(0);
-  clip-path: inset(0 0 0 0);
-}
-
-html.js-reveal main > section .lead {
-  opacity: 0;
-  transform: translateY(18px);
-  transition:
-    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.12s,
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.12s;
-}
-html.js-reveal main > section.is-visible .lead {
-  opacity: 1;
-  transform: none;
-}
+html.js-reveal main > section.is-visible .plain-list > li:nth-child(n+5) { transition-delay: 0.40s; }
 
 /* Publications get an individual scroll-reveal per <li>
    with alternating slide direction + 3D tilt for a cinematic feel */
@@ -2349,10 +2239,10 @@ html.js-reveal .pub-list > li {
     transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
 }
 html.js-reveal .pub-list > li:nth-child(odd) {
-  transform: translate3d(-72px, 48px, -40px) rotateX(-12deg) rotateY(7deg);
+  transform: translate3d(-32px, 32px, 0) rotateX(-8deg) rotateY(4deg);
 }
 html.js-reveal .pub-list > li:nth-child(even) {
-  transform: translate3d(72px, 48px, -40px) rotateX(-12deg) rotateY(-7deg);
+  transform: translate3d(32px, 32px, 0) rotateX(-8deg) rotateY(-4deg);
 }
 html.js-reveal .pub-list > li.is-visible {
   opacity: 1;
@@ -2360,21 +2250,18 @@ html.js-reveal .pub-list > li.is-visible {
 }
 
 html.js-reveal .pub-list > li .pub-thumb img {
-  transform: scale(1.12);
-  filter: blur(10px);
-  opacity: 0.35;
-  clip-path: inset(18% 18% 18% 18% round 10px);
+  transform: scale(0.92);
+  filter: blur(4px);
+  opacity: 0.7;
   transition:
-    transform 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.08s,
-    filter   0.8s ease 0.08s,
-    opacity  0.8s ease 0.08s,
-    clip-path 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+    filter   0.7s ease 0.1s,
+    opacity  0.7s ease 0.1s;
 }
 html.js-reveal .pub-list > li.is-visible .pub-thumb img {
   transform: scale(1);
   filter: blur(0);
   opacity: 1;
-  clip-path: inset(0 0 0 0 round 0);
 }
 
 /* Top scroll-progress bar - shimmering gradient with comet leading edge */
@@ -2452,17 +2339,10 @@ html.js-reveal .pub-list > li.is-visible .pub-thumb img {
   html.js-reveal main > section,
   html.js-reveal main > section .section-title,
   html.js-reveal main > section .section-title .section-title-char,
+  html.js-reveal main > section .project-list > li,
   html.js-reveal main > section .research-list > li,
   html.js-reveal main > section .awards-list > li,
   html.js-reveal main > section .plain-list > li,
-  html.js-reveal main > section .lead,
-  html.js-reveal .project-list > li,
-  html.js-reveal .project-list > li:nth-child(odd),
-  html.js-reveal .project-list > li:nth-child(even),
-  html.js-reveal .role-header,
-  html.js-reveal .edu-block,
-  html.js-reveal .application-card,
-  html.js-reveal .hero-quote-text,
   html.js-reveal .pub-list > li,
   html.js-reveal .pub-list > li:nth-child(odd),
   html.js-reveal .pub-list > li:nth-child(even),
@@ -2470,13 +2350,8 @@ html.js-reveal .pub-list > li.is-visible .pub-thumb img {
   html.js-reveal .pub-rings,
   html.js-reveal .pct-ring,
   html.js-reveal .pct-legend-item {
-    opacity: 1; transform: none; filter: none; clip-path: none;
+    opacity: 1; transform: none; filter: none;
     transition: none;
-  }
-  html.js-reveal .hero-grid,
-  html.js-reveal .hero-photo img,
-  .circuit-bg svg {
-    transform: none;
   }
   html.js-reveal main > section .section-title::before {
     transform: scaleX(1); transition: none;
