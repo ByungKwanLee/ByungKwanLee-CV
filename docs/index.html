@@ -6,6 +6,7 @@
       var saved = localStorage.getItem('theme');
       var theme = saved || 'dark';
       document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.classList.add('js-intro');
       if (!('IntersectionObserver' in window)) return;
       var media = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
       if (media && media.matches) return;

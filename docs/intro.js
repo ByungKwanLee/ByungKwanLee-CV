@@ -3,7 +3,6 @@
 (function () {
   var root = document.getElementById('intro');
   if (!root) return;
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var nameEl = root.querySelector('.intro-name');
   var beats = root.querySelectorAll('.intro-beat');
   var flow = root.querySelector('.intro-flow');
@@ -30,7 +29,7 @@
     }).join('');
     var cells = Array.prototype.slice.call(nameEl.children);
     cells.forEach(function (c) { c.style.width = c.getBoundingClientRect().width + 'px'; });
-    if (!reduce) cells.forEach(function (c, i) { if (NAME[i] !== ' ') c.textContent = sequenceFor(NAME[i])[0]; });
+    cells.forEach(function (c, i) { if (NAME[i] !== ' ') c.textContent = sequenceFor(NAME[i])[0]; });
     return cells;
   }
 
@@ -213,16 +212,6 @@
     reset();
     pinRot();
     var cells = build();
-    if (reduce) {
-      root.classList.add('go');
-      beats.forEach(function (b) { b.classList.add('in'); });
-      nodes.forEach(function (n) { n.classList.add('on'); });
-      fill.style.transform = 'scaleX(1)';
-      stats.classList.add('in');
-      stats.querySelectorAll('b[data-to]').forEach(function (b) { b.textContent = b.getAttribute('data-to'); });
-      foot.classList.add('in');
-      return;
-    }
     root.classList.add('go');
     await sleep(250); if (!alive()) return;
     await roll(cells, alive); if (!alive()) return;
