@@ -32,11 +32,13 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="intro.css" />
+  <link rel="stylesheet" href="faq.css" />
 </head>
 <body>
 
@@ -119,6 +121,35 @@
     </div>
   </div>
 </nav>
+
+<!-- —— Opening TL;DR —— -->
+<section class="intro" id="intro" aria-label="TL;DR: who I am">
+  <div class="intro-bg" aria-hidden="true"><i class="aurora a1"></i><i class="aurora a2"></i><i class="aurora a3"></i><i class="dots"></i><i class="dots-lit"></i><i class="grain"></i></div>
+  <div class="intro-inner">
+    <div class="intro-kicker">TL;DR &nbsp;·&nbsp; who I am</div>
+    <h1 class="intro-name" data-text="Byung-Kwan Lee" data-accent="Lee" aria-label="Byung-Kwan Lee">Byung-Kwan Lee</h1>
+    <p class="intro-beats">
+      <a class="intro-beat intro-role" href="https://research.nvidia.com/person/byung-kwan-lee" target="_blank" rel="noopener"><img src="assets/nvidia.svg" alt="" />Research Scientist at <span class="nv">NVIDIA</span></a>
+      <span class="intro-beat hl">Building frontier VLMs that are <span class="rot" data-words="efficient.|faster.|smarter.|agentic.">efficient.</span></span>
+    </p>
+    <div class="intro-flow" aria-label="Research focus">
+      <div class="flow-line" aria-hidden="true"><i class="flow-fill"></i><i class="flow-pulse"></i></div>
+      <div class="flow-node"><span class="idx">01</span><span class="w">Distillation</span><span class="cap">VLsI · GenRecal · Masters · Hide to See</span></div>
+      <div class="flow-node"><span class="idx">02</span><span class="w">Pruning</span><span class="cap">MAD · Image Token Pruning</span></div>
+      <div class="flow-node"><span class="idx">03</span><span class="w">RL</span><span class="cap">Unified RL and Imitation Learning · ZPPO</span></div>
+      <div class="flow-node"><span class="idx">04</span><span class="w">Agent</span><span class="cap">AXPO · RACE</span></div>
+      <div class="flow-node"><span class="idx">05</span><span class="w">Harness</span><span class="cap">Mid-Harness · SpatialClaw</span></div>
+    </div>
+    <div class="intro-stats">
+      <div class="intro-stat"><b data-to="29">0</b><span>Papers</span></div>
+      <div class="intro-stat"><b data-to="20">0</b><span>First &amp; Lead</span></div>
+      <div class="intro-stat"><b data-to="8">0</b><span>U.S. Patents</span></div>
+      <div class="intro-stat"><b data-to="16">0</b><span>On-going</span></div>
+    </div>
+  </div>
+  <div class="intro-foot"><a class="intro-cue" href="#top">More about me<i class="fa-solid fa-chevron-down"></i></a></div>
+  <button class="intro-replay" type="button">↻ Replay</button>
+</section>
 
 <!-- &mdash;&mdash; Hero &mdash;&mdash; -->
 <header class="hero" id="top">
@@ -203,35 +234,31 @@
   </section>
 
   <section id="applications">
-    <h2 class="section-title"><i class="fa-solid fa-file-arrow-up"></i> Collaboration Requests &amp; Job Applications</h2>
-    <p class="lead">If your research interests align with mine and you already have a draft idea to discuss and develop together, feel free to reach out for collaboration. For university collaboration, alignment is the primary criterion. We are also actively looking for talented internship and full-time candidates. Preferred qualifications are strong first author publications at top-tier main-track conferences (not workshops) and deep expertise in one area; co-first author papers are discouraged for now. In my view, a strong profile means five-to-ten first author papers at top-tier venues (CVPR, ICCV, ECCV, NeurIPS, ICLR, ICML, ACL, EMNLP) in focused one area from deep expertise. I wouldn't consider other conferences and journals since I am not familiar with the others. If you meet these criteria, click &quot;Open Gmail&quot; to open a pre-filled draft, attach your resume, and send. Please keep it as a brief cold email.</p>
-    <div class="application-grid">
-      <article class="application-card" data-application-type="University Collaboration with NVIDIA">
-        <h3 class="application-title">University Collaboration with NVIDIA</h3>
-        <button class="resume-open-btn" data-upload-role="open-btn" type="button" aria-label="Open Gmail compose for University Collaboration with NVIDIA">
-          <img class="resume-open-icon" src="assets/google-g.svg" alt="" aria-hidden="true" />
-          Open Gmail
-        </button>
-        <p class="resume-upload-status" data-upload-role="status" aria-live="polite"></p>
-      </article>
-
-      <article class="application-card" data-application-type="NVIDIA Research Intern Application">
-        <h3 class="application-title">NVIDIA Research Intern Application</h3>
-        <button class="resume-open-btn" data-upload-role="open-btn" type="button" aria-label="Open Gmail compose for NVIDIA Research Intern Application">
-          <img class="resume-open-icon" src="assets/google-g.svg" alt="" aria-hidden="true" />
-          Open Gmail
-        </button>
-        <p class="resume-upload-status" data-upload-role="status" aria-live="polite"></p>
-      </article>
-
-      <article class="application-card" data-application-type="NVIDIA Research Full-time Application">
-        <h3 class="application-title">NVIDIA Research Full-time Application</h3>
-        <button class="resume-open-btn" data-upload-role="open-btn" type="button" aria-label="Open Gmail compose for NVIDIA Research Full-time Application">
-          <img class="resume-open-icon" src="assets/google-g.svg" alt="" aria-hidden="true" />
-          Open Gmail
-        </button>
-        <p class="resume-upload-status" data-upload-role="status" aria-live="polite"></p>
-      </article>
+    <h2 class="section-title"><i class="fa-solid fa-handshake"></i> University Collaboration or Intern &amp; Full-time</h2>
+    <div class="faq" id="faq">
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a1" id="faq-q1"><span class="faq-t"><span class="faq-tag">University Collaboration:</span> Can we collaborate on research?</span><span class="faq-ico" aria-hidden="true"><i class="fa-solid fa-chevron-up"></i></span></button>
+        <div class="faq-a" id="faq-a1" role="region" aria-labelledby="faq-q1"><div class="faq-a-in"><div class="faq-body">
+          <p>Feel free to reach out for collaboration by email if:</p>
+          <ul>
+            <li>Your research interests align with mine.</li>
+            <li>You already have a draft idea to discuss and develop together.</li>
+          </ul>
+          <p>For university collaboration, alignment is the primary criterion.</p>
+        </div></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a2" id="faq-q2"><span class="faq-t"><span class="faq-tag">Intern &amp; Full-time:</span> What do you look for?</span><span class="faq-ico" aria-hidden="true"><i class="fa-solid fa-chevron-up"></i></span></button>
+        <div class="faq-a" id="faq-a2" role="region" aria-labelledby="faq-q2"><div class="faq-a-in"><div class="faq-body">
+          <p>We are actively looking for talented internship and full-time candidates. Preferred qualifications:</p>
+          <ul>
+            <li>Strong first author publications at top-tier main-track conferences (not workshops); co-first author papers are discouraged.</li>
+            <li>Deep expertise in one focused area: in my view, five-to-ten first author papers at top-tier venues.</li>
+            <li>Top-tier venues: CVPR, ICCV, ECCV, NeurIPS, ICLR, ICML, ACL, EMNLP. I am not familiar with other conferences and journals.</li>
+          </ul>
+          <p>If you meet these criteria, please send me an email with your resume/CV attached.</p>
+        </div></div></div>
+      </div>
     </div>
   </section>
 
@@ -849,62 +876,6 @@
       });
     })();
 
-    (function setupResumeComposeButtons() {
-      var cards = Array.from(document.querySelectorAll('.application-card[data-application-type]'));
-      if (!cards.length) return;
-
-      var primaryRecipient = 'byungkwanl@nvidia.com';
-
-      function setStatus(node, message, tone) {
-        node.textContent = message;
-        node.classList.remove('is-success', 'is-error', 'is-muted');
-        if (tone) node.classList.add(tone);
-      }
-
-      function setBusy(button, isBusy) {
-        button.classList.toggle('is-sending', isBusy);
-        button.disabled = !!isBusy;
-      }
-
-      function buildGmailComposeUrl(applicationType) {
-        var subject = '[Request] ' + applicationType;
-        var body = 'I am applying for ' + applicationType + '.\n\nAttached file is [YOUR ATTACHED FILE NAME]';
-        return 'https://mail.google.com/mail/?view=cm&fs=1'
-          + '&to=' + encodeURIComponent(primaryRecipient)
-          + '&su=' + encodeURIComponent(subject)
-          + '&body=' + encodeURIComponent(body);
-      }
-
-      function openCompose(applicationType, statusNode, button) {
-        setBusy(button, true);
-        setStatus(statusNode, 'Opening Gmail compose ...', 'is-muted');
-        var composeUrl = buildGmailComposeUrl(applicationType);
-        var popup = window.open(composeUrl, '_blank');
-        if (!popup) {
-          setBusy(button, false);
-          window.location.href = composeUrl;
-          return;
-        }
-        try { popup.opener = null; } catch (e) {}
-        setStatus(statusNode, 'Gmail compose opened. Attach your resume and click Send.', 'is-success');
-        setBusy(button, false);
-      }
-
-      cards.forEach(function(card) {
-        var applicationType = card.getAttribute('data-application-type') || 'Application';
-        var openBtn = card.querySelector('[data-upload-role="open-btn"]');
-        var statusNode = card.querySelector('[data-upload-role="status"]');
-        if (!openBtn || !statusNode) return;
-        if (openBtn.dataset.gmailBound === '1') return;
-        openBtn.dataset.gmailBound = '1';
-
-        openBtn.addEventListener('click', function() {
-          if (openBtn.disabled) return;
-          openCompose(applicationType, statusNode, openBtn);
-        });
-      });
-    })();
-
     (function setupNvdaStockWidget() {
       var quoteHost = document.getElementById('nvdaQuoteWidget');
       var chartHost = document.getElementById('nvdaChartWidget');
@@ -1154,5 +1125,7 @@
 
   </script>
 
+<script src="intro.js"></script>
+<script src="faq.js"></script>
 </body>
 </html>
